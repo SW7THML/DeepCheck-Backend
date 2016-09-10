@@ -22,3 +22,4 @@
 /public/uploads
 *.swo
 *.swp
+/config/key.yml
