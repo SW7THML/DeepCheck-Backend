@@ -1,4 +1,7 @@
 class Photo < ApplicationRecord
-	belongs_to :post
-	mount_uploader :attachment, AttachmentUploader
+  mount_uploader :attachment, AttachmentUploader
+
+  belongs_to :post
+  has_many :tagged_users
+  has_many :users, :through => :tagged_users
 end

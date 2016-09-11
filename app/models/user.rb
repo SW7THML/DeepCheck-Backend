@@ -8,6 +8,11 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :posts
+  has_many :tagged_users
+  has_many :photos, :through => :tagged_users
+  has_many :course_users
+  has_many :courses, :through => :course_users
+  has_many :managed_courses, :class_name => "Course", :inverse_of => :manager
 
   def self.find_for_facebook_oauth(data, provider = "facebook")
     uid = data['id']

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910100425) do
+ActiveRecord::Schema.define(version: 20160910140016) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,15 +32,29 @@ ActiveRecord::Schema.define(version: 20160910100425) do
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "user_id"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "courses", force: :cascade do |t|
+  create_table "course_users", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_users_on_course_id"
+    t.index ["user_id"], name: "index_course_users_on_user_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_link"
+    t.integer  "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_courses_on_manager_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -52,8 +66,23 @@ ActiveRecord::Schema.define(version: 20160910100425) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "course_id"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_posts_on_course_id"
+  end
+
+  create_table "tagged_users", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_tagged_users_on_photo_id"
+    t.index ["user_id"], name: "index_tagged_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
