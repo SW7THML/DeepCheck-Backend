@@ -1,0 +1,49 @@
+<script type="text/javascript">
+	$(function() {
+	  $('#pictureInput').on('change', function(event) {
+	    var files = event.target.files;
+	    var image = files[0]
+	    // here's the file size
+	    console.log(image.size);
+	    var reader = new FileReader();
+	    reader.onload = function(file) {
+	      var img = new Image();
+	      img.src = file.target.result;
+	      img.style.maxWidth = "100%";
+	      img.style.height = "auto";
+	      $('#thumbnail').html(img);
+	      document.getElementById("submit").style.display="inline-block";
+	    }
+	    reader.readAsDataURL(image);
+	    console.log(files);
+	  });
+	});
+</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel"><%= @course.name %></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="submit" id="submit" class="btn btn-primary">등록</button>
+			</div>
+			
+			<div class="modal-body">
+        <form class="form-horizontal">
+					<%= select_date Date.today, prefix: :start_date%>
+					<div class="text-center" id="thumbnail">
+					</div>
+				</form>
+			</div>	
+
+			<div class="modal-footer">
+				<%= form_for(@course) do |f| %>
+
+  				<input type="file" id="pictureInput"> 
+		  	  <!--<%= f.file_field :post %>-->
+		    <% end %>
+			</div>
+		</div>
+	</div>
+</div>
