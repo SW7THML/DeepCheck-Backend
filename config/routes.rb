@@ -1,13 +1,29 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  #devise_for :users
+	devise_for :users
+	devise_scope :user do
+		authenticated :user do
+			resources :courses, :only => [:index, :create, :show, :update, :delete] do
+				post "/join" => "courses#join", :on => :member
+				delete "/leave" => "courses#leave", :on => :member
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "welcome#index"
+				resources :posts, :only => [:index, :create, :show, :update, :delete] do
+					resources :photos, :only => [:index, :create, :update, :delete] do
+						post '/tag' => "photos#add_tag", :on => :member
+						put '/tag/:tag_id' => "photos#edit_tag", :on => :member
+						delete '/tag/:tag_id' => "photos#remove_tag", :on => :member
+					end
+					resources :comments, :only => [:index, :create, :update, :delete]
+				end
+			end
+			resources :users
+		end
 
-	resources :photos, :only => [:index, :create]
-	resources :courses, :only => [:index]
-	resources :users
-	resources :comments
+		unauthenticated :user do
+			root "welcome#index"
+			resources :users, :only => [:create]
+		end
+	end
+
+	devise_for :admins
+	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
