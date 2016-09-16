@@ -12,12 +12,14 @@ class CoursesController < ApplicationController
 
 	def update
 		@course = Course.find(params[:id])
-		@course.update(course_params)
-		#raise params.inspect
+		@posts = @course.posts
+		@photos = @posts.first
+		raise @photos.inspect
+		raise params.inspect
 		redirect_to :root
 	end
 
 	def course_params
-			params.require(:course).permit(:name, :short_link, :manager_id)
+			params.require(:course).permit(:name, :photo, :date, :short_link, :manager_id)
 	end
 end

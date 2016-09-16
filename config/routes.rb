@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   
-	resources :courses, :only => [:index, :show] do
+	resources :courses, :only => [:index, :show, :update] do
     resources :posts, :only => [:index, :show, :create] do
       resources :photos, :only => [:index, :show, :create]
     end

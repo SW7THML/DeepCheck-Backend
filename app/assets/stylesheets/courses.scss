@@ -28,6 +28,47 @@
 	margin-right: 10px;
 }
 
+#course-body {
+
+	.info {
+		background-color: #efefef;
+    display: block;
+
+		.content {
+			display: inline-block;
+			text-align: left;
+		}
+
+		.date {
+			display: inline-block;
+			float: right;
+		}
+	}
+
+	.post {
+		display: block;
+	  overflow-x: auto;
+	  white-space: nowrap;
+		border-bottom: solid;
+		width: 350px;
+		margin: 10px auto;
+
+		.image {
+			display: inline-block;
+			float: none;
+			margin: 5px auto;
+			height: 250px;
+			width: 300px;
+			border: solid;
+
+			.content {
+				border: solid;
+				float: none;
+			}
+		}
+	}
+}
+
 .modal-header {
 	.close {
 		margin-top: 5px !important;
@@ -37,7 +78,7 @@
     margin-right: 10px;
 	}
 	#submit {
-		display: none
+		display: inline-block
 	}
 }
 .menu.new-post {

@@ -11,7 +11,6 @@
 		});
 	});
 </script>
-
 	<!--
 		name
 		short_link
@@ -19,7 +18,6 @@
 		created_at
 		updated_at
 	-->
-
 <%= form_for(@course) do |f| %>
 	<div id="course-title">
   	<div class="text-center">
@@ -38,7 +36,33 @@
 		</div>
 	</div>
 
-	
+	<div class="form-group" id="course-body">
+		<% @course.posts.each do | post | %>
+			<div class="post">
+				<div class="info">
+					<div class="content">
+						<%= post.content %>
+					</div>
+					<div class="date">
+						<%= post.created_at %>
+					</div>
+				</div>
+				<div class="post">
+					<% post.photos.each do | photo | %>
+						<div class="image">
+							<div class="content">
+								<h5>
+									<%= photo.id %>
+								</h5>
+							</div>
+							image here
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>	
+
 	<%= render "modal" %>
 
 	<div class="menu new-post">
