@@ -2,10 +2,22 @@
 	$(document).ready(function() {
 		$('#btn-new-post').click(function(e) {
 			var id = $(this).data('id');
-			if(id)  {
+			if (id) {
 				$.ajax('/courses/' + id).success(function(html) {
 					$('#modalContainer').html(html);	
 					$('#myModal').modal('show')
+				});
+			}
+		});
+		$('.post-image').click(function(e) {
+			var cid = $(this).data('course-id');
+			var pid = $(this).data('post-id');
+			var qid = $(this).data('photo-id');
+
+			if (cid && pid && qid) {
+				$.ajax('/courses/' + cid).success(function(html) {
+					$('#modalContainer').html(html);
+					$('#popupPhoto').modal('show');
 				});
 			}
 		});
@@ -18,54 +30,55 @@
 		created_at
 		updated_at
 	-->
-<%= form_for(@course) do |f| %>
-	<div id="course-title">
-  	<div class="text-center">
-  		<h3>
-				<%= @course.name %>
-  		</h3>
-	  </div>
+<div id="course-title">
+	<div class="text-center">
+		<h3>
+			<%= @course.name %>
+		</h3>
+  </div>
+</div>
+<div class="form-group" id="course-info">
+	<div class="text-right" id="course-link">
+		<a href=<%= @course.short_link %>><%= @course.short_link %></a>
 	</div>
-	<div class="form-group" id="course-info">
-		<div class="text-right" id="course-link">
-			<a href=<%= @course.short_link %>><%= @course.short_link %></a>
-		</div>
-		<div class="text-left">
-			<%= f.label :manager_id %>
-			<%= @course.manager_id %>
-		</div>
+	<div class="text-left">
+		<p>Manager_ID</p>
+		<%= @course.manager_id %>
 	</div>
+</div>
 
-	<div class="form-group" id="course-body">
-		<% @course.posts.each do | post | %>
-			<div class="post">
-				<div class="info">
-					<div class="content">
-						<%= post.content %>
-					</div>
-					<div class="date">
-						<%= post.created_at %>
-					</div>
+<div class="form-group" id="course-body">
+	<% @course.posts.each do | post | %>
+		<div class="post">
+			<div class="info">
+				<div class="content">
+					<%= post.content %>
 				</div>
-				<div class="post">
-					<% post.photos.each do | photo | %>
-						<div class="image">
-							<div class="content">
-								<h5>
-									<%= photo.id %>
-								</h5>
-							</div>
-							image here
-						</div>
-					<% end %>
+				<div class="date">
+					<%= post.created_at %>
 				</div>
 			</div>
-		<% end %>
-	</div>	
+			<div class="post">
+				<% post.photos.each do | photo | %>
+					<div class="photos">
+						<div class="content">
+							<h5>
+								<%= photo.id %>
+							</h5>
+						</div>
+						<div class="photo">
+							<a class="post-image" data-course-id="<%= @course.id %>" data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>" href="#">Image</a>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>	
 
-	<%= render "modal" %>
+<%= render "modal" %>
+<%= render "popup" %>
 
-	<div class="menu new-post">
-		<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>" href="#">새로운 출석</a>
-	</div>
-<% end %>
+<div class="menu new-post">
+	<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>" href="#">새로운 출석</a>
+</div>

@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	$(function() {
-	  $('#photo_pictureInput').on('change', function(event) {
+	  $('#pictureInput').on('change', function(event) {
 	    var files = event.target.files;
 	    var image = files[0]
 	    // here's the file size
@@ -21,14 +21,14 @@
 </script>
 
 <!-- Modal -->
-<%= form_tag(course_posts_path(@course), method: :put) do %>
+<%= form_for(course_posts_path(@course, @course.posts.build)) do |f| %>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title" id="myModalLabel"><%= @course.name %></h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<%= submit_tag "등록", :class => "btn btn-primary", :id => "submit" %>
+				<%= f.submit "등록", :class => "btn btn-primary", :id => "submit" %>
 			</div>
 			
 			<div class="modal-body">
@@ -40,9 +40,10 @@
 			</div>	
 
 			<div class="modal-footer">
-				<%= file_field :photo, "pictureInput" %>
+				<%= f.file_field :attachment, :class => "pictureInput" %>
 			</div>
 		</div>
 	</div>
 </div>
 <% end %>
+

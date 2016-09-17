@@ -14,12 +14,11 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		@posts = @course.posts
 		@photos = @posts.first
-		raise @photos.inspect
 		raise params.inspect
 		redirect_to :root
 	end
 
 	def course_params
-			params.require(:course).permit(:name, :photo, :date, :short_link, :manager_id)
+			params.require(:course).permit(:name, :attachment, :date, :short_link, :manager_id)
 	end
 end

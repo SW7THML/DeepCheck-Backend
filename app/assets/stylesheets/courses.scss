@@ -49,21 +49,25 @@
 		display: block;
 	  overflow-x: auto;
 	  white-space: nowrap;
-		border-bottom: solid;
-		width: 350px;
 		margin: 10px auto;
 
-		.image {
+		.photos {
 			display: inline-block;
 			float: none;
 			margin: 5px auto;
-			height: 250px;
-			width: 300px;
-			border: solid;
+			margin-left: 10px;
+			margin-right: 10px;
+			width: 330px;
 
 			.content {
 				border: solid;
 				float: none;
+			}
+
+			.photo {
+				border: solid;
+				height: 250px;
+				width: 330px;
 			}
 		}
 	}
