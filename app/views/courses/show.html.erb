@@ -4,20 +4,22 @@
 			var id = $(this).data('id');
 			if (id) {
 				$.ajax('/courses/' + id).success(function(html) {
-					$('#modalContainer').html(html);	
-					$('#myModal').modal('show')
+					$('#modal-post').modal('show')
 				});
 			}
 		});
-		$('.post-image').click(function(e) {
+		$('.btn-photo').click(function(e) {
 			var cid = $(this).data('course-id');
 			var pid = $(this).data('post-id');
 			var qid = $(this).data('photo-id');
 
 			if (cid && pid && qid) {
-				$.ajax('/courses/' + cid).success(function(html) {
-					$('#modalContainer').html(html);
-					$('#popupPhoto').modal('show');
+				$.ajax('/courses/' + cid + '/posts/' + pid + '/photos/' + qid).success(function(html) {
+					var src = html.photo.url;
+					var date = html.date.slice(0, 10);
+					document.getElementById("popup-photo").setAttribute("src", src);
+					document.getElementById("popup-photo-time").setAttribute("datetime", date);
+					$('#modal-photo').modal('show');
 				});
 			}
 		});
@@ -66,9 +68,9 @@
 								<%= photo.id %>
 							</h5>
 						</div>
-						<div class="photo">
-							<a class="post-image" data-course-id="<%= @course.id %>" data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>" href="#">Image</a>
-						</div>
+						<a class="btn-photo" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>"href="#">
+							<img class="photo" src="<%= photo.attachment %>"> 							
+						</a>
 					</div>
 				<% end %>
 			</div>
@@ -79,6 +81,7 @@
 <%= render "modal" %>
 <%= render "popup" %>
 
-<div class="menu new-post">
 	<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>" href="#">새로운 출석</a>
+
+<div class="menu new-post">
 </div>

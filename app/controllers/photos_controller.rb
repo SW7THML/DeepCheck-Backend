@@ -11,7 +11,8 @@ class PhotosController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@post = @course.posts.find(params[:post_id])
 		@photo = @post.photos.find(params[:id])
-		render :json => {photo: @photo}
+
+		render :json => {photo: @photo.attachment, date: @photo.created_at}
 	end
 
 	def create
@@ -30,6 +31,6 @@ class PhotosController < ApplicationController
 	end
 
 	def photo_params
-		params.require(:photo).permit(:attachment)
+		params.require(:photo).permit(:attachment, :post_id)
 	end
 end
