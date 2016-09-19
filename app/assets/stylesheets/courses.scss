@@ -37,44 +37,31 @@
 #course-body {
 
 	.info {
-		background-color: #efefef;
     display: block;
 
-		.content {
-			display: inline-block;
-			text-align: left;
-		}
-
 		.date {
-			display: inline-block;
-			float: right;
+			float: left;
 		}
 	}
 
 	.post {
+		padding: 10px 0;
+		border-bottom: 1px solid #efefef;
+
 		display: block;
-	  overflow-x: auto;
-	  white-space: nowrap;
 		margin: 10px auto;
 
-		.photos {
-			display: inline-block;
-			float: none;
-			margin: 5px auto;
-			margin-left: 10px;
-			margin-right: 10px;
+		text-align: center;
+
+		.photo {
+			height: 250px;
 			width: 330px;
+		}
 
-			.content {
-				border: solid;
-				float: none;
-			}
-
-			.photo {
-				border: solid;
-				height: 250px;
-				width: 330px;
-			}
+		.published-at {
+			text-align: right;
+			margin-top: 10px;
+			margin-right: 20px;
 		}
 	}
 }
