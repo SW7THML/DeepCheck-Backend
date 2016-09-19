@@ -19,9 +19,9 @@ class Course < ApplicationRecord
 	after_create :generate_short_link
 
   def join(user)
-    cu = CourseUser.where(:course_id => self.id, :user_id => user.id)
+    cu = CourseUser.where(:course_id => self.id, :user_id => user.id).first
     if cu.nil?
-      cu = Course.new
+      cu = CourseUser.new
       cu.user = user
       cu.course = self
       cu.save
@@ -30,7 +30,7 @@ class Course < ApplicationRecord
   end
 
   def leave(user)
-    cu = CourseUser.where(:course_id => self.id, :user_id => user.id)
+    cu = CourseUser.where(:course_id => self.id, :user_id => user.id).first
     cu.delete if !cu.nil?
   end
 

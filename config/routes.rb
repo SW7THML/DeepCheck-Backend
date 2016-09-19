@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	devise_for :users
 	devise_scope :user do
-		authenticated :user do
+		#authenticated :user do
 			resources :courses, :only => [:index, :create, :show, :update, :delete] do
 				post "/join" => "courses#join", :on => :member
 				delete "/leave" => "courses#leave", :on => :member
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 				end
 			end
 			resources :users
-		end
+		#end
 
 		unauthenticated :user do
 			root "welcome#index"

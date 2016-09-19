@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
 	def show
 		course = Course.find(params[:id])
 
-    if user.enrolled?(course.id)
+    if current_user.enrolled?(course.id)
       render :json => {
         course: course
       }
