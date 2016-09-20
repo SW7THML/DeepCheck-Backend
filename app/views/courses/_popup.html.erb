@@ -1,24 +1,3 @@
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#popup-photo').on("click", function(e) {
-			var offset = $(this).offset();
-			var x = e.pageX - offset.left;
-			var y = e.pageY - offset.top;
-			$('#face-grid')
-				.css('left', x)
-				.css('top', y);
-
-			$.ajax('/courses/' + cid + '/posts/' + pid + '/photos/' + qid + '/tags?id=' + userid + '&x=' + x + '&y=' + y).success(function(json) {
-				var src = html.photo.url;
-				var date = html.date.slice(0, 10);
-
-				document.getElementById("popup-photo").setAttribute("src", src);
-				$('#modal-photo').modal('show');
-			});
-		});
-	});
-</script>
-
 <!-- Modal -->
 <div class="modal fade" id="modal-photo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
