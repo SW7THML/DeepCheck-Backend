@@ -1,38 +1,32 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#btn-new-post').click(function(e) {
-			var id = $(this).data('id');
-			if (id) {
-				$.ajax('/courses/' + id).success(function(html) {
-					$('#modal-post').modal('show')
-				});
-			}
-		});
+	  $('#btn-new-post').click(function(e) {
+	    var id = $(this).data('id');
+	    if (id) {
+	      $.ajax('/courses/' + id).success(function(html) {
+	        $('#modal-post').modal('show')
+	      });
+	    }
+	  });
 
-		$('.photo-detail-link').click(function(e) {
-			var cid = $(this).data('course-id');
-			var pid = $(this).data('post-id');
-			var qid = $(this).data('photo-id');
+	  $('.photo-detail-link').click(function(e) {
+	    var cid = $(this).data('course-id');
+	    var pid = $(this).data('post-id');
+	    var qid = $(this).data('photo-id');
 
-			if (cid && pid && qid) {
-				$.ajax('/courses/' + cid + '/posts/' + pid + '/photos/' + qid).success(function(html) {
-					var src = html.photo.url;
-					var date = html.date.slice(0, 10);
+	    if (cid && pid && qid) {
+	      $.ajax('/courses/' + cid + '/posts/' + pid + '/photos/' + qid).success(function(html) {
+	        var src = html.photo.url;
+	        var date = html.date.slice(0, 10);
 
-					document.getElementById("popup-photo").setAttribute("src", src);
-					$('#modal-photo').modal('show');
-				});
-			}
-		});
+	        document.getElementById("popup-photo").setAttribute("src", src);
+	        $('#modal-photo').modal('show');
+	      });
+	    }
+	  });
 	});
 </script>
-	<!--
-		name
-		short_link
-		manager_id
-		created_at
-		updated_at
-	-->
+
 <div id="course-title">
 	<div class="text-center">
 		<h3>
@@ -40,6 +34,7 @@
 		</h3>
   </div>
 </div>
+
 <div class="form-group" id="course-info">
 </div>
 
@@ -62,7 +57,7 @@
 <%= render "modal" %>
 <%= render "popup" %>
 
-	<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>" href="#">새로운 출석</a>
+<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
 
 <div class="menu new-post">
 </div>

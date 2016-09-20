@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
-		#raise @course.inspect
 		render :layout => true
 	end
 
@@ -14,8 +13,7 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		@posts = @course.posts
 		@photos = @posts.first
-		raise params.inspect
-		redirect_to :root
+		redirect_to(:back)
 	end
 
 	def course_params
