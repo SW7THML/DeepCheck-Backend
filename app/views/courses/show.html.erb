@@ -1,0 +1,34 @@
+<div id="course-title">
+	<div class="text-center">
+		<h3>
+			<%= @course.name %>
+		</h3>
+  </div>
+</div>
+
+<div class="form-group" id="course-info">
+</div>
+
+<div class="form-group" id="course-body">
+	<% @course.posts.latest.each do |post| %>
+		<div class="post">
+			<% post.photos.each do | photo | %>
+				<a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
+					<img class="photo" src="<%= photo.attachment %>">
+				</a>
+			<% end %>
+
+			<div class="published-at">
+				<p><%= post.created_at.strftime("%Y-%m-%d") %></p>
+			</div>
+		</div>
+	<% end %>
+</div>	
+
+<%= render "modal" %>
+<%= render "popup" %>
+
+<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
+
+<div class="menu new-post">
+</div>
