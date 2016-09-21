@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
 	resources :courses, :only => [:index, :show, :update] do
     resources :posts, :only => [:index, :show, :create] do
-      resources :photos, :only => [:index, :show, :create]
+      resources :photos, :only => [:index, :show, :create, :update]
     end
   end
 
