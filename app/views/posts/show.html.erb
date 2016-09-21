@@ -1,0 +1,13 @@
+<div id="post-title">
+  <div class="text-center">
+    <h3>
+      <%= @course_name %>
+    </h3>
+  </div>
+</div>
+
+<div class="photos">
+  <% @post.photos.each do | photo | %>
+    <img class="photo" src="<%= photo.attachment %>"
+  <% end %>
+</div>

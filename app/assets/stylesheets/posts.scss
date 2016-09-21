@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#post-title {
+  min-height: 50px;
+  position: fixed;
+  top: 0;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  border: 1px solid transparent;
+  width: 100%;
+  h3 {
+    margin: 10px auto;
+  }
+}
+
 #post-form {
 	.form-group {
 		input[type="file"] {
@@ -10,4 +23,12 @@
 			-webkit-box-shadow: none;
 		}
 	}	
+}
+
+.photos {
+  margin-top: 50px;
+  .photo {
+    max-width: 100%;
+    height: auto;
+  }
 }

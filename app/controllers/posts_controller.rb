@@ -6,9 +6,10 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@course = Course.find(params[:id])
-		post = @course.posts.find(params[:id])
-		render :json => {post: post}
+		course = Course.find(params[:course_id])
+		@course_name = course.name
+		@post = course.posts.find(params[:id])
+		render :layout => true
 	end	
 
 	def create

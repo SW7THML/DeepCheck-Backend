@@ -6,21 +6,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.photo-detail-link').on("click", function(e) {
-    var cid = $(this).data('course-id');
-    var pid = $(this).data('post-id');
-    var qid = $(this).data('photo-id');
-
-    if (cid && pid && qid) {
-      $.ajax('/courses/' + cid + '/posts/' + pid + '/photos/' + qid).success(function(html) {
-        var src = html.photo.url;
-        var date = html.date.slice(0, 10);
-
-        document.getElementById("popup-photo").setAttribute("src", src);
-        $('#modal-photo').modal('show');
-      });
-    }
-  });
 
   $('#popup-photo').on("click", function(e) {
     var offset = $(this).offset();
@@ -38,7 +23,7 @@ $(document).ready(function() {
       $('#modal-photo').modal('show');
     });
   });
-  
+
   $('#post_attachment').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
