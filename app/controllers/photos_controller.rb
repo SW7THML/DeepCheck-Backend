@@ -15,6 +15,11 @@ class PhotosController < ApplicationController
 		render :json => {photo: photo.attachment, date: photo.created_at}
 	end
 
+	def update 
+		
+		redirect_to :root
+	end 
+
 	def create
 		render :json => {photo: nil}
 	end
