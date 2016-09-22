@@ -1,0 +1,29 @@
+<h3>My Courses <%= link_to "Create", new_course_path %></h3>
+
+<div class="row courses">
+	<% @my_courses.each do |course| %>
+		<div class="col-xs-4">
+			<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="90" height="90">
+			<h2><%= course.name %></h2>
+			<p>
+				<%= link_to "View details »", course_path(course), :class => "btn btn-default" %>
+			</p>
+		</div>
+	<% end %>
+</div>
+
+<hr>
+
+<h3>All Courses</h3>
+
+<div class="row courses">
+	<% @courses.each do |course| %>
+		<div class="col-xs-4">
+			<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="90" height="90">
+			<h2><%= course.name %></h2>
+			<p>
+				<%= link_to "View details »", course_path(course), :class => "btn btn-default" %>
+			</p>
+		</div>
+	<% end %>
+</div>

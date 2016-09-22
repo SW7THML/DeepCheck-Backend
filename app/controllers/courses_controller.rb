@@ -5,6 +5,14 @@ class CoursesController < ApplicationController
     @my_courses = current_user.courses
 	end
 
+  def new
+    @course = Course.new
+  end
+
+  def edit
+    @course = Course.find(params[:id])
+  end
+
   def create
     course = Course.new(course_params)
     course.manager = current_user
@@ -13,7 +21,12 @@ class CoursesController < ApplicationController
     course.generate_short_link
     course.join(current_user)
 
-    redirect_to courses_path
+    redirect_to course_path(course)
+  end
+
+  def join
+    @course = Course.find(params[:id])
+		render :layout => false
   end
 
   def leave
@@ -34,7 +47,7 @@ class CoursesController < ApplicationController
 			course.update(course_params)
 		end
 
-    redirect_to courses_path(course)
+    redirect_to course_path(course)
 	end
 
   def delete

@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  acts_as_token_authentication_handler_for User, except: [:index]
+
   def index
     @msg = "Hello DeepCheck!"
 

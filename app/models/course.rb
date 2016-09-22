@@ -11,6 +11,7 @@
 #
 
 class Course < ApplicationRecord
+  include Rails.application.routes.url_helpers
   has_many :posts
   has_many :course_users
   has_many :users, :through => :course_users
@@ -34,9 +35,15 @@ class Course < ApplicationRecord
     cu.delete if !cu.nil?
   end
 
-	private
+  def ios_link_course_url
+    url_for(controller: 'courses',
+            action: 'join',
+            id: self.id,
+            only_path: false)
+  end
+
 	def generate_short_link
-		link = ios_link_course_url(self)
+		link = self.ios_link_course_url
 		bitly = Bitly.new("deepcheck", KEYS['bitly'])
 
 		shorten = bitly.shorten(link)

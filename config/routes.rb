@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 	# for webview
 	root "welcome#index"
 	devise_for :users
-	resources :courses, :only => [:index, :create, :show, :update, :delete] do
+	resources :courses do
+    get "/join" => "courses#join", :on => :member
 		resources :posts, :only => [:index, :create, :show, :update, :delete] do
 			resources :photos, :only => [:index, :create, :update, :delete]
 			resources :comments, :only => [:index, :create, :update, :delete]
