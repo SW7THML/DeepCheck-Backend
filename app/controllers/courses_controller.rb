@@ -1,13 +1,8 @@
 class CoursesController < ApplicationController
   # TODO pagintation
 	def index
-		courses = Course.all
-    my_courses = current_user.courses
-
-    render :json => {
-      courses: courses,
-      my_courses: my_courses
-    }
+		@courses = Course.all
+    @my_courses = current_user.courses
 	end
 
   def create
@@ -18,55 +13,29 @@ class CoursesController < ApplicationController
     course.generate_short_link
     course.join(current_user)
 
-    render :json => {
-      course: course
-    }
-  end
-
-  def join
-    course = Course.find(params[:id])
-    course.join(current_user)
-
-    render :json => {
-      course: course
-    }
+    redirect_to courses_path
   end
 
   def leave
     course = Course.find(params[:id])
     course.leave(current_user)
 
-    render :json => {
-    }
+    redirect_to courses_path
   end
 
 	def show
-		course = Course.find(params[:id])
-
-    if current_user.enrolled?(course.id)
-      render :json => {
-        course: course
-      }
-    else
-      render :json => {
-        course: {}
-      }, :status => 401
-    end
+    @course = Course.find(params[:id])
 	end
 
-  def update
-    course = Course.find(params[:id])
+	def update
+		course = Course.find(params[:id])
 
-    if course.manager_id == current_user.id
-      course.update(course_params)
+		if course.manager_id == current_user.id
+			course.update(course_params)
+		end
 
-      render :json => {
-        course: course
-      }
-    else
-      render :json => {}, :status => 401
-    end
-  end
+    redirect_to courses_path(course)
+	end
 
   def delete
     course = Course.find(params[:id])
@@ -74,13 +43,12 @@ class CoursesController < ApplicationController
     if course.manager_id == current_user.id
       # TODO need to add condition
       course.delete
-      render :json => {}
-    else
-      render :json => {}, :status => 401
     end
+
+    redirect_to courses_path
   end
 
   def course_params
-    params.permit(:course).require(:name)
+		params.require(:course).permit(:name, :attachment, :date)
   end
 end

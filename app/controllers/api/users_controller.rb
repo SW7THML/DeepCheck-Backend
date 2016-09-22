@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   acts_as_token_authentication_handler_for User, except: [:create]
 
   def create
