@@ -15,9 +15,10 @@ class PhotosController < ApplicationController
 		render :json => {photo: photo.attachment, date: photo.created_at}
 	end
 
-	def update 
+	def update
 		
-		redirect_to :root
+		raise params.inspect
+		render :json => {tag: true}
 	end 
 
 	def create
