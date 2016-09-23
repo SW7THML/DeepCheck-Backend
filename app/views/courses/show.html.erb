@@ -1,7 +1,25 @@
-<h1> Course name </h1> </br>
+<div class = "listing-title">
+  <h1 class="course-main">Course Summary<br>
+  <small><strong><%= @course.name %></strong> Summary</small></h1>
+</div>
 
-response = {
-	'name': course.name
-}
+<div class="image-header">
+  <p>
+    <center>
+      <strong><%= image_tag("circle.png", :width => "200") %>
+      </strong>
+    </center>
+  </p>
+</div>
 
-return response
+<div>
+  <center>
+    <p> <strong>강사명</strong> : 김슬아 </p>
+    <p> <strong>강의실</strong> : 공학관 23401호 </p>
+    <p> <strong>강의내용</strong> : 놀자놀자 </p>
+  </center>
+</div>
+
+<div class="summary-button">
+  <center><%= button_to 'Back to list', courses_path, :class => 'btn btn-default', :method => :get %></center>
+</div>

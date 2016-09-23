@@ -1,0 +1,27 @@
+<div class = "listing-title">
+  <h1 class="course-main">Create Course<br><small>Create new Course</small></h1>
+</div>
+
+<% if @course.errors.any? %>
+  <div class="create create-warning", role="arert">
+    <center><strong>Create Course has <%= pluralize(@course.errors.count, "error") %></strong></center>
+
+    <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @course do |f| %>
+	<center>
+    <center><strong>Course name</strong></center>
+    <%= f.text_field :name %></br></br> 
+    <%= f.submit :Create_Course, class: 'btn btn-default' %> 
+
+  </center>
+<% end %>
+
+<br>
+
