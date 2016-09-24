@@ -1,6 +1,5 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
   # TODO pagination
-  # TODO
   def index
     course = Course.find(params[:course_id])
 
@@ -26,24 +25,51 @@ class PostsController < ApplicationController
       post.course = course
       post.save
 
-      photo = Photo.new(photo_params)
-      photo.user = current_user
-      photo.save
-    end
+			respond_to do |format|
+				format.html {
+					photo = Photo.new(photo_params)
+					photo.user = current_user
+					photo.save
 
-    redirect_to(:back)
+					redirect_to(:back)
+				}
+				format.json {
+					render :json => {
+						post: post
+					}
+				}
+			end
+    else
+      render :json => {
+        post: {}
+      }, :status => 401
+    end
   end
 
   def show
     course = Course.find(params[:course_id])
 
     if current_user.enrolled?(course.id)
-      @course_name = course.name
-      @post = course.posts.find(params[:id])
+      post = Post.find(params[:id])
+
+			respond_to do |format|
+				format.html {
+					@course_name = course.name
+					@post = course.posts.find(params[:id])
+				}
+				format.json {
+					render :json => {
+						post: post
+					}
+				}
+			end
+    else
+      render :json => {
+        post: {}
+      }, :status => 401
     end
   end
 
-  # TODO
   def update
     post = Post.find(params[:id])
 
@@ -58,7 +84,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # TODO
   def delete
     post = Post.find(params[:id])
 

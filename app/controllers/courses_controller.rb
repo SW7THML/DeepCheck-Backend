@@ -1,22 +1,67 @@
 class CoursesController < ApplicationController
+  # TODO pagintation
 	def index
-		@course = Course.all
-		render :json => {courses: @course}
+		@courses = Course.all
+    @my_courses = current_user.courses
 	end
 
+  def new
+    @course = Course.new
+  end
+
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def create
+    course = Course.new(course_params)
+    course.manager = current_user
+    course.save
+
+    course.generate_short_link
+    course.join(current_user)
+
+    redirect_to course_path(course)
+  end
+
+  def join
+    @course = Course.find(params[:id])
+		render :layout => false
+  end
+
+  def leave
+    course = Course.find(params[:id])
+    course.leave(current_user)
+
+    redirect_to courses_path
+  end
+
 	def show
-		@course = Course.find(params[:id])
-		render :layout => true
+    @course = Course.find(params[:id])
 	end
 
 	def update
-		@course = Course.find(params[:id])
-		@posts = @course.posts
-		@photos = @posts.first
-		redirect_to(:back)
+		course = Course.find(params[:id])
+
+		if course.manager_id == current_user.id
+			course.update(course_params)
+		end
+
+    redirect_to course_path(course)
 	end
 
-	def course_params
-			params.require(:course).permit(:name, :attachment, :date, :short_link, :manager_id)
-	end
+  def delete
+    course = Course.find(params[:id])
+
+    if course.manager_id == current_user.id
+      # TODO need to add condition
+      course.delete
+    end
+
+    redirect_to courses_path
+  end
+
+  def course_params
+		params.require(:course).permit(:name, :attachment, :date)
+  end
 end

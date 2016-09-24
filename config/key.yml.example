@@ -1,6 +1,7 @@
 defaults: &defaults
   facebook_app_id: 'a1b2c3'
   facebook_app_secret: 'a1b2c3'
+  bitly: 'a1b2c3'
 
 development:
   <<: *defaults

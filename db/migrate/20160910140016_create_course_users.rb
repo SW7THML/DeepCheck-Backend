@@ -7,7 +7,6 @@ class CreateCourseUsers < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :course_users, :course_id
-    add_index :course_users, :user_id
+    add_index :course_users, [:course_id, :user_id], :unique => true
   end
 end

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
   # TODO pagination
   def index
     post = Post.find(params[:post_id])
