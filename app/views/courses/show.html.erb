@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="form-group" id="course-info">
+<div class="form-group" id="course-info">create
 </div>
 
 <div class="form-group" id="course-body">
@@ -21,6 +21,15 @@
 
 			<div class="published-at">
 				<p><%= post.created_at.strftime("%Y-%m-%d") %></p>
+			</div>
+
+			<div class="users">
+				<% post.tagged_users.each do |u| %>
+					<span class="label label-success"><%= u.name %></span>
+				<% end %>
+				<% (@course.users - post.tagged_users).each do |u| %>
+					<span class="label label-warning"><%= u.name %></span>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

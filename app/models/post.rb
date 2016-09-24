@@ -20,4 +20,12 @@ class Post < ApplicationRecord
   def self.latest
     self.order(:created_at => :desc)
   end
+
+  def tagged_users
+    users = []
+    self.photos.each do |p|
+      users += p.users
+    end
+    users.uniq
+  end
 end

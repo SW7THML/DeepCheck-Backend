@@ -15,5 +15,6 @@ class Photo < ApplicationRecord
 	belongs_to :post
 
   has_many :tagged_users
+	belongs_to :user
   has_many :users, :through => :tagged_users
 end
