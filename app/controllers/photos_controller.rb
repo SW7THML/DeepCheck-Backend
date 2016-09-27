@@ -16,9 +16,11 @@ class PhotosController < ApplicationController
 	end
 
 	def update
-		
-		raise params.inspect
-		render :json => {tag: true}
+    if current_user.enrolled?(course.id)
+    	render :json => {tag: false}
+    else
+    	render :json => {tag: false}
+    end
 	end 
 
 	def create
