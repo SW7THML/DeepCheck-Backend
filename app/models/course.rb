@@ -5,7 +5,7 @@ class Course < ApplicationRecord
   has_many :course_users
   has_many :users, :through => :course_users
 
-  validates :name, presence: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3, maximum: 10 }
 
   after_create :generate_short_link
 

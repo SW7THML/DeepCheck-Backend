@@ -3,17 +3,17 @@ class PostsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		posts = @course.posts
 		render :json => {posts: posts}
-	end
+  end
 
-	def show
-		course = Course.find(params[:course_id])
-		@course_name = course.name
-		@post = course.posts.find(params[:id])
-		render :layout => true
-	end	
+  def show
+    @course = Course.find(params[:course_id])
+    @course_name = @course.name
+    @post = @course.posts.find(params[:id])
+    render :layout => true
+  end	
 
-	def create
-		@course = Course.find(params[:course_id])
+  def create
+    @course = Course.find(params[:course_id])
 		post = @course.posts.create(post_params)
 		photo = post.photos.create(photo_params)
 

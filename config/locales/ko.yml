@@ -125,7 +125,7 @@ ko:
       not_an_integer: 에 정수를 입력해 주세요
       odd: 에 홀수를 입력해 주세요
       taken: 은(는) 이미 존재합니다.
-      too_long: 은(는) %{count}자를 넘을 수 없습니다
+      too_long: 은 %{count}자를 넘을 수 없습니다.
       too_short: 은 %{count}글자 이상이어야 합니다.
       wrong_length: 은(는) %{count}자여야 합니다
     template:

@@ -1,28 +1,45 @@
 <div class="navigation-header" align="center">
   <div id="left-menu">
-    <%= link_to '<i class="glyphicon glyphicon-triangle-left"></i>'.html_safe, courses_path, :class => 'btn btn-link', :method => :get %>
+    <%= link_to '', courses_path, class: "btn-left btn-primary glyphicon glyphicon-triangle-left" %>
   </div>
   <h3><%= @course.name %></h3>
 </div>
 
-<div class="form-group" id="course-body">
-	<% @course.posts.latest.each do |post| %>
-		<div class="post">
-			<% post.photos.each do | photo | %>
-				<a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-					<img class="photo" src="<%= photo.attachment %>">
-				</a>
-			<% end %>
+<% if @course.posts.blank? %>
+  <div class="no-image">
+    <%= image_tag("no-photo.png", :class => "show-non") %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error: </span>
+          사진을 추가해 주세요!
+    </div>
 
-			<div class="published-at">
-				<p><%= post.created_at.strftime("%Y-%m-%d") %></p>
-			</div>
-		</div>
-	<% end %>
-</div>	
+    <p>
+      <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+    </p>
+  </div>
+<% else %>
+  <div class="form-group" id="course-body">
+    <% @course.posts.latest.each do |post| %>
+      <div class="post">
+        <% post.photos.each do | photo | %>
+          <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
+            <img class="photo" src="<%= photo.attachment %>">
+          </a>
+        <% end %>
+
+        <div class="published-at">
+          <p><%= post.created_at.strftime("%Y-%m-%d") %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 <%= render "modal" %>
-<%= render "popup" %>
 
 <a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
 

@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
-  def show
-    @course = Course.find(params[:id])
-    render :layout => true
-  end
-
   def name
 
+  end
+
+  def show
+    @course = Course.find(params[:id])
   end
 
   def new
