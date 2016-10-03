@@ -2,7 +2,6 @@ class PhotosController < ApplicationController
   before_filter :logged_in?
 
 	def index
-		raise current_user.inspect
 		@course = Course.find(params[:course_id])
 		post = @course.posts.find(params[:post_id])
 		photos = post.photos
