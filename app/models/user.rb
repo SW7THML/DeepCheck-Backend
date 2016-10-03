@@ -22,9 +22,17 @@ class User < ApplicationRecord
     else
       user = User.new(:provider => "facebook", :uid => uid)
       user.email = "#{uid}@facebook.com"
+      user.name = name
       #user.password = Digest::MD5.hexdigest(uid)
       user.save
       user
     end
+  end
+
+  def enrolled?(course)
+    if course.users.find(self.id)
+      return true
+    end
+    return false
   end
 end

@@ -6,16 +6,20 @@
 </div>
 
 <div class="photos">
-  <% @post.photos.each do | photo | %>
+  <% @post.photos.each do |photo| %>
+    
     <img class="photo" src="<%= photo.attachment %>" />
-    <div class="face-grid" data-photo-id="<%= photo.id %>"></div>
+    <% photo.tagged_users.each do |user| %>
+      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
+    <% end %>
+    <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
       <label class="col-sm-2 control-label">Attendance</label>
       <div class="tags">
-        <% photo.tagged_users.each do | user | %>
-          <div class="tag">
-            <%= user %>
+        <% photo.users.each do |user| %>
+          <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
+            <%= user.name %>
           </div>
         <% end %>
       </div>

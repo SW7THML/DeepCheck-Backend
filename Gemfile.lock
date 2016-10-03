@@ -85,7 +85,7 @@ GEM
     haml (4.0.7)
       tilt
     hashie (3.4.6)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
@@ -261,4 +261,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.13.2

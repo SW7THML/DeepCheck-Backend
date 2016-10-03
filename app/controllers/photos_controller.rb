@@ -17,10 +17,24 @@ class PhotosController < ApplicationController
 	end
 
 	def update
-    if current_user.enrolled?(course.id)
-    	render :json => {tag: false}
+    course = Course.find(params[:course_id])
+    photo = Photo.find(params[:id])
+    if current_user.enrolled?(course)
+      users = TaggedUser
+        .where(:user_id => current_user.id)
+        .where(:photo_id => params[:id])
+      if users[0].nil?
+        photo.users << current_user
+      end
+      tu = TaggedUser
+        .where(:user_id => current_user.id)
+        .where(:photo_id => params[:id])[0]
+      tu.x = params[:x]
+      tu.y = params[:y]
+      tu.save
+      render :json => {result: 'Create new Tag'}
     else
-    	render :json => {tag: false}
+      render :json => {result: 'not a member'}
     end
 	end 
 

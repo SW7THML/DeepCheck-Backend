@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003120430) do
+ActiveRecord::Schema.define(version: 20161003150714) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -85,18 +85,13 @@ ActiveRecord::Schema.define(version: 20161003120430) do
     t.index ["user_id"], name: "index_tagged_users_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",              default: "", null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "email",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
