@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  # devise_for :admins
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   namespace :api, module: nil do
     resources :courses, only: [:show]
   end
+
+  get 'login' => 'login#show'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 end
