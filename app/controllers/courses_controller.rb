@@ -1,32 +1,32 @@
 class CoursesController < ApplicationController
-	def show
-		@course = Course.find(params[:id])
-	end
+  def show
+    @course = Course.find(params[:id])
+  end
 
-	def name
+  def name
 
-	end	
+  end
 
-	def new
-		@course = Course.new
+  def new
+    @course = Course.new
 	end
 
 	def create
-		@course = Course.new(course_params)
+    @course = Course.new(course_params)
 
-		if @course.save
-			redirect_to course_path(@course)
-		else
-			render 'new'
-		end
-	end
+    if @course.save
+      redirect_to course_path(@course)
+    else
+      render 'new'
+    end
+  end
 
-	def index
-		@courses = Course.all
-	end
+  def index
+    @courses = Course.all
+  end
 
-	private
-		def course_params
-			params.require(:course).permit(:name)
-		end
+  private
+    def course_params
+      params.require(:course).permit(:name)
+    end
 end
