@@ -49,12 +49,10 @@ ActiveRecord::Schema.define(version: 20161003120430) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name"
-    t.string   "short_link"
-    t.integer  "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["manager_id"], name: "index_courses_on_manager_id"
+    t.string   "short_link"
+    t.string   "name"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -66,10 +64,8 @@ ActiveRecord::Schema.define(version: 20161003120430) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "course_id"
-    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_posts_on_course_id"
   end
 
   create_table "tagged_users", force: :cascade do |t|
@@ -85,16 +81,10 @@ ActiveRecord::Schema.define(version: 20161003120430) do
     t.index ["user_id"], name: "index_tagged_users_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",              default: "", null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "email",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "provider"
     t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
