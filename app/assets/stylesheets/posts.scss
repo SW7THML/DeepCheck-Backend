@@ -31,4 +31,15 @@
     max-width: 100%;
     height: auto;
   }
+
+  .face-grid {
+    display: none;
+    position: absolute;
+    border: 2px solid;
+    border-color: #afafaf;
+    width: 32px;
+    height: 32px;
+    top: 15px;
+    left: 15px;
+  }
 }

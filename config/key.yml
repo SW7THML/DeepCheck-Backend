@@ -1,0 +1,12 @@
+defaults: &defaults
+  facebook_app_id: '1326627404031502'
+  facebook_app_secret: 'a6799ed7b92e5e9fdfbc84ae9a6e75b9'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
