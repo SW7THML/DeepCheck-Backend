@@ -13,5 +13,7 @@ module DeepcheckBackend
     # -- all .rb files in that directory are automatically loaded.
 
     Rails.configuration.host_name = 'deepcheck.herokuapp.com'
+    config.time_zone = 'Seoul'
+    config.i18n.default_locale = :ko
   end
 end

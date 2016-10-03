@@ -1,25 +1,19 @@
-<div class = "listing-title">
-  <h1 class="course-main">Course Summary<br>
-  <small><strong><%= @course.name %></strong> Summary</small></h1>
+<div class="navigation-header" align="center">
+  <h3><%= @course.name %></h3>
 </div>
 
-<div class="image-header">
+<div class="summary">
   <p>
-    <center>
-      <strong><%= image_tag("circle.png", :width => "200") %>
-      </strong>
-    </center>
+    <%= image_tag("image02.png", :class => "img-circle", :width => "200", :height => "200") %>
   </p>
 </div>
 
 <div>
-  <center>
-    <p> <strong>강사명</strong> : 김슬아 </p>
-    <p> <strong>강의실</strong> : 공학관 23401호 </p>
-    <p> <strong>강의내용</strong> : 놀자놀자 </p>
-  </center>
+    <p class="summary-text"> <strong>강사명</strong> : 김슬아 </p>
+    <p class="summary-text"> <strong>강의실</strong> : 공학관 23401호 </p>
+    <p class="summary-text"> <strong>강의내용</strong> : 놀자놀자 </p>
 </div>
 
 <div class="summary-button">
-  <center><%= button_to 'Back to list', courses_path, :class => 'btn btn-default', :method => :get %></center>
+  <%= button_to '강의 목록 보기', courses_path, :class => 'btn btn-default', :method => :get %>
 </div>

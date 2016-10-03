@@ -1,27 +1,36 @@
-<div class = "listing-title">
-  <h1 class="course-main">Create Course<br><small>Create new Course</small></h1>
+<div class="navigation-header" align="center">
+  <h3>새로운 강의 만들기</h3>
 </div>
 
-<% if @course.errors.any? %>
-  <div class="create create-warning", role="arert">
-    <center><strong>Create Course has <%= pluralize(@course.errors.count, "error") %></strong></center>
 
-    <ul>
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<%= form_for @course, html: {id: 'course-form'} do |f| %>
+  <% if @course.errors[:name].blank? %>
+    <div class="form-group">
+  <% else %>
+    <div class="form-group has-error has-feedback">
+  <% end %>
+
+    <%= f.label :name, "강의명", class: 'control-label' %>
+    <% if @course.errors[:name].blank? %>
+      <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요', 'aria-label' => "inputError2Status" %>
+    <% else %>
+      <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요' %>
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+    <% end %>
+
+    <% unless @course.errors[:name].blank? %>
+      <div class="has-error has-feedback">
+        <div class="error-message">
+            <ul>
+              <% @course.errors[:name].each do |message| %>
+                <li>강의명<%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
+
+  <%= f.submit '생성', class: 'btn btn-primary btn-block' %>
+  <%= link_to "되돌아가기", courses_path, id:"btn-back", class: 'btn btn-default btn-block' %>
 <% end %>
-
-<%= form_for @course do |f| %>
-	<center>
-    <center><strong>Course name</strong></center>
-    <%= f.text_field :name %></br></br> 
-    <%= f.submit :Create_Course, class: 'btn btn-default' %> 
-
-  </center>
-<% end %>
-
-<br>
-

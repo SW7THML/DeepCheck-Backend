@@ -1,80 +1,86 @@
-.course-main {
-	margin-bottom: 20px;
-	text-align: center;
-	    background-color: #eee;
-}
-
-.course-name {
-	text-align: center;
-	margin-bottom: 10px;
-}
-
 .course-div {
-	width: 33%;
-	float: left;
-	padding-right: 5px !important;
-	padding-left: 5px !important;
-    text-align: center;
+  width: 33%;
+  height: 33%;
+  float: left;
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  text-align: center;
+  padding-bottom: -1px;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  border-width: 1px;
 }
 
 .course-row {
-	margin-right: 20px !important;
-	margin-left: 20px !important;
+  margin-right: 20px !important;
+  margin-left: 20px !important;
 }
 
-.name-summary {
-	text-align: center;
-	margin-bottom: 10px;
-	font-size: 20px;
+.course-name {
+  margin-bottom: 5px;
 }
 
-.create-margin {
-	margin-top: 20px;
+.navigation-header {
+  padding-bottom: 8px;
+  padding-top: 10px;
+  margin-bottom: 13px;
+  border-bottom: 1px solid #eee;
+  margin-right: 5px;
+  background-color: #337ab7;
+
+  h3 {
+    display: inline;
+    font-size: 18px;
+    color: #ffffff;
+  }
+
+  #left-menu {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+
+    a {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 0.5;
+      padding-right: 5px;
+      color: #ffffff;
+      border-color: #ffffff;
+      border-radius: 4px;
+      margin-top: 3px;
+      padding-left: 5px;
+      padding-top: 3px;
+      padding-bottom: 8px;
+    }
+  }
 }
 
-.page-button {
-    padding-bottom: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.listing-title {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    margin-bottom: 10px;
-   	background-color: #eee;
-
-}
-
-.page-title {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.image-header {
-	padding-bottom: 9px;
-	margin-top: 0px;
-	margin-bottom: 20px;
+.summary {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
   border-bottom: 1px solid #eee;
 }
 
-.create-warning {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-}
-
-.create {
-    padding: 15px;
-    margin-bottom: 20px;
-    margin: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+.summary-text {
+  text-align: center;
 }
 
 .summary-button {
-	margin-bottom: 35px;
-	margin-top: 25px;
+  margin-bottom: 35px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+form#course-form {
+  width: 90%;
+  margin: 0 auto;
+
+    a#btn-back {
+      margin-top: 10px;
+    }
 }

@@ -1,11 +1,8 @@
-<div class = "listing-title">
-  <h1 class="course-main">Listing Courses<br><small>Show Lising Courses</small></h1>
-</div>
-  
-<div class="page-button">
-  <center>
-  <%= button_to 'Create new Course', new_course_path, :class => 'btn btn-default', :method => :get %>
-  </center>
+<div class="navigation-header" align="center">
+  <h3>나의 강의목록</h3>
+  <div id="left-menu">
+    <%= link_to '+', new_course_path, :class => 'btn btn-link', :method => :get %>
+  </div>
 </div>
 
 <% @courses.each_with_index do |course, index| %>
@@ -15,7 +12,7 @@
 
   <div class="col-md-4 course-div">
     <%= link_to course_path(course), {:style=>'color:#000000;'} do %>
-    	<%= image_tag("circle.png", :width => "80", :align => "center") %>
+      <%= image_tag("images.png", :class => "img-circle", :width => "75", :height => "75", :align => "center") %>
     	<p class="course-name"><strong><%= course.name %></strong></p>
     <% end %>
 
