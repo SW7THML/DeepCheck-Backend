@@ -1,7 +1,7 @@
 <div class="navigation-header" align="center">
   <h3>나의 강의목록</h3>
   <div id="right-menu">
-    <%= link_to '<i class = "glyphicon glyphicon-plus"></i>'.html_safe, new_course_path, :class => 'btn btn-link', :method => :get %>
+    <%= link_to '', new_course_path, class: "btn btn-primary glyphicon glyphicon-plus" %>
   </div>
 </div>
 
@@ -13,14 +13,14 @@
 <% end %>
 
 <% @courses.each_with_index do |course, index| %>
-	<% if (index) % 3 == 0  %>   
-		<div class="row course-row"></div>
-	<% end %>
+  <% if (index) % 3 == 0  %>   
+    <div class="row course-row"></div>
+  <% end %>
 
-  <div class="col-md-4 course-div">
+  <div class="col-md-4 course-div link">
     <%= link_to course_path(course) do %>
-      <%= image_tag("images.png", :class => "img-circle index-img") %>
-      <p class="course-name link"><strong><%= course.name %></strong></p>
+      <%= image_tag("images.png", :class => "img-circle index-img img-thumbnail") %>
+        <p class="course-name link"><strong><%= course.name %></strong></p>
     <% end %>
 
     <% if (index) % 3 == 2  %>

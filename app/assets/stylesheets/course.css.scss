@@ -29,14 +29,14 @@
 
   h3 {
     display: inline;
-    font-size: 18px;
+    font-size: 25px;
     color: #ffffff;
   }
 
   #left-menu {
     position: absolute;
-    top: 6px;
-    left: 5px;
+    top: 7px;
+    left: 6px;
 
     a {
       font-weight: bold;
@@ -49,13 +49,14 @@
       padding-right: 5px;
       padding-top: 2px;
       padding-bottom: 5px;
+      text-decoration: none;
     }
   }
 
   #right-menu {
     position: absolute;
-    top: 6px;
-    right: 5px;
+    top: 7px;
+    right: 6px;
 
     a {
       font-weight: bold;
@@ -103,15 +104,47 @@ form#course-form {
 
 .link {
   color: #000000;
+  a {
+    text-decoration: none !important;
+  }
 }
 
 .index-img {
-  width: 75px;
-  height: 75px;
-  align: center;
+  width: 90px;
+  height: 90px;
 }
 
-.summary-img {
-  width: 200px;
-  height: 200px;
+.btn {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  padding-left: 9px !important;
+  padding-right: 7px !important;
+}
+
+.btn-left {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 7px !important;
+    padding-right: 9px !important;
+    margin-bottom: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+}
+
+.img-thumbnail {
+  padding: 12px !important;
+}
+
+.no-image {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+
+  .show-non {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
 }

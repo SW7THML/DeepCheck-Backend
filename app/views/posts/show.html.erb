@@ -1,9 +1,8 @@
-<div id="post-title">
-  <div class="text-center">
-    <h3>
-      <%= @course_name %>
-    </h3>
+<div class="navigation-header" align="center">
+  <div id="left-menu">
+    <%= link_to '', course_path(@course), class: "btn-left btn-primary glyphicon glyphicon-triangle-left" %>
   </div>
+  <h3><%= @course_name %></h3>
 </div>
 
 <div class="photos">
