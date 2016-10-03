@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
+    render :layout => true
   end
 
   def name
@@ -21,12 +22,19 @@ class CoursesController < ApplicationController
     end
   end
 
+  def update
+    @course = Course.find(params[:id])
+    @posts = @course.posts
+    @photos = @posts.first
+    redirect_to(:back)
+  end
+
   def index
     @courses = Course.all
   end
 
   private
     def course_params
-      params.require(:course).permit(:name)
+      params.require(:course).permit(:name, :attachment, :date, :short_link, :manager_id)
     end
 end

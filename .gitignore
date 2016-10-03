@@ -19,3 +19,8 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+/public/uploads
+*.swo
+*.swp
+/config/key.yml
+.rvmrc

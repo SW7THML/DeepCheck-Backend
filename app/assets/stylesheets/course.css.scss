@@ -35,21 +35,39 @@
 
   #left-menu {
     position: absolute;
-    top: 4px;
+    top: 6px;
+    left: 5px;
+
+    a {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 0.5;
+      color: #ffffff;
+      border-color: #ffffff;
+      border-radius: 4px;
+      padding-left: 2px;
+      padding-right: 5px;
+      padding-top: 2px;
+      padding-bottom: 5px;
+    }
+  }
+
+  #right-menu {
+    position: absolute;
+    top: 6px;
     right: 5px;
 
     a {
       font-weight: bold;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 0.5;
-      padding-right: 5px;
       color: #ffffff;
       border-color: #ffffff;
       border-radius: 4px;
-      margin-top: 3px;
       padding-left: 5px;
-      padding-top: 3px;
-      padding-bottom: 8px;
+      padding-right: 3px;
+      padding-top: 2px;
+      padding-bottom: 5px;
     }
   }
 }

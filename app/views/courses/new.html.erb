@@ -1,7 +1,9 @@
 <div class="navigation-header" align="center">
   <h3>새로운 강의 만들기</h3>
+  <div id="left-menu">
+    <%= link_to '<i class="glyphicon glyphicon-triangle-left"></i>'.html_safe, courses_path, :class => 'btn btn-link', :method => :get %>
+  </div>
 </div>
-
 
 <%= form_for @course, html: {id: 'course-form'} do |f| %>
   <% if @course.errors[:name].blank? %>
@@ -32,5 +34,4 @@
   </div>
 
   <%= f.submit '생성', class: 'btn btn-primary btn-block' %>
-  <%= link_to "되돌아가기", courses_path, id:"btn-back", class: 'btn btn-default btn-block' %>
 <% end %>

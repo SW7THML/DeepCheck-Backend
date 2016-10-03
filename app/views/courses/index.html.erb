@@ -1,7 +1,7 @@
 <div class="navigation-header" align="center">
   <h3>나의 강의목록</h3>
-  <div id="left-menu">
-    <%= link_to '+', new_course_path, :class => 'btn btn-link', :method => :get %>
+  <div id="right-menu">
+    <%= link_to '<i class = "glyphicon glyphicon-plus"></i>'.html_safe, new_course_path, :class => 'btn btn-link', :method => :get %>
   </div>
 </div>
 
@@ -20,4 +20,3 @@
     <% end %>
   </div>
 <% end %>
-
