@@ -42,4 +42,22 @@
     top: 15px;
     left: 15px;
   }
+
+  .attendance {
+    margin: 10px auto;
+    margin-left: 10px;
+
+    label {
+      width: 75%;
+      border-bottom: 1px solid;
+    }
+
+    .tags {
+      .tag {
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
 }

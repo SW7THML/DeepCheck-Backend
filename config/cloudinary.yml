@@ -1,0 +1,18 @@
+development:
+  cloud_name: hklr581g0
+  api_key: '752859682685729'
+  api_secret: Ugr9bY2sKBKxyf6rSTqYaH8dSDE
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hklr581g0
+  api_key: '752859682685729'
+  api_secret: Ugr9bY2sKBKxyf6rSTqYaH8dSDE
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hklr581g0
+  api_key: '752859682685729'
+  api_secret: Ugr9bY2sKBKxyf6rSTqYaH8dSDE
+  enhance_image_tag: true
+  static_image_support: false
