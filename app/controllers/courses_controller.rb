@@ -32,6 +32,14 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  def destroy
+    @course = Course.find(params[:id])
+    @post = @course.posts.find(params[:post_id])
+    @photo = @post.photos.find(params[:photo_id])
+    @post.destroy
+    redirect_to course_path
+  end
+
   private
     def course_params
       params.require(:course).permit(:name, :attachment, :date, :short_link, :manager_id)
