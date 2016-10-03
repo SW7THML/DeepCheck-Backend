@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :logged_in?
+	
 	def index
 		@course = Course.find(params[:course_id])
 		posts = @course.posts

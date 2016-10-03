@@ -1,10 +1,13 @@
 class CoursesController < ApplicationController
-  def name
-
-  end
+  before_filter :logged_in?
 
   def show
     @course = Course.find(params[:id])
+    render :layout => true
+  end
+
+  def name
+
   end
 
   def new
