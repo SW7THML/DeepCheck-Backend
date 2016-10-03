@@ -34,9 +34,6 @@
           <div class = "time-right panel-footer">
             <%= post.created_at.strftime("%Y-%m-%d [%H:%m]") %>
           </div>
-          <div class = "panel-footer">
-            <%= link_to 'Delete Photo', [photo.post.course, photo.post, photo], method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
         </div>
       </div>
     <% end %>
