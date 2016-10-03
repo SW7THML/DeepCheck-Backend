@@ -11,13 +11,13 @@
 	<% end %>
 
   <div class="col-md-4 course-div">
-    <%= link_to course_path(course), {:style=>'color:#000000;'} do %>
-      <%= image_tag("images.png", :class => "img-circle", :width => "75", :height => "75", :align => "center") %>
-    	<p class="course-name"><strong><%= course.name %></strong></p>
+    <%= link_to course_path(course) do %>
+      <%= image_tag("images.png", :class => "img-circle index-img") %>
+      <p class="course-name link"><strong><%= course.name %></strong></p>
     <% end %>
 
     <% if (index) % 3 == 2  %>
-	  <% end %>
+    <% end %>
   </div>
 <% end %>
 
