@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_filter :logged_in?
+
   def show
     @course = Course.find(params[:id])
     render :layout => true

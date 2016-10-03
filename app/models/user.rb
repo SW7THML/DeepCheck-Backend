@@ -13,7 +13,10 @@ class User < ApplicationRecord
   has_many :managed_courses, :class_name => "Course", :inverse_of => :manager
 
   def self.find_for_facebook_oauth(data, provider = "facebook")
-    uid = data['id']
+    uid = data['extra']['raw_info']['id']
+    name = data['extra']['raw_info']['name']
+    email = data['extra']['raw_info']['email']
+
     if user = self.where(:provider => provider, :uid => uid).first
       user
     else

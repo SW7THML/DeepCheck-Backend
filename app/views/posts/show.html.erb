@@ -14,7 +14,7 @@
     <div class="attendance">
       <label class="col-sm-2 control-label">Attendance</label>
       <div class="tags">
-        <% photo.tags.each do | user | %>
+        <% photo.tagged_users.each do | user | %>
           <div class="tag">
             <%= user %>
           </div>

@@ -5,6 +5,13 @@
   </div>
 </div>
 
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <% @courses.each_with_index do |course, index| %>
 	<% if (index) % 3 == 0  %>   
 		<div class="row course-row"></div>
