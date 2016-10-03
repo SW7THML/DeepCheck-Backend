@@ -21,27 +21,35 @@
       </blockquote>
     </p>
   </div>
-<% else %>
-  <div class="form-group" id="course-body">
-    <% @course.posts.latest.each do |post| %>
-      <div class="post">
-        <% post.photos.each do | photo | %>
-          <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-            <img class="photo" src="<%= photo.attachment %>">
-          </a>
-        <% end %>
 
-        <div class="published-at">
-          <p><%= post.created_at.strftime("%Y-%m-%d") %></p>
+<% else %>
+  <% @course.posts.latest.each do |post| %>
+    <p>
+    <% post.photos.each do | photo | %>
+      <div class="">
+        <div class="show-image panel-body">
+          <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
+            <img class="photo show-image" src="<%= photo.attachment %>">
+          </a>
+          <div class = "time-right panel-footer">
+            <%= post.created_at.strftime("%Y-%m-%d [%H:%m]") %>
+          </div>
         </div>
       </div>
     <% end %>
-  </div>
+    </p>
+  <% end %>
+
 <% end %>
 
-<%= render "modal" %>
+<br>
+<br>
+<br>
 
-<a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
+<div>
+  <%= render "modal" %>
+    <a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
+</div>
 
 <div class="menu new-post">
 </div>
