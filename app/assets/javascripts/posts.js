@@ -8,10 +8,12 @@ $(document).ready(function() {
 
   $('.photo').on("click", function(e) {
     $('.face-select').css('display', "block");
-    var offsetY = 34;
-    var offsetX = -16;
+    var offsetY = 40;
+    var offsetX = -24;
 
     var pos = $(this).offset();
+    console.log(e.pageX);
+    console.log(e.pageY);
     var x = e.pageX - pos.left + offsetX;
     var y = e.pageY - pos.top + offsetY;
     $('.face-select')
