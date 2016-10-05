@@ -10,7 +10,7 @@
     
     <img class="photo" src="<%= photo.attachment %>" />
     <% photo.tagged_users.each do |user| %>
-      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
+      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.user_id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
     <% end %>
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 

@@ -24,8 +24,7 @@
 
 <% else %>
   <% @course.posts.latest.each do |post| %>
-    <p>
-    <% post.photos.each do | photo | %>
+    <% post.photos.each do |photo| %>
       <div class="">
         <div class="show-image panel-body">
           <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
@@ -37,9 +36,7 @@
         </div>
       </div>
     <% end %>
-    </p>
   <% end %>
-
 <% end %>
 
 <br>
