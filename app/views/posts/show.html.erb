@@ -17,7 +17,9 @@
     <div class="attendance">
       <div class="attendance-label">
         <h3>Attendance
-          <small><a class="attendance-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>">Cancel</a></small>
+          <% if @current_user.attendence?(Photo.find(photo.id)) %>
+            <small><a class="attendance-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>">Cancel</a></small>
+          <% end %>
         </h3>
       </div>
       <div class="tags">
