@@ -38,6 +38,22 @@ class PhotosController < ApplicationController
     end
 	end 
 
+  def destroy
+    course = Course.find(params[:course_id])
+    photo = Photo.find(params[:id])
+    if current_user.enrolled?(course)
+      users = TaggedUser
+        .where(:user_id => current_user.id)
+        .where(:photo_id => params[:id])
+      if not users[0].nil?
+        users[0].destroy
+        render :json => {result: 'tag deleted'} 
+      end
+    else
+      render :json => {result: 'not a member'}
+    end
+  end
+
 	def create
 		render :json => {photo: nil}
 	end

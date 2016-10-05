@@ -9,6 +9,19 @@ $(document).ready(function() {
       .css('top', grids[i].getAttribute('data-y') + 'px');
   }
   
+  $('.attendance-cancel').on("click", function(e) {
+    var pid = $('.face-select').data('photo-id');
+    var uid = $('.face-select').data('user-id');
+
+    $.ajax({
+      type: 'DELETE',
+      url: window.location.href + '/photos/' + pid,
+      success: function(result) {
+        location.reload();
+      }
+    });
+  });
+
   $('.photo').on("click", function(e) {
     var pos = $(this).offset();
     var x = e.pageX - pos.left + offsetX;
@@ -26,9 +39,10 @@ $(document).ready(function() {
       url: window.location.href + '/photos/' + pid,
       dataType: 'text',
       data: { x: x, y: y, uid : uid },
-      success: function(result){
+      success: function(result) {
         location.reload();
-    }}); 
+      }
+    }); 
   });
 });
 
