@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var grids = document.getElementsByClassName('face-grid');
-  var offsetY = 40;
+  var offsetY = 24;
   var offsetX = -24;
 
   for (var i = 0; i < grids.length; ++i) {
