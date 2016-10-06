@@ -21,6 +21,6 @@ $(document).ready(function() {
 });
 
 function tagged(id) {
-  $('#post-' + id).find('.panel-footer').css('background-color', '#aabbff');
+  $('#post-' + id).find('.panel-footer').css('background-color', '#5cb85c');
 
 }
