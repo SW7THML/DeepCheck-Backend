@@ -9,8 +9,8 @@ $(document).ready(function() {
       .css('top', grids[i].getAttribute('data-y') * parseInt($('.photo').css('height')) * 0.01);
 
     $('#' + grids[i].getAttribute('id') + '-date')
-      .css('left', grids[i].getAttribute('data-x') + 'px')
-      .css('top', grids[i].getAttribute('data-y') * 1 + 50 + 'px');
+      .css('left', grids[i].getAttribute('data-x') * parseInt($('.photo').css('width')) * 0.01)
+      .css('top', grids[i].getAttribute('data-y') * parseInt($('.photo').css('height')) * 0.01 + 50);
   }
   
   $('.photo').on("click", function(e) {

@@ -23,25 +23,34 @@
   </div>
 
 <% else %>
-  <% @course.posts.latest.each do |post| %>
-    <% post.photos.each do |photo| %>
-      <div class="">
-        <div class="show-image panel-body">
-          <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-            <img class="photo show-image" src="<%= photo.attachment %>">
-          </a>
-          <div class = "time-right panel-footer">
-            <%= post.created_at.strftime("%Y-%m-%d [%H:%m]") %>
+  <div class="posts">
+    <% @course.posts.latest.each do |post| %>
+      <div class="post" id="post-<%= post.id %>">
+        <% post.photos.each do |photo| %>
+          <div class="photo" id="photo-<%= photo.id %>">
+            <div class="show-image panel-body">
+              <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
+                <img class="photo show-image" src="<%= photo.attachment %>">
+              </a>
+              <div class = "time-right panel-footer">
+                <%= post.created_at.strftime("%Y-%m-%d [%H:%m]") %>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
+<% @tagged.each do |post| %>
+  <script type="text/javascript">
+    tagged(<%= post %>)
+  </script>
+<% end %>
 
 <div>
   <%= render "modal" %>

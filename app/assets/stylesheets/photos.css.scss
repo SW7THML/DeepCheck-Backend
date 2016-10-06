@@ -1,6 +1,7 @@
-// Place all the styles related to the posts controller here.
+// Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 
 #post-title {
   min-height: 50px;
@@ -16,13 +17,13 @@
 }
 
 #post-form {
-	.form-group {
-		input[type="file"] {
-			border: 0 !important;
-			box-shadow: none;
-			-webkit-box-shadow: none;
-		}
-	}	
+  .form-group {
+    input[type="file"] {
+      border: 0 !important;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  } 
 }
 
 .photos {

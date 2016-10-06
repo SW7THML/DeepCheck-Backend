@@ -1,10 +1,10 @@
 <!-- Modal -->
 <%= form_for([@course, @course.posts.build], html: {id: "post-form"}) do |f| %>
-	<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" aria-labelledby="new-post-label">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">새로운 출석사진 올리기</h4>
+					<h4 class="modal-title" id="new-post-label">새로운 출석사진 올리기</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<%= f.submit "등록", :class => "btn btn-primary", :id => "submit" %>
 				</div>

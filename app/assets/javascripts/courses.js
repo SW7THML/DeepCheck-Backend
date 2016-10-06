@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $('#btn-new-post').on("click", function(e) {
     var id = $(this).data('id');
     if (id) {
@@ -18,3 +19,8 @@ $(document).ready(function() {
     reader.readAsDataURL(image);
   });
 });
+
+function tagged(id) {
+  $('#post-' + id).find('.panel-footer').css('background-color', '#aabbff');
+
+}

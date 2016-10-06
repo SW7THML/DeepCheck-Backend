@@ -35,4 +35,13 @@ class User < ApplicationRecord
     end
     return false
   end
+
+  def tagged?(post)
+    post.photos.each do |photo|
+      if photo.users.where(:user_id => self.id)
+        return true
+      end
+    end
+    return false
+  end
 end
