@@ -11,8 +11,10 @@
     <img class="photo" src="<%= photo.attachment %>" />
     <% photo.tagged_users.each do |user| %>
       <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.user_id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
+      <h5 class="face-grid-date" id="grid-<%= user.user_id %>-date"><%= user.created_at.to_date.strftime("%d/%m") %></h5>
     <% end %>
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
+
 
     <div class="attendance">
       <label class="col-sm-2 control-label">Attendance</label>
