@@ -38,7 +38,9 @@ class User < ApplicationRecord
 
   def tagged?(post)
     post.photos.each do |photo|
-      if photo.users.where(:user_id => self.id)
+      if TaggedUser
+          .where(:photo_id => photo.id)
+          .where(:user_id => self.id).any?
         return true
       end
     end
