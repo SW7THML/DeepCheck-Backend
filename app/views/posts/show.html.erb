@@ -26,6 +26,9 @@
         <% photo.users.each do |user| %>
           <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
             <%= user.name %>
+            <% if @current_user.manager?(@course) %>
+              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">X</a>
+            <% end %>
           </div>
         <% end %>
       </div>
