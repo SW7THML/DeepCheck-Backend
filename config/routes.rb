@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     resources :posts, :only => [:index, :show, :create] do 
       resources :photos, :comments, :only => [:index, :show, :create, :update, :destroy]
     end
+
+    member do
+      namespace :link, module: nil do
+        get 'ios' => "ios_link#show"
+      end
+    end
   end
 
   resources :users
