@@ -7,31 +7,31 @@
 
 <div class="photos">
   <% @post.photos.each do |photo| %>
-    <img class="photo" src="<%= photo.attachment %>" />
-    <% photo.tagged_users.each do |tagged_user| %>
-      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= tagged_user.user_id %>" data-x="<%= tagged_user.x %>" data-y="<%= tagged_user.y %>"></div>
-      <h5 class="face-grid-date" id="grid-<%= tagged_user.user_id %>-date"><%= tagged_user.user.name %></h5>
+    <%= image_tag photo.attachment.url, class: 'photo' %>
+
+    <% photo.tagged_users.each do |user| %>
+      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.user_id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
     <% end %>
+
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
-      <div class="attendance-label">
-        <h3>Attendance
-          <% if @current_user.attendence?(photo) %>
-            <small><a class="attendance-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>">Cancel</a></small>
-          <% end %>
-        </h3>
-      </div>
       <div class="tags">
         <% photo.users.each do |user| %>
-          <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
+          <div class="tag" data-user-id="<%= @current_user.id %>">
+            <span>
             <%= user.name %>
-            <% if @current_user.manager?(@course) %>
-              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">X</a>
+
+            <% if @current_user.attendence?(photo) or @current_user.manager?(@course) %>
+              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </a>
             <% end %>
+            </span>
           </div>
         <% end %>
       </div>
+      <div class="clear"></div>
     </div>
   <% end %>
 

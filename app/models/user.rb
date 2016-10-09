@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def enrolled?(course)
-    course.users.find(self.id)
+    course.users.exists?(self.id)
   end
 
   def tagged?(photo)
