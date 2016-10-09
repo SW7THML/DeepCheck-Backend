@@ -19,8 +19,3 @@ $(document).ready(function() {
     reader.readAsDataURL(image);
   });
 });
-
-function tagged(id) {
-  $('#post-' + id).find('.panel-footer').css('background-color', '#5cb85c');
-
-}

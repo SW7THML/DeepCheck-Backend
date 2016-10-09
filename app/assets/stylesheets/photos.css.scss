@@ -27,7 +27,7 @@
 }
 
 .photos {
-
+  position: relative;
   .photo {
     max-width: 100%;
     height: auto;
@@ -38,13 +38,13 @@
     position: absolute;
     border: 2px solid;
     border-color: #00aaff;
-    width: 48px;
-    height: 48px;
   }
 
   .face-grid-date {
     display: none;
     position: absolute;
+    overflow: hidden;
+    text-overflow:ellipsis;
     color: #000000;
     background-color: #ffffff;
     border-color: #00aaff;

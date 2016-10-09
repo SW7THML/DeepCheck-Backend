@@ -8,9 +8,9 @@
 <div class="photos">
   <% @post.photos.each do |photo| %>
     <img class="photo" src="<%= photo.attachment %>" />
-    <% photo.tagged_users.each do |user| %>
-      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.user_id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
-      <h5 class="face-grid-date" id="grid-<%= user.user_id %>-date"><%= user.created_at.to_date.strftime("%d/%m") %></h5>
+    <% photo.tagged_users.each do |tagged_user| %>
+      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= tagged_user.user_id %>" data-x="<%= tagged_user.x %>" data-y="<%= tagged_user.y %>"></div>
+      <h5 class="face-grid-date" id="grid-<%= tagged_user.user_id %>-date"><%= tagged_user.user.name %></h5>
     <% end %>
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
