@@ -41,7 +41,7 @@
   <div class="comments">
     <% @post.comments.each do |comment| %>
       <p>
-        <strong><%= @current_user.name %></strong>
+        <strong><%= comment.user.name %></strong>
         <span><%= comment.content %></span>
         <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
         <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
