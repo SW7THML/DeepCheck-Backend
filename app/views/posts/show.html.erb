@@ -34,7 +34,7 @@
       <div class="clear"></div>
     </div>
   <% end %>
-  
+
   <div class="comments">
     <label class="col-sm-2 control-label">Comments</label>
     <div class="content">
@@ -45,8 +45,8 @@
           <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
           <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
         </p>
-      <% end %>   
-    </div><br><br>
+      <% end %>
+    </div>
   </div>
 
   <div class="background-comment">
