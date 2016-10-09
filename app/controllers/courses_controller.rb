@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_filter :logged_in?
 
   def show
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
     @tagged = Array.new()
     @course.posts.each do |post|
       if current_user.tagged?(post)
@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    @courses = current_user.courses
   end
 
   def destroy

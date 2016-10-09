@@ -2,14 +2,14 @@ class PhotosController < ApplicationController
   before_filter :logged_in?
 
 	def index
-		@course = Course.find(params[:course_id])
+		@course = current_user.courses.find(params[:course_id])
 		post = @course.posts.find(params[:post_id])
 		photos = post.photos
 		render :json => {photos: photos}
 	end
 
 	def show
-		@course = Course.find(params[:course_id])
+		@course = current_user.courses.find(params[:course_id])
 		post = @course.posts.find(params[:post_id])
 		photo = post.photos.find(params[:id])
 
@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 	end
 
 	def update
-    course = Course.find(params[:course_id])
+    course = current_user.courses.find(params[:course_id])
     photo = Photo.find(params[:id])
     if current_user.enrolled?(course)
       users = TaggedUser
@@ -39,7 +39,7 @@ class PhotosController < ApplicationController
 	end 
 
   def destroy
-    course = Course.find(params[:course_id])
+    course = current_user.courses.find(params[:course_id])
     user = course.users.find(params[:uid])
     post = course.posts.find(params[:post_id])
     photo = post.photos.find(params[:id])

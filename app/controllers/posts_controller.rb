@@ -2,13 +2,13 @@ class PostsController < ApplicationController
   before_filter :logged_in?
 	
 	def index
-		@course = Course.find(params[:course_id])
+		@course = current_user.courses.find(params[:course_id])
 		posts = @course.posts
 		render :json => {posts: posts}
   end
 
   def show
-    @course = Course.find(params[:course_id])
+    @course = current_user.courses.find(params[:course_id])
     @course_name = @course.name
     @post = @course.posts.find(params[:id])
     @current_user = current_user
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end	
 
   def create
-    @course = Course.find(params[:course_id])
+    @course = current_user.courses.find(params[:course_id])
 		post = @course.posts.create(post_params)
 		photo = post.photos.create(photo_params)
 
