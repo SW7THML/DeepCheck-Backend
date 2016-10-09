@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @post = @course.posts.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
 
-    @comment.save
+    @comment.save!
     redirect_to course_post_path(@course, @post)
   end
 
