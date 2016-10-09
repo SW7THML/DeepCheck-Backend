@@ -48,8 +48,6 @@
     line-height: 1.7;
     font-weight: bold;
 
-    border-bottom: 1px solid #eee;
-
     .attendance-label {
       border-bottom: 1px solid;
       margin-right: 10px;
@@ -86,6 +84,19 @@
   }
 }
 
+.col-sm-2 {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+
+label {
+  margin-bottom: 5px!important;
+  background-color: #eee;
+  width: 100%;
+}
 
 .background-comment {
   background-color: #eee;
@@ -94,9 +105,26 @@
   width: 100%;
 }
 
+.content {
+  padding-left: 13px;
+  padding-bottom: 14px;
+
+  p {
+    margin-bottom: 3px !important;
+  }
+
+  small {
+    color: gray;
+    font-size: 70% !important;
+  }
+}
+
 .group {
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
 
   .btn-comment {
     display: inline-block;
