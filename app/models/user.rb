@@ -35,4 +35,18 @@ class User < ApplicationRecord
     end
     return false
   end
+
+  def manager?(course)
+    if course.manager_id == self.id
+      return true
+    end
+    return false
+  end
+
+  def attendence?(photo)
+    if photo.users.length != 0 and photo.users.find(self.id)
+      return true
+    end
+    return false
+  end
 end

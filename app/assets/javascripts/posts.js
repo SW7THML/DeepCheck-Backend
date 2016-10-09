@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var grids = document.getElementsByClassName('face-grid');
-  var offsetY = 40;
+  var offsetY = 24;
   var offsetX = -24;
 
   for (var i = 0; i < grids.length; ++i) {
@@ -9,6 +9,20 @@ $(document).ready(function() {
       .css('top', grids[i].getAttribute('data-y') + 'px');
   }
   
+  $('.tag-cancel').on("click", function(e) {
+    var pid = $(this).data('photo-id');
+    var uid = $(this).data('user-id');
+
+    tagdelete(pid, uid);
+  });
+
+  $('.attendance-cancel').on("click", function(e) {
+    var pid = $('.face-select').data('photo-id');
+    var uid = $('.face-select').data('user-id');
+
+    tagdelete(pid, uid);
+  });
+
   $('.photo').on("click", function(e) {
     var pos = $(this).offset();
     var x = e.pageX - pos.left + offsetX;
@@ -26,11 +40,23 @@ $(document).ready(function() {
       url: window.location.href + '/photos/' + pid,
       dataType: 'text',
       data: { x: x, y: y, uid : uid },
-      success: function(result){
+      success: function(result) {
         location.reload();
-    }}); 
+      }
+    }); 
   });
 });
+
+function tagdelete(pid, uid) {
+  $.ajax({
+    type: 'DELETE',
+    url: window.location.href + '/photos/' + pid,
+    data: { uid : uid },
+    success: function(result) {
+      location.reload();
+    }
+  });
+}
 
 function tagover(id) {
   $('#grid-' + id)
