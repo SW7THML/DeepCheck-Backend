@@ -46,7 +46,7 @@
     <div class="content">
       <% @post.comments.each do |comment| %>
         <p>
-          <strong>김철수</strong>
+          <strong><%= @current_user.name %></strong>
           <span><%= comment.content %></span>
           <small class="time"><%= time_ago_in_words(comment.created_at) %> 
           <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
@@ -63,5 +63,6 @@
       <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
       <%= f.submit '등록', class: "group btn-comment btn-primary"%>
     <% end %>
+
   </div>
 </div>

@@ -1,3 +1,14 @@
 .clear {
   clear: both;
 }
+
+#flash-message  {
+	position: fixed;
+	top: 40px;
+  width: 100%;
+	z-index: 999;
+
+  .alert {
+    margin: 20px;
+  }
+}
