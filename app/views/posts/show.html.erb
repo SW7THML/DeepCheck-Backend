@@ -15,7 +15,6 @@
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
-<<<<<<< HEAD
       <div class="attendance-label">
         <h3>Attendance
           <% if @current_user.attendence?(photo) %>
@@ -23,10 +22,6 @@
           <% end %>
         </h3>
       </div>
-=======
-      <label class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span> Attendance
-      </label>
->>>>>>> comment
       <div class="tags">
         <% photo.users.each do |user| %>
           <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
