@@ -30,17 +30,11 @@ class User < ApplicationRecord
   end
 
   def enrolled?(course)
-    if course.users.find(self.id)
-      return true
-    end
-    return false
+    course.users.exists?(self.id)
   end
 
   def manager?(course)
-    if course.manager_id == self.id
-      return true
-    end
-    return false
+    course.manager_id == self.id
   end
 
   def attendence?(photo)

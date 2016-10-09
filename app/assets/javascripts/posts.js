@@ -10,15 +10,17 @@ $(document).ready(function() {
   }
   
   $('.tag-cancel').on("click", function(e) {
-    var pid = $(this).data('photo-id');
-    var uid = $(this).data('user-id');
+    var $this = $(this);
+    var pid = $this.data('photo-id');
+    var uid = $this.data('user-id');
 
     tagdelete(pid, uid);
   });
 
   $('.attendance-cancel').on("click", function(e) {
-    var pid = $('.face-select').data('photo-id');
-    var uid = $('.face-select').data('user-id');
+    var face_select = $('.face-select');
+    var pid = face_select.data('photo-id');
+    var uid = face_select.data('user-id');
 
     tagdelete(pid, uid);
   });
@@ -56,14 +58,4 @@ function tagdelete(pid, uid) {
       location.reload();
     }
   });
-}
-
-function tagover(id) {
-  $('#grid-' + id)
-    .css('border-color', '#ffffff');
-}
-
-function tagleave(id) {
-  $('#grid-' + id)
-    .css('border-color', '#00aaff');
 }

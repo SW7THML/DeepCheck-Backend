@@ -40,21 +40,17 @@ class PhotosController < ApplicationController
 
   def destroy
     course = Course.find(params[:course_id])
-    photo = Photo.find(params[:id])
-    user = User.find(params[:uid])
+    user = course.users.find(params[:uid])
+    post = course.posts.find(params[:post_id])
+    photo = post.photos.find(params[:id])
 
-    if user.enrolled?(course)
-      users = TaggedUser
-        .where(:user_id => current_user.id)
-        .where(:photo_id => params[:id])
-      if user != current_user and not current_user.manager?(course)
-        render :json => {result: 'permission error'}
-      elsif not users[0].nil?
-        users[0].destroy
-        render :json => {result: 'tag deleted'} 
-      end
+    if current_user.manager?(course) or user == current_user
+      tagged_photo = current_user.tagged_users.find_by_photo_id!(params[:id])
+      tagged_photo.destroy
+
+      render :json => {result: 'tag deleted'}
     else
-      render :json => {result: 'not a member'}
+      render :json => {result: 'permission error'}
     end
   end
 
