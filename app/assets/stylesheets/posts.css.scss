@@ -2,75 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.no-image {
+.no-post {
   width: 90%;
   margin: 0 auto;
   text-align: center;
 
-  .show-non {
+  .show-none {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 10px;
   }
+
+  .alert {
+    padding: 7px !important;
+  }
 }
 
-.post {
-
-  .show-image {
-    width: 100%;
-    padding-top: 0px;
-    padding-bottom: 0px;
-
-    .time-right {
-      text-align: right;
-      margin: 0px 15px 0px 15px;
-      padding: 5px 3px 5px 0px;
-      font-weight: bold;
-      font-size: 13px;
-
-      i {
-        float: left;
-        margin-top: 3px;
-      }
+.modal {
+  .modal-header {
+    .close {
+      margin-top: 5px !important;
+    }
+    .btn {
+      float: right;
+      margin-right: 10px;
+    }
+    #submit {
+      display: none;
+    }
+  }
+  
+  .form-group {
+    input[type="file"] {
+      border: 0 !important;
+      box-shadow: none;
+      -webkit-box-shadow: none;
     }
   }
 
-  .panel-body {
-    padding: 0px !important;
-  }
-
-  .content {
-    margin: 10px 15px 20px 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;  
-  }
-}
-
-.alert {
-  padding: 7px !important;
-}
-
-.modal-header {
-  .close {
-    margin-top: 5px !important;
-  }
-  .btn {
-    float: right;
-    margin-right: 10px;
-  }
-  #submit {
+  #attachment-thumbnail {
     display: none;
+    width: 100%;
+    height: auto;
+  }
+
+  #new-post-label {
+    display: inline-block;
   }
 }
 
-#thumbnail {
-  width: 100%;
-  height: auto;
+.posts {
+  .post {
+    .show-image {
+      width: 100%;
+      padding-top: 0px;
+      padding-bottom: 0px;
+
+      .time-right {
+        text-align: right;
+        margin: 0px 15px 0px 15px;
+        padding: 5px 3px 5px 0px;
+        font-weight: bold;
+        font-size: 13px;
+
+        i {
+          float: left;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    .panel-body {
+      padding: 0px !important;
+    }
+
+    .content {
+      margin: 10px 15px 20px 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;  
+    }
+  }
 }
 
-#new-post-label {
-  display: inline-block;
-}
 a#btn-new-post {
   position: fixed;
   bottom: 0;
