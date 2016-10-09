@@ -21,10 +21,9 @@
           <div class="tag" data-user-id="<%= @current_user.id %>">
             <span>
             <%= user.name %>
-
             <% if @current_user.attendence?(photo) or @current_user.manager?(@course) %>
               <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <span class="ionicons ion-backspace" aria-hidden="true"></span>
               </a>
             <% end %>
             </span>
@@ -36,28 +35,25 @@
   <% end %>
 
   <div class="content">
-    <%= @post.content %>
+    <%= simple_format(@post.content) %>
   </div>
 
   <div class="comments">
-    <label class="col-sm-2 control-label">Comments</label>
-    <div class="content">
-      <% @post.comments.each do |comment| %>
-        <p>
-          <strong><%= @current_user.name %></strong>
-          <span><%= comment.content %></span>
-          <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
-          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
-        </p>
-      <% end %>
-    </div>
+    <% @post.comments.each do |comment| %>
+      <p>
+        <strong><%= @current_user.name %></strong>
+        <span><%= comment.content %></span>
+        <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
+        <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+      </p>
+    <% end %>
   </div>
 
   <div class="background-comment">
   <div class="group">
     <%= form_for([@course, @post, @post.comments.build]) do |f| %>
       <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
-      <%= f.submit '등록', class: "group btn-comment btn-primary"%>
+      <%= f.submit '등록', class: "btn btn-primary"%>
     <% end %>
   </div>
 
