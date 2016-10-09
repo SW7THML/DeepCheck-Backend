@@ -12,8 +12,8 @@ $(document).ready(function() {
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      document.getElementById("thumbnail").src = file.target.result;
-      document.getElementById("thumbnail").style.display="inline-block";
+      document.getElementById("attachment-thumbnail").src = file.target.result;
+      document.getElementById("attachment-thumbnail").style.display="inline-block";
       document.getElementById("submit").style.display="inline-block";
     }
     reader.readAsDataURL(image);

@@ -2,43 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#post-title {
-  min-height: 50px;
-  position: fixed;
-  top: 0;
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
-  border: 1px solid transparent;
-  width: 100%;
-  h3 {
-    margin: 10px auto;
-  }
-}
-
-#post-form {
-  .form-group {
-    input[type="file"] {
-      border: 0 !important;
-      box-shadow: none;
-      -webkit-box-shadow: none;
-    }
-  }
-}
-
-.tags {
-  .tag {
-    .tag-delete {
-      margin-left: 5px;
-      float: right;
-    }
-
-    a.tag-cancel span.glyphicon{
-      font-size: 12px;
-      opacity: 0.8;
-    }
-  } 
-}
-
 .photos {
   position: relative;
   .photo {
@@ -113,7 +76,51 @@
           margin-left: 5px;
           float: right;
         } 
+
+        a.tag-cancel span.glyphicon{
+          font-size: 12px;
+          opacity: 0.8;
+        }
       }
     }
+  }
+}
+
+
+.background-comment {
+  background-color: #eee;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.group {
+  padding-bottom: 5px;
+  padding-top: 5px;
+
+  .btn-comment {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    margin-top: -1px;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    height: 33px;
+    width: 16%
+  }
+
+  .form-control {
+    display: inline;
+    width: 80%
   }
 }
