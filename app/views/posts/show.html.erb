@@ -15,6 +15,7 @@
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
+<<<<<<< HEAD
       <div class="attendance-label">
         <h3>Attendance
           <% if @current_user.attendence?(photo) %>
@@ -22,6 +23,10 @@
           <% end %>
         </h3>
       </div>
+=======
+      <label class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span> Attendance
+      </label>
+>>>>>>> comment
       <div class="tags">
         <% photo.users.each do |user| %>
           <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
@@ -34,4 +39,34 @@
       </div>
     </div>
   <% end %>
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 83%">
+    83%  
+    </div>
+  </div>
+
+  <div class="comments">
+    <label class="col-sm-2 control-label">Comments</label>
+    <div class="content">
+      <% @post.comments.each do |comment| %>
+        <p>
+          <strong>김철수</strong>
+          <span><%= comment.content %></span>
+          <small class="time"><%= time_ago_in_words(comment.created_at) %> 
+          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+          </small>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="background-comment">
+  <div class="group no-image">
+    <%= form_for([@course, @post, @post.comments.build]) do |f| %>
+      <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
+      <%= f.submit '등록', class: "group btn-comment btn-primary"%>
+    <% end %>
+  </div>
 </div>
