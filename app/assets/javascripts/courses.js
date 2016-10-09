@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+  $('.fa-search').on("click", function(e) {
+    var display = $('.search-input').css('display');
+    if (display == "inline-block")
+      $('.search-input').css('display', 'none');
+    else
+      $('.search-input').css('display', 'inline-block');
+  });
+
   $('#btn-new-post').on("click", function(e) {
     var id = $(this).data('id');
     if (id) {

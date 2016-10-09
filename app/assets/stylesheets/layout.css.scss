@@ -13,10 +13,9 @@
     color: #ffffff;
   }
 
-  #left-menu {
+  .menu {
     position: absolute;
     top: 7px;
-    left: 6px;
 
     a {
       font-weight: bold;
@@ -25,33 +24,65 @@
       color: #ffffff;
       border-color: #ffffff;
       border-radius: 4px;
-      padding-left: 2px;
-      padding-right: 5px;
-      padding-top: 2px;
-      padding-bottom: 5px;
       text-decoration: none;
+    }
+
+    .search {
+      left: 8px;
+      float: left;
+      position: relative;
+
+      .search-input {
+        display: none;
+        margin-left: 14px;
+        top: -6px;
+
+        #search-input {
+          width: 225px;
+        }
+      }
+    }
+
+    .fa {
+      margin-top: 9px;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .fa-info-circle {
+    }
+
+    .fa-search {
+      margin-top: 0px;
+    }
+
+    .fa-plus {
+      margin-top: 10px;
     }
   }
 
-  #right-menu {
-    position: absolute;
-    top: 7px;
+  .menu-right {
     right: 6px;
 
     a {
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 0.5;
-      color: #ffffff;
-      border-color: #ffffff;
-      border-radius: 4px;
+      float: right;
       padding-left: 5px;
       padding-right: 3px;
-      padding-top: 2px;
-      padding-bottom: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .menu-left {
+    left: 6px;
+
+    a {
+      padding-left: 2px;
+      padding-right: 5px;
+      margin-left: 10px;
     }
   }
   
+
   .btn-left {
       padding-top: 10px !important;
       padding-bottom: 10px !important;

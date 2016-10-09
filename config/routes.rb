@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :detail, only: [:show]
+
   resources :users
 
   namespace :api, module: nil do
