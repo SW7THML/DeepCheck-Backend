@@ -30,18 +30,19 @@ class User < ApplicationRecord
   end
 
   def enrolled?(course)
-    if course.users.find(self.id)
-      return true
-    end
-    return false
+    course.users.find(self.id)
   end
 
   def tagged?(photo)
-    if TaggedUser
-        .where(:photo_id => photo.id)
-        .where(:user_id => self.id).any?
-      return true
-    end
-    return false
+    TaggedUser
+      .where(:photo_id => photo.id)
+      .where(:user_id => self.id).any?
+
+  def manager?(course)
+    course.manager_id == self.id
+  end
+
+  def attendence?(photo)
+    photo.users.where(:user_id => self.id).any?
   end
 end

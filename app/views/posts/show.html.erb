@@ -15,11 +15,20 @@
     <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
-      <label class="col-sm-2 control-label">Attendance</label>
+      <div class="attendance-label">
+        <h3>Attendance
+          <% if @current_user.attendence?(photo) %>
+            <small><a class="attendance-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>">Cancel</a></small>
+          <% end %>
+        </h3>
+      </div>
       <div class="tags">
         <% photo.users.each do |user| %>
           <div class="tag" onmouseenter="tagover(<%= user.id %>)" onmouseleave="tagleave(<%= user.id %>)">
             <%= user.name %>
+            <% if @current_user.manager?(@course) %>
+              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">X</a>
+            <% end %>
           </div>
         <% end %>
       </div>
