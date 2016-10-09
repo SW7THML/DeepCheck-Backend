@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     @course = current_user.courses.find(params[:course_id])
     @course_name = @course.name
     @post = @course.posts.find(params[:id])
-    @current_user = current_user
     render :layout => true
   end	
 

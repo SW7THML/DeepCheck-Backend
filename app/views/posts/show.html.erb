@@ -44,7 +44,10 @@
         <strong><%= comment.user.name %></strong>
         <span><%= comment.content %></span>
         <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
-        <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+
+        <% if current_user.id == comment.user_id %>
+          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+        <% end %>
       </p>
     <% end %>
   </div>
