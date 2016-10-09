@@ -1,0 +1,79 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.no-image {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+
+  .show-non {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+.post {
+
+  .show-image {
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    .time-right {
+      text-align: right;
+      margin: 0px 15px 0px 15px;
+      padding: 5px 3px 5px 0px;
+      font-weight: bold;
+      font-size: 13px;
+
+      i {
+        float: left;
+        margin-top: 3px;
+      }
+    }
+  }
+
+  .panel-body {
+    padding: 0px !important;
+  }
+
+  .content {
+    margin: 10px 15px 20px 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;  
+  }
+}
+
+.alert {
+  padding: 7px !important;
+}
+
+.modal-header {
+  .close {
+    margin-top: 5px !important;
+  }
+  .btn {
+    float: right;
+    margin-right: 10px;
+  }
+  #submit {
+    display: none;
+  }
+}
+
+#thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+#new-post-label {
+  display: inline-block;
+}
+a#btn-new-post {
+  position: fixed;
+  bottom: 0;
+  border-radius: 0;
+  border: 0px;
+}

@@ -3,6 +3,12 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @tagged = Array.new()
+    @course.posts.each do |post|
+      if current_user.tagged?(post)
+        @tagged << post.id
+      end
+    end
     render :layout => true
   end
 

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $('#btn-new-post').on("click", function(e) {
     var id = $(this).data('id');
     if (id) {
