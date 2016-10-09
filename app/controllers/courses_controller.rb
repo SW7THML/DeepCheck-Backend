@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    @courses = current_user.courses
   end
 
   def destroy
