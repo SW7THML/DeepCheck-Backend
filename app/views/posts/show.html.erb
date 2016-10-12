@@ -1,6 +1,6 @@
 <div class="navigation-header" align="center">
   <div class="menu menu-left">
-    <%= link_to '', course_path(@course), class: "fa fa-angle-left" %>
+    <%= link_to '', course_path(@course), class: "ionicons ion-ios-arrow-left" %>
   </div>
   <h3><%= @course_name %></h3>
 </div>
@@ -23,7 +23,7 @@
             <%= user.name %>
             <% if @current_user == user or @current_user.manager?(@course) %>
               <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
-                <span class="ionicons ion-backspace" aria-hidden="true"></span>
+                <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
               </a>
             <% end %>
             </span>
@@ -46,7 +46,7 @@
         <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
 
         <% if current_user.id == comment.user_id %>
-          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-close", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-ios-close-empty", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
         <% end %>
       </p>
     <% end %>
