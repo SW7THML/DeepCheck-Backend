@@ -1,7 +1,10 @@
-<div class="navigation-header navbar" align="center">
+<div class="navigation-header" align="center">
   <h3>나의 강의목록</h3>
   <div class="menu menu-right box-shadow">
     <%= link_to '', new_course_path, class: "ionicons ion-compose"%>
+  </div>
+  <div class="menu menu-left box-shadow">
+    <%= link_to '', user_path(current_user.id), class: "ionicons ion-navicon-round"%>
   </div>
 </div>
 
