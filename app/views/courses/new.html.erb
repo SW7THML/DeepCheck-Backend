@@ -18,7 +18,7 @@
         <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요', 'aria-label' => "inputError2Status" %>
       <% else %>
         <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요' %>
-          <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+          <span class="ionicons ion-ios-close-empty form-control-feedback"></span>
       <% end %>
 
       <% unless @course.errors[:name].blank? %>
