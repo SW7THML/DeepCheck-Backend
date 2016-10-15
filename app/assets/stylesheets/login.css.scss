@@ -4,24 +4,39 @@
 
 .login-page {
   background-color: #2a4887;
-  position:absolute;
-  top:0; right:0;
-  bottom:0; left:0;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
 
-  .facebook-logo {
-    margin: 0px auto;
-    display: flex;
+  .login-content {
+    z-index: 1;
+    padding-top: 225px;
+    text-align: center;
 
-    img {
-      margin: 0px auto;
-      margin-top: 225px;
+    .facebook-logo {
+      p {
+        font-size: 128px;
+        color: #fff;
+      }
+    }
+
+    .login-buttons {
+      width: 100%;
+
+      .btn {
+        width: 70%;
+        margin: 0 auto;
+
+        span {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          border-right: 1px solid #fff;
+
+          p {
+            font-size: 24px;
+            font-weight: 300;
+          } 
+        }
+      }
     }
   }
-
-  .login-buttons {
-    position: absolute;
-    left: 50px;
-    right: 50px;
-    top: 400px;
-  } 
 }
