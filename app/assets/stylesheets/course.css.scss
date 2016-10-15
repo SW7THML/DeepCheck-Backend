@@ -1,24 +1,28 @@
-.course-div {
-  width: 33%;
-  height: 33%;
-  float: left;
-  text-align: center;
-  padding-top: 0px;
-  padding-right: 5px !important;
-  padding-left: 5px !important;
-  padding-bottom: -1px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-width: 1px;
-}
+.course-list {
+  padding-top: 50px;
 
-.course-row {
-  margin-right: 20px !important;
-  margin-left: 20px !important;
-}
+  .course-div {
+    width: 33%;
+    height: 33%;
+    float: left;
+    text-align: center;
+    padding-top: 0px;
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    padding-bottom: -1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+  }
 
-.course-name {
-  margin-bottom: 5px;
+  .course-row {
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+  }
+
+  .course-name {
+    margin-bottom: 5px;
+  }
 }
 
 form#course-form {

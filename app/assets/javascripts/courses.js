@@ -8,7 +8,7 @@ $(document).ready(function() {
       $('.search-input').css('display', 'inline-block');
   });
 
-  $('#btn-new-post').on("click", function(e) {
+  $('#new-post').on("click", function(e) {
     var id = $(this).data('id');
     if (id) {
       $('#modal-post').modal('show');

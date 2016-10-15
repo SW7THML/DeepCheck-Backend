@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var grids = document.getElementsByClassName('face-grid');
   var grid_size = parseInt($('.photo').css('width')) / 8.0;
-  var offsetY = -grid_size / 2;
+  var offsetY = -grid_size / 2 + 60;
   var offsetX = -grid_size / 2;
 
   $('.face-select')

@@ -1,7 +1,7 @@
-<div class="navigation-header navbar" align="center">
+<div class="navigation-header" align="center">
   <h3>나의 강의목록</h3>
   <div class="menu menu-right box-shadow">
-    <%= link_to '', new_course_path, class: "ionicons ion-compose"%>
+    <%= link_to '', new_course_path, class: "ionicons ion-ios-compose-outline"%>
   </div>
 </div>
 
@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<div id="course-list">
+<div class="course-list">
   <% @courses.each_with_index do |course, index| %>
     <% if (index) % 3 == 0  %>   
       <div class="row course-row"></div>
