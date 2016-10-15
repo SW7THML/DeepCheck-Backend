@@ -1,7 +1,7 @@
 <div class="navigation-header" align="center">
   <h3><%= @course.name %></h3>
   <div class="menu menu-left">
-    <%= link_to '', course_path(@course.id), class: "fa fa-angle-left" %>
+    <%= link_to '', course_path(@course.id), class: "ionicons ion-ios-arrow-left" %>
   </div>
 </div>
 
@@ -20,12 +20,14 @@
     <dd class="students">
       <% @course.users.each do |user| %>
         <div class="student">
+          <%= link_to user_path(user), class: "student-link" do%>
           <div class="img-circle">
           <!-- user.profile_img -->
           </div>
           <div class="text-center">
             <%= user.name %>
           </div>
+          <% end %>
         </div>
       <% end %>
     </dd>

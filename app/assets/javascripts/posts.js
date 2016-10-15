@@ -1,8 +1,5 @@
-$(document).ready(function() {
+function preloadFunc(grid_size) {
   var grids = document.getElementsByClassName('face-grid');
-  var grid_size = parseInt($('.photo').css('width')) / 8.0;
-  var offsetY = -grid_size / 2;
-  var offsetX = -grid_size / 2;
 
   $('.face-select')
     .css('width', grid_size)
@@ -20,19 +17,30 @@ $(document).ready(function() {
       .css('left', grids[i].getAttribute('data-x') * parseFloat($('.photo').css('width')) * 0.01)
       .css('top', grids[i].getAttribute('data-y') * parseFloat($('.photo').css('height')) * 0.01 + grid_size);
   }
-  
+}
+
+function tagdelete(pid, uid) {
+  $.ajax({
+    type: 'DELETE',
+    url: window.location.href + '/photos/' + pid,
+    data: { uid : uid },
+    success: function(result) {
+      location.reload();
+    }
+  });
+}
+
+$(document).ready(function() {
+  var grid_size = parseInt($('.photo').css('width')) / 8.0;
+  var offsetY = -grid_size / 2 + 47;
+  var offsetX = -grid_size / 2;
+
+  window.onpaint = preloadFunc(grid_size);
+
   $('.tag-cancel').on("click", function(e) {
     var $this = $(this);
     var pid = $this.data('photo-id');
     var uid = $this.data('user-id');
-
-    tagdelete(pid, uid);
-  });
-
-  $('.attendance-cancel').on("click", function(e) {
-    var face_select = $('.face-select');
-    var pid = face_select.data('photo-id');
-    var uid = face_select.data('user-id');
 
     tagdelete(pid, uid);
   });
@@ -63,14 +71,3 @@ $(document).ready(function() {
     }); 
   });
 });
-
-function tagdelete(pid, uid) {
-  $.ajax({
-    type: 'DELETE',
-    url: window.location.href + '/photos/' + pid,
-    data: { uid : uid },
-    success: function(result) {
-      location.reload();
-    }
-  });
-}

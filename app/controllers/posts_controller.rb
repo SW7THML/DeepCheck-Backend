@@ -9,8 +9,8 @@ class PostsController < ApplicationController
 
   def show
     @course = current_user.courses.find(params[:course_id])
-    @course_name = @course.name
     @post = @course.posts.find(params[:id])
+    @post_title = @post.created_at.strftime("%m월 %d일")
     render :layout => true
   end	
 

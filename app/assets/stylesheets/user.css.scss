@@ -1,5 +1,6 @@
 .profile {
-  margin: 10px 15px 10px 15px;
+  margin: 0px 15px 0px 15px;
+  padding-top: 50px;
 
   .header {
     margin-top: 15px;
@@ -56,14 +57,21 @@
       width: 80px;
       height: 100px;
 
+      .course-link {
+        text-decoration: none;
+      }
+
       .img-circle {
         width: 80px;
         height: 80px;
         background-color: #eee;
       }
 
-      .text-center {
+      .text-center {    
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
+        width: 80px;
       }
     }
   }

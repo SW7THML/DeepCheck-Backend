@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .photos {
-  position: relative;
+  padding-top: 46px;
+  
   .photo {
     max-width: 100%;
     height: auto;
@@ -105,7 +106,6 @@
 }
 
 .background-comment {
-  background-color: #eee;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -127,10 +127,10 @@
 
   .ionicons {
     position: absolute;
-    top: -2px;
+    top: -7px;
+    font-size: 24px;
     margin-left: 5px;
     margin-top: 5px;
-
   }
 }
 

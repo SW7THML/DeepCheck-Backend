@@ -1,6 +1,6 @@
 <div class="navigation-header" align="center">
   <div class="menu menu-left">
-    <%= link_to '', courses_path, class: "fa fa-angle-left" %>
+    <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
   </div>
   <h3><%= @user.name %></h3>
 </div>
@@ -39,12 +39,14 @@
     </div>
     <% @user.courses.each do |course| %>
       <div class="course">
-        <div class="img-circle">
-          <!-- course.profile_img -->
-        </div>
-        <div class="text-center">
-          <%= course.name %>
-        </div>
+        <%= link_to course_path(course), class: "course-link" do %>
+          <div class="img-circle">
+            <!-- course.profile_img -->
+          </div>
+          <div class="text-center">
+            <%= course.name %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -1,5 +1,8 @@
-$(document).ready(function() {
+function show_modal() {
+  $('#modal-post').modal('show');
+}
 
+$(document).ready(function() {
   $('.fa-search').on("click", function(e) {
     var display = $('.search-input').css('display');
     if (display == "inline-block")
@@ -8,11 +11,12 @@ $(document).ready(function() {
       $('.search-input').css('display', 'inline-block');
   });
 
-  $('#btn-new-post').on("click", function(e) {
-    var id = $(this).data('id');
-    if (id) {
-      $('#modal-post').modal('show');
-    }
+  $('#new-post').on("click", function(e) {
+    show_modal();
+  });
+
+  $('.no-photo').on("click", function(e) {
+    show_modal();
   });
 
   $('#post_attachment').on('change', function(event) {
