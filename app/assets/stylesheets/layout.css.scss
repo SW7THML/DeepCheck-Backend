@@ -19,14 +19,19 @@
   width: 100%;
   padding-bottom: 8px;
   padding-top: 10px;
-  border-bottom: 1px solid #eee;
-  background-color: rgba(255,255,255, 0.8);
+  border-bottom: 1px solid #428bca;
+  background-color: rgba(66,139,225, 0.9);
+  color: #fff;
 
   h3 {
     display: inline;
     font-size: 25px;
     font-weight: 300;
-    color: #000;
+  }
+
+  a{
+    color: #fff;
+    text-decoration: none !important;
   }
 
   .background {
@@ -43,7 +48,7 @@
       font-weight: bold;
       font-size: 18px;
       line-height: 0.5;
-      color: #000;
+      color: #fff;
       border-color: #ffffff;
       border-radius: 4px;
       text-decoration: none;
@@ -68,7 +73,7 @@
     .ionicons {
       margin-top: 2px;
       font-size: 28px;
-      color: #000;
+      color: #fff;
     }
 
     .ion-ios-arrow-left {

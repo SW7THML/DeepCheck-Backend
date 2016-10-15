@@ -1,5 +1,6 @@
 .details {
-  margin: 10px 15px 10px 15px;
+  margin: 0px 15px 0px 15px;
+  padding-top: 47px;
 
   dl {
     font-size: 14px;
@@ -23,6 +24,10 @@
         margin: 10px 6px 10px 6px;
         width: 80px;
         height: 100px;
+
+        .student-link {
+          text-decoration: none;
+        }
 
         .img-circle {
           width: 80px;

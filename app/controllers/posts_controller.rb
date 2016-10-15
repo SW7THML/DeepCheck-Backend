@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @course = current_user.courses.find(params[:course_id])
-    @course_name = @course.name
+    @post_title = @course.name
     @post = @course.posts.find(params[:id])
     render :layout => true
   end	

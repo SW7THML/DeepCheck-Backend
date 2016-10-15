@@ -9,7 +9,9 @@
         </a>
       </div>
     <% end %>
-    <h3><%= @course.name %></h3>
+    <h3>
+      <%= link_to @course.name, detail_path(@course), class: "course_name" %>
+    </h3>
   </div>
 </div>
 
@@ -46,19 +48,27 @@
           </div>
         <% end %>
 
-        <div class="attendance">
-          <p class="ionicons ion-ios-at-outline"></p>
-          <p class="attend">
-            <% attendance = post.attendance %>
-            <% if attendance.count > 0 %>
-              <%= attendance.first.name %>
-              <% if attendance.count > 1%>
-                외 <%= attendance.count - 1 %>명
+        <div class="photo-info">
+          <div class="attendance-info">
+            <p class="ionicons ion-ios-at-outline"></p>
+            <p class="attend">
+              <% attendance = post.attendance %>
+              <% if attendance.count > 0 %>
+                <%= attendance.first.name %>
+                <% if attendance.count > 1%>
+                  외 <%= attendance.count - 1 %>명
+                <% end %>
+              <% else %>
+                아무도 출석하지 않았습니다.
               <% end %>
-            <% else %>
-              아무도 출석하지 않았습니다.
-            <% end %>
-          </p>
+            </p>
+          </div>
+          <div class="comment-info">
+            <p class="comment">
+              <%= post.comments.count %>
+            </p>
+            <p class="ionicons ion-ios-chatbubble-outline"></p>
+          </div>
         </div>
 
         <div class="content">

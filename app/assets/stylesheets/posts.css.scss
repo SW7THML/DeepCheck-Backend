@@ -75,8 +75,8 @@
 }
 
 .posts {
-  padding-top: 47px;
-  
+  padding-top: 46px;
+
   .post {
     .show-image {
       width: 100%;
@@ -106,18 +106,25 @@
       }
     }
 
-    .attendance {
+    .photo-info {
       padding: 5px 10px 5px 10px;
       background-color: #f6f6f6;
+      font-weight: 200;
+
+      .attendance-info {
+        display: inline-block;
+      }
+
+      .comment-info {
+        display: inline-block;
+        float: right;
+      }
 
       .ionicons {
         position: relative;
         font-size: 18px;
         top: 2px;
-      }
-
-      .attend {
-        font-weight: 200;
+        margin: 0px 5px 0px 5px;
       }
 
       p {
