@@ -84,6 +84,26 @@
       }
     }
 
+    .attendance {
+      padding: 5px 10px 5px 10px;
+      background-color: #f6f6f6;
+
+      .ionicons {
+        position: relative;
+        font-size: 18px;
+        top: 2px;
+      }
+
+      .attend {
+        font-weight: 200;
+      }
+
+      p {
+        display: inline-block;
+        margin: 0px 0px 0px 0px;
+      }
+    }
+
     .content {
       margin: 10px 15px 20px 15px;
       padding-bottom: 15px;

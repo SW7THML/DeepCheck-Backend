@@ -1,37 +1,39 @@
 <div class="navigation-header" align="center">
   <h3>강의 만들기</h3>
   <div class="menu menu-left">
-    <%= link_to '', courses_path, class: "fa fa-angle-left" %>
+    <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
   </div>
 </div>
 
-<%= form_for @course, html: {id: 'course-form'} do |f| %>
-  <% if @course.errors[:name].blank? %>
-    <div class="form-group">
-  <% else %>
-    <div class="form-group has-error has-feedback">
-  <% end %>
-
-    <%= f.label :name, "강의명", class: 'control-label' %>
+<div class="course-new">
+  <%= form_for @course, html: {id: 'course-form'} do |f| %>
     <% if @course.errors[:name].blank? %>
-      <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요', 'aria-label' => "inputError2Status" %>
+      <div class="form-group">
     <% else %>
-      <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요' %>
-        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      <div class="form-group has-error has-feedback">
     <% end %>
 
-    <% unless @course.errors[:name].blank? %>
-      <div class="has-error has-feedback">
-        <div class="error-message">
-            <ul>
-              <% @course.errors[:name].each do |message| %>
-                <li>강의명<%= message %></li>
-              <% end %>
-            </ul>
+      <%= f.label :name, "강의명", class: 'control-label' %>
+      <% if @course.errors[:name].blank? %>
+        <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요', 'aria-label' => "inputError2Status" %>
+      <% else %>
+        <%= f.text_field :name, class: "form-control", placeholder: '강의 이름을 입력해 주세요' %>
+          <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      <% end %>
+
+      <% unless @course.errors[:name].blank? %>
+        <div class="has-error has-feedback">
+          <div class="error-message">
+              <ul>
+                <% @course.errors[:name].each do |message| %>
+                  <li>강의명<%= message %></li>
+                <% end %>
+              </ul>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <%= f.submit '생성', class: 'btn btn-primary btn-block' %>
-<% end %>
+    <%= f.submit '생성', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>

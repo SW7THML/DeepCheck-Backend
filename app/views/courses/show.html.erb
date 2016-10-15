@@ -3,13 +3,13 @@
     <div class="menu menu-left">
       <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
     </div>
-    <div class="menu menu-right">
-      <a class="ionicons ion-ios-compose-outline" id="new-post" data-id="<%= @course.id %>">
-      </a>
-    </div>
+    <% if @course.manager_id == current_user.id %>
+      <div class="menu menu-right">
+        <a class="ionicons ion-ios-compose-outline" id="new-post" data-id="<%= @course.id %>">
+        </a>
+      </div>
+    <% end %>
     <h3><%= @course.name %></h3>
-  </div>
-  <div class="background">
   </div>
 </div>
 
@@ -52,6 +52,21 @@
             </div>
           </div>
         <% end %>
+
+        <div class="attendance">
+          <p class="ionicons ion-ios-at-outline"></p>
+          <p class="attend">
+            <% attendance = post.attendance %>
+            <% if attendance.count > 0 %>
+              <%= attendance.first.name %>
+              <% if attendance.count > 1%>
+                외 <%= attendance.count - 1 %>명
+              <% end %>
+            <% else %>
+              아무도 출석하지 않았습니다.
+            <% end %>
+          </p>
+        </div>
 
         <div class="content">
           <%= post.content %>
