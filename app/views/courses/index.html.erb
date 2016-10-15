@@ -3,6 +3,9 @@
   <div class="menu menu-right box-shadow">
     <%= link_to '', new_course_path, class: "ionicons ion-ios-compose-outline"%>
   </div>
+  <div class="menu menu-left box-shadow">
+    <%= link_to '', user_path(current_user.id), class: "ionicons ion-ios-more-outline"%>
+  </div>
 </div>
 
 <% if flash[:notice] %>

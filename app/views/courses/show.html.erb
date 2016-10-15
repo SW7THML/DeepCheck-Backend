@@ -15,19 +15,12 @@
 
 <% if @course.posts.blank? %>
   <div class="no-post">
-    <%= image_tag("no-photo.png", :class => "show-none") %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error: </span>
-          사진을 추가해 주세요!
+    <div class="no-photo" data-id="<%= @course.id %>">
+      <p class="ionicons ion-ios-camera-outline"></p>
+      <div class="text-center">
+        여기를 눌러 첫번째 출석 사진을 올려보세요!
+      </div>
     </div>
-
-    <p>
-      <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
-    </p>
   </div>
 
 <% else %>

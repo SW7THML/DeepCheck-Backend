@@ -1,0 +1,51 @@
+<div class="navigation-header" align="center">
+  <div class="menu menu-left">
+    <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
+  </div>
+  <h3><%= @user.name %></h3>
+</div>
+
+<div class="profile">
+  <div class="header">
+    <div class="img-circle">
+    <!-- user.profile_img -->
+    </div>
+    <div class="info">
+      <ul class="dl-horizontal">
+        <li>
+          <strong>참여중인 강의</strong>
+          <div class="text-right">
+            <%= @user.courses.count %>
+          </div>
+        </li>
+        <li>
+          <strong>진행중인 강의</strong>
+          <div class="text-right">
+            <%= @user.courses.count %>
+          </div>
+        </li>
+      </ul>
+      <% if current_user == @user %>
+        <button type="button" id="profile-edit" class="btn btn-default btn-xs">프로필 편집</button>
+        <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
+          <p class="ionicons ion-log-out"></p>
+        </button>
+      <% end %>
+    </div>
+  </div>
+  <div class="courses">
+    <div class="text-left">
+      <h4>참여중인 강의</h4>
+    </div>
+    <% @user.courses.each do |course| %>
+      <div class="course">
+        <div class="img-circle">
+          <!-- course.profile_img -->
+        </div>
+        <div class="text-center">
+          <%= course.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

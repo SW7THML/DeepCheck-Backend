@@ -8,10 +8,18 @@
   text-align: center;
   padding-top: 60px;
 
-  .show-none {
+  .no-photo {
+    border: 1px solid #000;
+    margin: 5px 0px 10px 0px;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: #eee;
+
+    p {
+      margin-top: 64px;
+      font-size: 64px;
+    }
   }
 
   .alert {
