@@ -56,7 +56,7 @@
   <div class="group">
     <%= form_for([@course, @post, @post.comments.build]) do |f| %>
       <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
-      <%= f.submit '등록', class: "btn btn-primary"%>
+      <%= f.submit '등록', class: "btn btn-primary btn-bottom"%>
     <% end %>
   </div>
 
