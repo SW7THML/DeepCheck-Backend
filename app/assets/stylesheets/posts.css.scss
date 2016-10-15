@@ -31,6 +31,9 @@
   .modal-header {
     height: 50px;
 
+    .modal-title {
+      float: left;
+    }
     .close {
       font-size: 36px;
       margin-top: -5px !important;

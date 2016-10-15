@@ -67,8 +67,11 @@
         background-color: #eee;
       }
 
-      .text-center {
+      .text-center {    
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
+        width: 80px;
       }
     }
   }
