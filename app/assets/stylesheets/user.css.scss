@@ -4,7 +4,7 @@
 
   .header {
     margin-top: 15px;
-    display: flex;
+    text-align: center;
 
     .img-circle {
       display: inline-block;
@@ -15,8 +15,10 @@
     
     .info {
       display: inline-block;
-      margin-left : 24px;
       font-size: 14px;
+      top: -19px;
+      margin: 10px 10px 10px 10px;
+      position: relative;
 
       ul {
         list-style-type: none;
