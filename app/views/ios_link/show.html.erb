@@ -1,31 +1,4 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>React Native Linking iOS demo links</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      font-family: Helvetica, sans-serif;
-    }
-    a{
-      display: block;
-      padding: 0.5em;
-      margin: 0.5em 0.2em;
-      background: #ccc;
-      color: #222;
-      text-decoration: none;
-      font-weight: 700;
-      text-align: center;
-      border-radius: 0.2em
-    }
-  </style>
-</head>
-<body>
-  <script>
-    window.location.replace('deepcheck://join_course?course_id=<%= @course.id %>');
-  </script>  
-</body>
-</html>
+<script type="text/javascript">
+	var url = "deepcheck://join?course_id=<%= @course.id %>";
+	window.location = url;
+</script>  
