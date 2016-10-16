@@ -35,7 +35,7 @@
 						<h4 class="ionicons ion-ios-paper-outline"> 내용</h4>
 						<%= f.text_area :content, class: "form-control" %>
 					</div>
-					<%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled" %>
+					<%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled", data: { disable_with: "잠시만 기다려주세요." } %>
 				</div>
 			</div>
 		</div>
