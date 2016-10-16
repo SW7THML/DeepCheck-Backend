@@ -28,6 +28,8 @@
 
       .participant-link {
         text-decoration: none;
+        color: black;
+        font-size: 13px;
       }
 
       .img-circle {
@@ -38,13 +40,14 @@
 
       .text-center {
         text-overflow: ellipsis;
-        margin-top: 10px;
+        margin-top: 3px;
       }
     }
   }
 
   dl {
     font-size: 14px;
+    padding-left: 15px;
 
     dt {
       margin-top: 10px;

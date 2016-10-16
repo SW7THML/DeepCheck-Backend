@@ -24,9 +24,9 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.manager_id = current_user.id
-    @course.users << current_user
 
     if @course.save
+      @course.users << current_user
       redirect_to course_path(@course)
     else
       render 'new'

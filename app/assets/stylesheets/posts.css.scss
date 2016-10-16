@@ -9,7 +9,7 @@
   padding: 41px 0px 0px 0px;
 
   .no-photo {
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 60px 0px;
     width: 100%;
     position: absolute;
     top: 20%;
@@ -218,11 +218,12 @@ a#btn-new-post {
   border: 0px;
 }
 
-.course-link {
+.course-shortlink {
   text-align: center;
   background-color: #eee;
   width: 100%;
-  margin-top: 35px;
+  margin: 40px 0px 10px 0px;
+  position: absolute;
 
   padding-top: 7px;
   padding-bottom: 7px;

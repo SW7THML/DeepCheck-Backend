@@ -30,14 +30,19 @@ class Face < ApplicationRecord
     end
   end
 
-  def add_face(course_user)
+  def add_face(course_user_id)
+    course_user = CourseUser.find(course_user_id)
     gid = course_user.course.gid
     uid = course_user.uid
     img_url = self.attachment_url
 
+    logger.info "GID: #{gid}"
+    logger.info "UID: #{uid}"
+
     p = MSCognitive::Person.new
     res = p.add_face(gid, uid, img_url)
     json = JSON.parse(res.body)
+    logger.info json
     if fid = json["persistedFaceId"]
       CourseFace.create(
         :course_user_id => course_user.id,

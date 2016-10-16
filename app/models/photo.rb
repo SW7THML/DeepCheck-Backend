@@ -25,7 +25,8 @@ class Photo < ApplicationRecord
 	#after_create :identify
 
   def process
-    RecognitionJob.set(wait: 1.second).perform_later({
+    logger.info "process"
+    RecognitionJob.set(wait: 5.second).perform_later({
       photo_id: self.id,
     })
   end
@@ -53,6 +54,7 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
     faces = JSON.parse(res.body)
+    logger.info faces
     faces.each do |face|
       fid = face["faceId"]
       people = face["candidates"]
@@ -82,6 +84,7 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.detect(img_url)
     faces = JSON.parse(res.body)
+    logger.info faces
     faces.each do |face|
       fid = face["faceId"]
       pos = face["faceRectangle"]
