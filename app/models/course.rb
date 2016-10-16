@@ -61,4 +61,12 @@ class Course < ApplicationRecord
     body = res.body
     self.update(:gid => group_id) if body.blank?
   end
+
+  def icon_id
+    self.id % Course.icon_list_count
+  end
+
+  def self.icon_list_count
+    @icons ||= Dir.glob("app/assets/images/course_icons/*.png").length
+  end
 end

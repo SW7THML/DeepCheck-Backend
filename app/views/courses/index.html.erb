@@ -23,7 +23,7 @@
 
     <div class="col-md-4 course-div link">
       <%= link_to course_path(course) do %>
-        <%= image_tag("images.png", :class => "img-circle index-img img-thumbnail") %>
+        <%= image_tag("course_icons/#{course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
 
           <p class="course-name link"><%= course.name %></p>
       <% end %>

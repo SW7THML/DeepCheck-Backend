@@ -46,9 +46,11 @@ form#course-form {
 }
 
 .img-thumbnail {
-  padding: 12px !important;
+  padding: 0px !important;
   width: 90px;
   height: 90px;
+  margin-bottom: 3px;
+  border: none !important;
 }
 
 .btn-primary {

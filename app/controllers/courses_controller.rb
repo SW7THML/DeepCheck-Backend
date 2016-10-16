@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
         @tagged << post.id
       end
     end
+    @course_link = @course.short_link
     render :layout => true
   end
 
