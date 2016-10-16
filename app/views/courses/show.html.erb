@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<% if current_user.id == @course.user_id %>
+<% if current_user.id == @course.manager_id %>
   <div class="pop">
     <div class="pop-right-bottom pop-circle">
       <p class="ionicons ion-edit" id="new-post" data-id="<%= @course.id %>">
