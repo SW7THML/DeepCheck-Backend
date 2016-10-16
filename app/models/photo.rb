@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  attachment :string
+#  width      :integer          default(0)
+#  height     :integer          default(0)
 #
 
 class Photo < ApplicationRecord
@@ -66,24 +68,27 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
     faces = JSON.parse(res.body)
-    logger.info faces
-    faces.each do |face|
-      fid = face["faceId"]
-      people = face["candidates"]
+    begin
+      logger.info faces
+      faces.each do |face|
+        fid = face["faceId"]
+        people = face["candidates"]
 
-      if t = TaggedUser.where(:fid => fid).first
-        people.each do |p|
-          uid = p["personId"]
-          prob = p["confidence"]
+        if t = TaggedUser.where(:fid => fid).first
+          people.each do |p|
+            uid = p["personId"]
+            prob = p["confidence"]
 
-          puts "#{(prob * 100).to_i}% - #{uid}"
+            puts "#{(prob * 100).to_i}% - #{uid}"
 
-          if prob > 0.5
-            cu = CourseUser.where(:uid => uid).first
-            t.update(:user_id => cu.user_id) unless cu.nil?
+            if prob > 0.5
+              cu = CourseUser.where(:uid => uid).first
+              t.update(:user_id => cu.user_id) unless cu.nil?
+            end
           end
         end
       end
+    rescue
     end
   end
 
