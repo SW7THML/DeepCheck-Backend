@@ -6,8 +6,8 @@ function preloadFunc(grid_size) {
     .css('height', grid_size);
 
   var offsetY = 47;
-  var scaleX = parseFloat($('.photo').css('width')) * 0.01;
-  var scaleY = parseFloat($('.photo').css('height')) * 0.01;
+  var scaleX = parseFloat($('.photo-attachment').css('width')) * 0.01;
+  var scaleY = parseFloat($('.photo-attachment').css('height')) * 0.01;
 
   for (var i = 0; i < grids.length; ++i) {
     var g = grids[i];
@@ -40,7 +40,7 @@ function tagdelete(pid, uid) {
 
 function photoLoaded() {
   var offsetSize = 0.125;
-  var grid_size = parseInt($('.photo').css('width')) * offsetSize;
+  var grid_size = parseInt($('.photo-attachment').css('width')) * offsetSize;
   var offsetY = -grid_size / 2;
   var offsetX = -grid_size / 2;
 
@@ -54,7 +54,7 @@ function photoLoaded() {
     tagdelete(pid, uid);
   });
 
-  $('.photo').on("click", function(e) {
+  $('.photo-attachment').on("click", function(e) {
     var pos = $(this).offset();
     var width = parseFloat($(this).css('width'));
     var height = parseFloat($(this).css('height'));
@@ -82,7 +82,7 @@ function photoLoaded() {
 }
 
 $(document).ready(function() {
-  $('.photo').load(function() {
+  $('.photo-attachment').load(function() {
     photoLoaded();
   });
 });
