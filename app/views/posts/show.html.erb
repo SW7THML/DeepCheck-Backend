@@ -7,13 +7,13 @@
 
 <div class="photos">
   <% @post.photos.each do |photo| %>
-    <%= image_tag photo.attachment.url, class: 'photo' %>
-
-    <% photo.tagged_users.each do |user| %>
-      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.id %>" data-x="<%= user.x %>" data-y="<%= user.y %>" width="<%= user.width %>" height="<%= user.height %>"></div>
-    <% end %>
-
-    <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
+    <div class="photo">
+      <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
+      <% photo.tagged_users.each do |user| %>
+        <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.id %>" data-x="<%= user.x %>" data-y="<%= user.y %>" width="<%= user.width %>" height="<%= user.height %>"></div>
+      <% end %>
+      <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
+    </div>
 
     <div class="attendance">
       <div class="tags">

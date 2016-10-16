@@ -6,40 +6,44 @@
   padding-top: 43px;
   
   .photo {
-    max-width: 100%;
-    height: auto;
-  }
+    
+    .photo-attachment {
+      max-width: 100%;
+      height: auto;
+    }
 
-  .face-grid {
-    display: block;
-    position: absolute;
-    border: 2px solid;
-    border-color: #00aaff;
-  }
+    .face-grid {
+      display: block;
+      position: absolute;
+      border: 2px solid;
+      border-color: #00aaff;
+    }
 
-  .face-grid-date {
-    display: none;
-    position: absolute;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    color: #000000;
-    background-color: #ffffff;
-    border-color: #00aaff;
-    text-align: center;
-    margin: 0px auto;
-    width: 48px;
-    height: 16px;
-  }
+    .face-grid-date {
+      display: none;
+      position: absolute;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      color: #000000;
+      background-color: #ffffff;
+      border-color: #00aaff;
+      text-align: center;
+      margin: 0px auto;
+      width: 48px;
+      height: 16px;
+    }
 
-  .face-select {
-    display: none;
-    position: absolute;
-    border: 2px solid;
-    border-color: #afafaf;
-    width: 48px;
-    height: 48px;
-    top: 15px;
-    left: 15px;
+    .face-select {
+      display: none;
+      position: absolute;
+      border: 2px solid;
+      border-color: #afafaf;
+      width: 48px;
+      height: 48px;
+      top: 15px;
+      left: 15px;
+    }
+
   }
 
   .attendance {
