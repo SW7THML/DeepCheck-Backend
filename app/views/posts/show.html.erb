@@ -20,7 +20,9 @@
         <% photo.users.each do |user| %>
           <div class="tag" data-user-id="<%= @current_user.id %>">
             <span>
-            <%= user.name %>
+              <div class="name">
+                <%= user.name %>
+              </div>
             <% if @current_user == user or @current_user.manager?(@course) %>
               <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
                 <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
