@@ -25,9 +25,7 @@
     <% @course.users.each do |user| %>
       <div class="participant">
         <%= link_to user_path(user), class: "participant-link" do%>
-        <div class="img-circle">
-        <!-- user.profile_img -->
-        </div>
+        <%= image_tag user.faces.first.attachment_url, :class => "img-circle img-responsive"%>
         <div class="text-center">
           <%= user.name %>
         </div>
