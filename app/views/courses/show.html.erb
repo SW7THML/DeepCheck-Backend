@@ -20,13 +20,18 @@
 </div>
 
 <% if @course.posts.blank? %>
+
   <div class="no-post">
     <div class="no-photo" data-id="<%= @course.id %>">
       <p class="ionicons ion-ios-camera"></p>
       <div class="text-center">
         여기를 눌러 첫번째 출석 사진을 올려보세요!  
-        <%= @course_link %>      
       </div>   
+      
+      <div class="course-link">
+        <p> <%= @course_link %></p>
+        이 링크를 통에 강의에 참여할 수 있습니다! 
+      </div>
     </div>
   </div>
 

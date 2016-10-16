@@ -11,22 +11,16 @@
   .no-photo {
     margin: 0px 0px 10px 0px;
     width: 100%;
-    height: 100%;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    width: 260px;
-    height: 260px;
-    margin-top: -130px;
-    margin-left: -130px;
+    top: 20%;
 
     .ion-ios-camera {
       font-size: 140px;
-    }
 
-    p {
+      p {
       margin-top: 64px;
       font-size: 64px;
+      }
     }
   }
 
@@ -224,9 +218,17 @@ a#btn-new-post {
   border: 0px;
 }
 
-
 .course-link {
   text-align: center;
   background-color: #eee;
   width: 100%;
+  margin-top: 35px;
+
+  padding-top: 7px;
+  padding-bottom: 7px;
+
+  p {
+    margin-bottom: 2px;
+    text-style: bold;
+  }  
 }
