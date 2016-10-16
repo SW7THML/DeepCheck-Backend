@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
 
-	scope = 'email,public_profile,user_photos'
+  scope = 'email,public_profile,user_photos'
 
   if Rails.env.production?
     # Production

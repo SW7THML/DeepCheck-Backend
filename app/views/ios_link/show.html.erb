@@ -1,4 +1,45 @@
-<script type="text/javascript">
-	var url = "deepcheck://join?course_id=<%= @course.id %>";
-	window.location = url;
-</script>  
+<script language="javascript">
+  function join() {
+    var url = "deepcheck://join?course_id=<%= @course.id %>";
+    window.location = url;
+  }
+  setTimeout(function() {
+      join();
+  }, 1000);
+</script>
+
+<style type="text/css">
+  #info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+  #course {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: -100px;
+    margin-left: -100px;
+    float: none !important;
+  }
+  #course img {
+    width: 180px;
+  }
+  #course p {
+    font-size: 20px;
+  }
+  .course-name {
+    text-align: center;
+  }
+</style>
+
+<div id="info">
+  <div id="course" class="course-div">
+    <img class="img-circle index-img img-thumbnail" src="/assets/images-70e7b4b22a4d0f249afb82ce69f30bd3a38687a75f1fc472af91322db4107b01.png" alt="Images">
+    <p class="course-name link"><strong><%= @course.name %></strong></p>
+  </div>
+</div>
+
+<div>
+  <a id="btn-new-post" class="btn btn-primary btn-block btn-lg" onclick="join()">조인하기</a>
+</div>
