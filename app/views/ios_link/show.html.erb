@@ -21,6 +21,7 @@
     margin-top: -160px;
     margin-left: -90px;
     float: none !important;
+    text-align: center;
   }
   #course img {
     width: 180px;
@@ -36,7 +37,6 @@
 <div id="info">
   <div id="course" class="course-div">
     <%= image_tag("course_icons/#{@course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
-
     <p class="course-name link"><strong><%= @course.name %></strong></p>
   </div>
 </div>

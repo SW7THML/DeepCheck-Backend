@@ -12,21 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require turbolinks
+//= require turbolinks
 //= require_self
 //= require_tree .
 
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   var standalone = window.navigator.standalone,
   userAgent = window.navigator.userAgent.toLowerCase(),
   safari = /safari/.test( userAgent ),
   ios = /iphone|ipod|ipad/.test( userAgent );
 
-  console.log(standalone);
-  console.log("ios", ios);
-  console.log("safari", safari);
-  console.log("standalone", standalone);
+  //console.log(standalone);
+  //console.log("ios", ios);
+  //console.log("safari", safari);
+  //console.log("standalone", standalone);
 
   if( ios ) {
     if ( !standalone && safari ) {
@@ -47,7 +47,7 @@ $(document).ready(function() {
   };
 })
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('.ion-ios-arrow-back').click(function(e) {
     window.history.back();
     console.log("back");

@@ -2,7 +2,7 @@ function show_modal() {
   $('#modal-post').modal('show');
 }
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('.fa-search').on("click", function(e) {
     var display = $('.search-input').css('display');
     if (display == "inline-block")

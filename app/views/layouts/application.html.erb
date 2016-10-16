@@ -21,16 +21,16 @@
   </head>
 
   <body>
+    <div class="main-container">
     <div id="flash-message">
       <% flash.each do |message_type, message| %>
         <div class="alert <%= bootstrap_class_for(message_type) %> alert-dismissible" role="alert">
-          <button type="button" class="glyphicon glyphicon-remove" data-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="ionicons ion-ios-close-empty" data-dismiss="alert" aria-label="Close"></button>
           <span><%= message %></span>
         </div>
       <% end %>
     </div>
 
-    <div class="main-container">
       <%= yield %>
     </div>
   </body>
