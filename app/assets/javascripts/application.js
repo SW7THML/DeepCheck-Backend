@@ -13,4 +13,33 @@
 //= require jquery
 //= require jquery_ujs
 // require turbolinks
+//= require_self
 //= require_tree .
+
+
+$(document).ready(function() {
+  var standalone = window.navigator.standalone,
+  userAgent = window.navigator.userAgent.toLowerCase(),
+  safari = /safari/.test( userAgent ),
+  ios = /iphone|ipod|ipad/.test( userAgent );
+
+  console.log(standalone);
+  console.log("ios", ios);
+  console.log("safari", safari);
+  console.log("standalone", standalone);
+
+  if( ios ) {
+    if ( !standalone && safari ) {
+      //browser
+      $('.navigation-header').addClass('ios-nav');
+    } else if ( standalone && !safari ) {
+      //standalone
+      $('.navigator-header').addClass('ios-nav');
+    } else if ( !standalone && !safari ) {
+      //uiwebview
+      $('.navigation-header').addClass('ios-nav');
+    };
+  } else {
+    //not iOS
+  };
+})

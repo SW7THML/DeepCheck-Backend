@@ -19,3 +19,11 @@
   background-color: #2d4373 !important;
   border-color: rgba(0,0,0,0.2) !important;
 }
+
+.ios-nav {
+  padding-top: 20px;
+}
+
+.ios-nav .menu {
+  top: 20px !important;
+}
