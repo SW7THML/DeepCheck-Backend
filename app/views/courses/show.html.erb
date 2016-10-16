@@ -1,24 +1,24 @@
 <div class="navigation-header" align="center">
   <div class="navigation-content">
     <div class="menu menu-left">
-      <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
+      <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-back" %>
     </div>
     <% if @course.manager_id == current_user.id %>
       <div class="menu menu-right">
-        <a class="ionicons ion-ios-compose-outline" id="new-post" data-id="<%= @course.id %>">
+        <a class="ionicons ion-camera" id="new-post" data-id="<%= @course.id %>">
         </a>
       </div>
     <% end %>
-    <h3>
+    <h1>
       <%= link_to @course.name, detail_path(@course), class: "course_name" %>
-    </h3>
+    </h1>
   </div>
 </div>
 
 <% if @course.posts.blank? %>
   <div class="no-post">
     <div class="no-photo" data-id="<%= @course.id %>">
-      <p class="ionicons ion-ios-camera-outline"></p>
+      <p class="ionicons ion-ios-camera"></p>
       <div class="text-center">
         여기를 눌러 첫번째 출석 사진을 올려보세요!
       </div>

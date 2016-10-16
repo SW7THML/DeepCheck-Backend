@@ -1,8 +1,8 @@
 <div class="navigation-header" align="center">
   <div class="menu menu-left">
-    <%= link_to '', course_path(@course), class: "ionicons ion-ios-arrow-left" %>
+    <%= link_to '', course_path(@course), class: "ionicons ion-ios-arrow-back" %>
   </div>
-  <h3><%= @post_title %></h3>
+  <h1><%= @post_title %></h1>
 </div>
 
 <div class="photos">
@@ -55,7 +55,7 @@
   <div class="background-comment">
   <div class="group">
     <%= form_for([@course, @post, @post.comments.build]) do |f| %>
-      <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
+      <%= f.text_field :content, class: "form-control", placeholder: '댓글을 입력해 주세요' %>
       <%= f.submit '등록', class: "btn btn-primary btn-bottom"%>
     <% end %>
   </div>

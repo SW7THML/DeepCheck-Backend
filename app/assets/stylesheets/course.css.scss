@@ -22,6 +22,9 @@
 
   .course-name {
     margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
@@ -46,4 +49,8 @@ form#course-form {
   padding: 12px !important;
   width: 90px;
   height: 90px;
+}
+
+.btn-primary {
+  background-color: #FF5E4F !important;
 }
