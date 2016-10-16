@@ -84,6 +84,10 @@
       margin-right: 5px;
     }
 
+    .ion-ios-information-outline {
+      margin-top: 3px;
+    }
+
     .fa-search {
       margin-top: 0px;
     }
@@ -129,6 +133,7 @@
 
 .pop {
   position: relative;
+  z-index: 1;
 
   .pop-right-bottom {
     position: fixed;
