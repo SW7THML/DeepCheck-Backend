@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id         :integer          not null, primary key
+#  post_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  attachment :string
+#
+
 require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase

@@ -5,17 +5,25 @@ function preloadFunc(grid_size) {
     .css('width', grid_size)
     .css('height', grid_size);
 
+  var offsetY = 47;
+  var scaleX = parseFloat($('.photo').css('width')) * 0.01;
+  var scaleY = parseFloat($('.photo').css('height')) * 0.01;
+
   for (var i = 0; i < grids.length; ++i) {
+    var g = grids[i];
+    var grid_width = $(g).attr('width');
+    var grid_height = $(g).attr('height');
+
     $('#' + grids[i].getAttribute('id'))
-      .css('width', grid_size)
-      .css('height', grid_size)
-      .css('left', grids[i].getAttribute('data-x') * parseFloat($('.photo').css('width')) * 0.01)
-      .css('top', grids[i].getAttribute('data-y') * parseFloat($('.photo').css('height')) * 0.01);
+      .css('width', grid_width * scaleX)
+      .css('height', grid_height * scaleY)
+      .css('left', $(g).data('x') * scaleX)
+      .css('top', $(g).data('y') * scaleY + offsetY);
 
     $('#' + grids[i].getAttribute('id') + '-date')
-      .css('width', grid_size)
-      .css('left', grids[i].getAttribute('data-x') * parseFloat($('.photo').css('width')) * 0.01)
-      .css('top', grids[i].getAttribute('data-y') * parseFloat($('.photo').css('height')) * 0.01 + grid_size);
+      .css('width', grid_width * scaleX)
+      .css('left', $(g).data('x') * scaleX)
+      .css('top', $(g).data('y') * scaleY + grid_size + offsetY);
   }
 }
 
@@ -30,9 +38,9 @@ function tagdelete(pid, uid) {
   });
 }
 
-$(document).ready(function() {
+function photoLoaded() {
   var grid_size = parseInt($('.photo').css('width')) / 8.0;
-  var offsetY = -grid_size / 2 + 47;
+  var offsetY = -grid_size / 2;
   var offsetX = -grid_size / 2;
 
   window.onpaint = preloadFunc(grid_size);
@@ -69,5 +77,11 @@ $(document).ready(function() {
         location.reload();
       }
     }); 
+  });
+}
+
+$(document).ready(function() {
+  $('.photo').load(function() {
+    photoLoaded();
   });
 });

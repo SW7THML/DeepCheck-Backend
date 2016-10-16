@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :detail, only: [:show]
+  resources :faces, only: [:destroy]
 
   resources :users
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   get 'login' => 'login#show'
+  get 'fetch' => 'sessions#fetch'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'

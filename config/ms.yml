@@ -1,0 +1,11 @@
+defaults: &defaults
+  oxford_api_key: 'ec54625485b94958a7177a655386d29f'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

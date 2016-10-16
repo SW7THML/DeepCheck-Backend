@@ -1,5 +1,23 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  short_link :string
+#  manager_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  gid        :string           default("")
+#  attachment :string
+#
+
 class Course < ApplicationRecord
   include Rails.application.routes.url_helpers
+  include PhotosHelper
+
+  attr_accessor :attachment
+  mount_uploader :attachment, AttachmentUploader
 
   has_many :posts
   has_many :course_users
@@ -8,6 +26,7 @@ class Course < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximum: 15 }
 
   after_create :generate_short_link
+  after_create :create_person_group
 
   def to_json(options={})
     options[:only] ||= [:name]
@@ -24,5 +43,22 @@ class Course < ApplicationRecord
 
     self.short_link = shorten.short_url
     self.save
+  end
+
+  def train
+    pg = MSCognitive::PersonGroup.new
+    pg.train(self.gid) unless self.gid.blank?
+  end
+
+  def create_person_group
+    return unless self.gid.blank?
+
+    group_id = Digest::MD5.hexdigest("#{self.id}-#{Time.now.to_i}")
+    group_name = "group-#{group_id}"
+
+    pg = MSCognitive::PersonGroup.new
+    res = pg.create(group_id, group_name)
+    body = res.body
+    self.update(:gid => group_id) if body.blank?
   end
 end

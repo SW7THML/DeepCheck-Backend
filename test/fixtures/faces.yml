@@ -1,15 +1,13 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: faces
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  short_link :string
-#  manager_id :integer
+#  user_id    :integer
+#  attachment :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  gid        :string           default("")
-#  attachment :string
+#  origin_url :string           default("")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

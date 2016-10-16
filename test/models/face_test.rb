@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: faces
 #
 #  id         :integer          not null, primary key
-#  course_id  :integer
-#  content    :text
+#  user_id    :integer
+#  attachment :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  origin_url :string           default("")
 #
 
 require 'test_helper'
 
-class PostTest < ActiveSupport::TestCase
+class FaceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
