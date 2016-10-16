@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .photos {
-  padding-top: 43px;
+  padding-top: 33px;
   
   .photo {
+    position: relative;
     
     .photo-attachment {
       max-width: 100%;
