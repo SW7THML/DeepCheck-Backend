@@ -24,6 +24,15 @@
   padding-top: 20px;
 }
 
+.main-container.ios-nav {
+  padding-top: 20px;
+}
+
+.navigation-header {
+  position: fixed;
+  top: 0;
+}
+
 .ios-nav .menu {
   top: 20px !important;
 }

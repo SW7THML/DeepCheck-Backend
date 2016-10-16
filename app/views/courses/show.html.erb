@@ -1,13 +1,11 @@
 <div class="navigation-header" align="center">
   <div class="navigation-content">
     <div class="menu menu-left">
-      <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-back" %>
+      <%= link_to '', :back, class: "ionicons ion-ios-arrow-back" %>
     </div>
-    <% if @course.manager_id == current_user.id %>
-      <div class="menu menu-right">
-        <%= link_to '', detail_path(@course), class: "ionicons ion-information-circled" %>
-      </div>
-    <% end %>
+    <div class="menu menu-right">
+      <%= link_to '', detail_path(@course), class: "ionicons ion-information-circled" %>
+    </div>
     <h1>
       <%= @course.name %>
     </h1>

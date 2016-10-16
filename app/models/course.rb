@@ -67,6 +67,6 @@ class Course < ApplicationRecord
   end
 
   def self.icon_list_count
-    @icons ||= Dir.glob("app/assets/images/course_icons/*.png").length
+    @icons ||= Dir.glob(Rails.root.join("app/assets/images/course_icons/*.png")).length
   end
 end

@@ -1,8 +1,8 @@
 <div class="navigation-header" align="center">
-  <h1><%= @course.name %></h1>
   <div class="menu menu-left">
-    <%= link_to '', course_path(@course.id), class: "ionicons ion-ios-arrow-left" %>
+    <%= link_to '', :back, class: "ionicons ion-ios-arrow-back" %>
   </div>
+  <h1><%= @course.name %></h1>
 </div>
 
 <div class="details">
@@ -18,14 +18,18 @@
       <dd><%= @course.created_at.strftime("%Y년 %m월 %d일") %></dd>
     </dl>
 
-    <%= image_tag("images.png", :class => "img-circle index-img img-thumbnail") %>
+    <%= image_tag("course_icons/#{@course.icon_id}.png", :class => "img-circle index-img ") %>
   </div>
 
   <div class="participant-list">
     <% @course.users.each do |user| %>
       <div class="participant">
         <%= link_to user_path(user), class: "participant-link" do%>
-        <%= image_tag user.faces.first.attachment_url, :class => "img-circle img-responsive"%>
+          <div class="img-circle">
+            <% if f = user.faces.first %>
+              <%= image_tag f.attachment_url, :class => "img-circle img-responsive"%>
+            <% end %>
+          </div>
         <div class="text-center">
           <%= user.name %>
         </div>
