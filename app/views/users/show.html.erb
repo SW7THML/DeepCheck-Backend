@@ -8,7 +8,9 @@
 <div class="profile">
   <div class="header">
     <div class="img-circle">
-    <!-- user.profile_img -->
+      <% if f = @user.faces.first %>
+        <%= image_tag f.attachment_url, :class => "img-circle img-responsive", :style => "display: block;" %>
+      <% end %>
     </div>
     <div class="info">
       <ul class="dl-horizontal">
@@ -41,10 +43,29 @@
       <div class="course">
         <%= link_to course_path(course), class: "course-link" do %>
           <div class="img-circle">
-            <!-- course.profile_img -->
+            <% if url = course.attachment_url %>
+              <%= image_tag url, :class => "img-circle img-responsive", :style => "display: block;" %>
+            <% end %>
           </div>
           <div class="text-center">
             <%= course.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="courses">
+    <div class="text-left">
+      <h4>나의 사진</h4>
+    </div>
+    <% @user.faces.each do |face| %>
+      <div class="course">
+        <%= link_to face_path(face), class: "course-link", method: 'delete', data: {confirm: '출석체크에 사용되는 프로필 사진을 삭제합니다.'} do %>
+          <div class="img-circle">
+            <%= image_tag face.attachment_url, :class => "img-circle img-responsive", :style => "display: block;" %>
+          </div>
+          <div class="text-center">
+            삭제하기
           </div>
         <% end %>
       </div>

@@ -43,6 +43,26 @@ class CoursesController < ApplicationController
     @courses = current_user.courses
   end
 
+  def preview
+    @course = Course.find(params[:id])
+    if current_user && CourseUser.where(:course_id => @course.id, :user_id => current_user.id).first
+			redirect_to @course
+		end
+  end
+
+  def join
+    course = Course.find(params[:id])
+
+    if CourseUser.where(:course_id => course.id, :user_id => current_user.id).first.nil?
+      cu = CourseUser.new
+      cu.user = current_user
+      cu.course = course
+      cu.save
+    end
+
+    redirect_to root_path
+  end
+
   def destroy
     @course = Course.find(params[:id])
     @post = @course.posts.find(params[:post_id])

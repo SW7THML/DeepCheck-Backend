@@ -50,27 +50,92 @@
       float: right;
       margin-right: 10px;
     }
-    #submit {
-      display: none;
-      height: 30px;
-      padding: 5px 10px 5px 10px !important;
-      margin-top: -3px;
-    }
   }
   
   .form-group {
-    input[type="file"] {
-      border: 0 !important;
-      box-shadow: none;
-      -webkit-box-shadow: none;
+
+    .attachment-input {
+      text-align: center;
+      overflow: auto;
+
+      input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0;
+      }
+
+      label {
+        float: right;
+        display: inline-block;
+        padding: .5em .75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        color: #000;
+        font-weight: 200;
+        margin-bottom: 0px !important;
+      }
+
+      .attachment-label {
+        float: left;
+        display: inline-block;
+        padding: .5em .75em;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        border: 1px solid #eee !important;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 75%;
+      }
+    }
+
+    .input-group {
+      .input-group-btn {
+        .btn-info {    
+          height: 34px;
+          padding: 1px 10px 1px 10px !important;
+        }
+
+        .ionicons {
+          top: 3px;
+        }
+      }
+    }
+
+    select {
+      margin: 0 auto;
     }
 
     .ionicons {
       position: relative;
       font-size: 24px;
-      top: 3px;
+      top: 1px;
       margin-right: 3px;
     }
+
+    h4 {
+      display: inline-block;
+      margin-top: 0;
+      margin-right: 20px;
+    }
+  }
+
+  #submit {
+    margin-bottom: 10px;
   }
 
   #attachment-thumbnail {

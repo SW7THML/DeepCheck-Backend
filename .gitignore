@@ -25,3 +25,4 @@
 /config/key.yml
 .rvmrc
 .DS_Store
+#config/ms.yml
