@@ -63,14 +63,11 @@
     </div>
     <% @user.faces.each do |face| %>
       <div class="photo">
-        <%= link_to face_path(face), class: "course-link", method: 'delete', data: {confirm: '출석체크에 사용되는 프로필 사진을 삭제합니다.'} do %>
-          <div class="img-circle">
-            <%= image_tag face.attachment_url, :class => "img-circle img-responsive", :style => "display: block;" %>
-          </div>
-          <div class="text-center">
-            삭제하기
-          </div>
+        <%= link_to face_path(face), class: "ionicons ion-close-round delete-photo", method: 'delete', data: {confirm: '출석체크에 사용되는 프로필 사진을 삭제합니다.'} do %>
         <% end %>
+        <div class="img-circle">
+          <%= image_tag face.attachment_url, :class => "img-circle img-responsive", :style => "display: inline; position:relative; top: -20px;" %>
+        </div>
       </div>
     <% end %>
   </div>

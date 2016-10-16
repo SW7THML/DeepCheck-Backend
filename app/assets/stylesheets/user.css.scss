@@ -71,7 +71,7 @@
       display: inline-block;
       margin: 10px 6px 10px 6px;
       width: 80px;
-      height: 100px;
+      height: 80px;
 
       .course-link {
         text-decoration: none;
@@ -94,6 +94,14 @@
       a{
         text-decoration: none !important;
         color: black;
+      }
+
+      .delete-photo {
+        position: relative;
+        font-size: 15px;
+        left: 38px;
+        top: -4px;
+        padding-top: 4px;
       }
     }
   }

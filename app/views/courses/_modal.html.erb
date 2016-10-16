@@ -12,15 +12,18 @@
 				
 				<div class="modal-body">
 					<img id="attachment-thumbnail" src="">
-				  <div class="form-group">
-						<p class="ionicons ion-ios-calendar-outline"></p>
-		      	<h4>날짜</h4>
-						<%= f.date_select :created_at, class: "form-control" %>
-					</div>
+		      	<h4 class="ionicons ion-ios-calendar-outline"> 날짜</h4>
+            
+            <div class="input-date">
+              <p>
+                <span class="form-control btn btn-default"> <%= select_year(Date.today)%>  <span class="caret"></span> </span> 년
+                <span class="form-control btn btn-default"> <%= select_month(Date.today)%><span class="caret"></span> </span> 월
+                <span class="form-control btn btn-default"> <%= select_day(Date.today)%> <span class="caret"></span></span> 일
+              </p>
+            </div>
 
 					<div class="form-group">
-						<p class="ionicons ion-ios-camera-outline"></p>
-						<h4>사진</h4>
+						<h4 class="ionicons ion-ios-camera-outline"> 사진</h4>
 						<div class="attachment-input">
 						  <input class="attachment-label" value="사진 선택" disabled="disabled" >
 						  <label for="post_attachment">업로드</label>
@@ -29,15 +32,12 @@
 					</div>
 
 					<div class="form-group">
-						<p class="ionicons ion-ios-paper-outline"></p>
-						<h4>내용</h4>
+						<h4 class="ionicons ion-ios-paper-outline"> 내용</h4>
 						<%= f.text_area :content, class: "form-control" %>
 					</div>
-					
 					<%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled" %>
 				</div>
 			</div>
 		</div>
 	</div>
 <% end %>
-
