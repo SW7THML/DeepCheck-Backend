@@ -1,29 +1,19 @@
 function preloadFunc(grid_size) {
   var grids = document.getElementsByClassName('face-grid');
+  var scaleX = parseFloat($('.photo-attachment').css('width')) * 0.01;
+  var scaleY = parseFloat($('.photo-attachment').css('height')) * 0.01;
 
   $('.face-select')
     .css('width', grid_size)
     .css('height', grid_size);
 
-  var scaleX = parseFloat($('.photo-attachment').css('width')) * 0.01;
-  var scaleY = parseFloat($('.photo-attachment').css('height')) * 0.01;
-
-  for (var i = 0; i < grids.length; ++i) {
-    var g = grids[i];
-    var grid_width = $(g).attr('width');
-    var grid_height = $(g).attr('height');
-
-    $('#' + grids[i].getAttribute('id'))
-      .css('width', grid_width * scaleX)
-      .css('height', grid_height * scaleY)
-      .css('left', $(g).data('x') * scaleX)
-      .css('top', $(g).data('y') * scaleY);
-
-    $('#' + grids[i].getAttribute('id') + '-date')
-      .css('width', grid_width * scaleX)
-      .css('left', $(g).data('x') * scaleX)
-      .css('top', $(g).data('y') * scaleY + grid_size);
-  }
+  $(".face-grid").each(function () {
+    $(this)
+      .css('width', $(this).attr('width') * scaleX)
+      .css('height', $(this).attr('height') * scaleY)
+      .css('left', $(this).data('x') * scaleX)
+      .css('top', $(this).data('y') * scaleY);
+  });
 }
 
 function tagdelete(pid, uid) {
@@ -53,6 +43,22 @@ function photoLoaded() {
     var uid = $this.data('user-id');
 
     tagdelete(pid, uid);
+  });
+
+  $('.face-grid').on("click", function(e) {
+    var pid = $(this).data('photo-id');
+    var uid = $('.face-select').data('user-id');
+    var tid = $(this).data('tag-id');
+    
+    $.ajax({ 
+      type: 'PATCH',
+      url: window.location.href + '/photos/' + pid,
+      dataType: 'text',
+      data: { tid: tid, uid: uid },
+      success: function(result) {
+        location.reload();
+      }
+    }); 
   });
 
   $('.photo-attachment').on("click", function(e) {
