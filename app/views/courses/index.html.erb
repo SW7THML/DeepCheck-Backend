@@ -17,10 +17,6 @@
 
 <div class="course-list">
   <% @courses.each_with_index do |course, index| %>
-    <% if (index) % 3 == 0  %>   
-      <div class="row course-row"></div>
-    <% end %>
-
     <div class="col-md-4 course-div link">
       <%= link_to course_path(course) do %>
         <%= image_tag("course_icons/#{course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
