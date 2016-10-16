@@ -73,7 +73,7 @@ class User < ApplicationRecord
     ]
 
     if album_id.to_i != 0
-      ps = graph.get_connections(album_id, 'photos', {limit: 20, fields: ["id", "source", "images", "height", "width", "created_time"]})
+      ps = graph.get_connections(album_id, 'photos', {limit: 10, fields: ["id", "source", "images", "height", "width", "created_time"]})
       ps.each do |p|
         id = p['id']
         url = p['source']

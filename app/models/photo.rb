@@ -13,40 +13,52 @@ class Photo < ApplicationRecord
   include PhotosHelper
 
   attr_accessor :attachment
-  mount_uploader :attachment, AttachmentUploader
-	belongs_to :post
+  mount_uploader :attachment, PhotoUploader
+  belongs_to :post
 
   has_many :tagged_users
   has_many :users, :through => :tagged_users
 
-	after_create :process
+  #after_create :process
   #after_create :get_size
-	#after_create :detect
-	#after_create :identify
+  #after_create :detect
+  #after_create :identify
 
   def process
     logger.info "process"
-    RecognitionJob.set(wait: 5.second).perform_later({
-      photo_id: self.id,
-    })
+    #RecognitionJob.set(wait: 1.second).perform_later({
+    #  photo_id: self.id,
+    #})
+    self.get_size
+    self.detect
+    self.identify
+    logger.info "process end"
   end
 
-	def get_size
-    puts self.attachment_url
-		fid = self.attachment_url.split("/").last.split(".png").first
-		data = Cloudinary::Api.resource(fid)
-		# {"public_id"=>"hnv4srbwkmckpggdpqtk", "format"=>"png", "version"=>1476592758, "resource_type"=>"image", "type"=>"upload", "created_at"=>"2016-10-16T04:39:18Z", "bytes"=>434002, "width"=>599, "height"=>599, "url"=>"http://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "secure_url"=>"https://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "next_cursor"=>"b3b67847afa863593e234006fd47ba30", "derived"=>[]}
-		width = data["width"]
-		height = data["height"]
-		self.update(:width => width, :height => height)
-	end
+  def url
+    if self.attachment.metadata.nil?
+      self.attachment_url
+    else
+      self.attachment.metadata["url"]
+    end
+  end
+
+  def get_size
+    puts self.url
+    fid = self.url.split("/").last.split(".png").first
+    data = Cloudinary::Api.resource(fid)
+    # {"public_id"=>"hnv4srbwkmckpggdpqtk", "format"=>"png", "version"=>1476592758, "resource_type"=>"image", "type"=>"upload", "created_at"=>"2016-10-16T04:39:18Z", "bytes"=>434002, "width"=>599, "height"=>599, "url"=>"http://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "secure_url"=>"https://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "next_cursor"=>"b3b67847afa863593e234006fd47ba30", "derived"=>[]}
+    width = data["width"]
+    height = data["height"]
+    self.update(:width => width, :height => height)
+  end
 
   def identify
-		# need to train
-		self.post.course.train
+    # need to train
+    self.post.course.train
 
     face_ids = self.tagged_users.map {|tu| tu.fid}
-		face_ids = face_ids.compact.reject(&:blank?)
+    face_ids = face_ids.compact.reject(&:blank?)
     face_ids = face_ids.uniq
 
     course = self.post.course
@@ -58,14 +70,14 @@ class Photo < ApplicationRecord
     faces.each do |face|
       fid = face["faceId"]
       people = face["candidates"]
-      
+
       if t = TaggedUser.where(:fid => fid).first
         people.each do |p|
           uid = p["personId"]
           prob = p["confidence"]
 
           puts "#{(prob * 100).to_i}% - #{uid}"
-          
+
           if prob > 0.5
             cu = CourseUser.where(:uid => uid).first
             t.update(:user_id => cu.user_id) unless cu.nil?
@@ -76,10 +88,10 @@ class Photo < ApplicationRecord
   end
 
   def detect
-		pwidth = self.width.to_f
-		pheight = self.height.to_f
+    pwidth = self.width.to_f
+    pheight = self.height.to_f
 
-    img_url = self.attachment_url
+    img_url = self.url
 
     f = MSCognitive::Face.new
     res = f.detect(img_url)
@@ -93,7 +105,7 @@ class Photo < ApplicationRecord
       width = (pos["width"] / pwidth) * 100
       height = (pos["height"] / pheight) * 100
 
-			#puts "#{post} #{top}, #{left}, #{width}, #{height}"
+      #puts "#{post} #{top}, #{left}, #{width}, #{height}"
 
       unless t = self.tagged_users.where(:x => left, :y => top, :width => width, :height => height).first
         t = self.tagged_users.new(
