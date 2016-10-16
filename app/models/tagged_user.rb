@@ -15,6 +15,8 @@
 #
 
 class TaggedUser < ApplicationRecord
+  JSON_RECORD = ["id", "photo_id", "user_id", "x", "y", "width", "height"]
+
   belongs_to :photo
   belongs_to :user
 
@@ -27,5 +29,16 @@ class TaggedUser < ApplicationRecord
     self.width = (self.width / pwidth) * 100
     self.height = (self.height / pheight) * 100
     self.save
+  end
+
+  def self.by_photo(photo_id)
+    TaggedUser
+      .where(:photo_id => photo_id)
+      .where.not(:user_id => nil)
+      # .to_json(:include => {:user => {:only => :name}}
+  end
+
+  def as_json(options={})
+    super(:include => {:user => {:only => :name}}, only: JSON_RECORD)
   end
 end
