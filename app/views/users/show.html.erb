@@ -1,6 +1,6 @@
 <div class="navigation-header" align="center">
   <div class="menu menu-left">
-    <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-back" %>
+    <%= link_to '', :back, class: "ionicons ion-ios-arrow-back" %>
   </div>
   <h1><%= @user.name %></h1>
 </div>
@@ -29,9 +29,12 @@
       </ul>
 
       <% if current_user == @user %>
+        <!--
         <button type="button" id="profile-edit" class="btn btn-default btn-xs">프로필 편집</button>
+        -->
         <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
-          <p class="ionicons ion-log-out"></p>
+          <i class="ionicons ion-log-out"></i>
+          로그아웃
         </button>
       <% end %>
     </div>

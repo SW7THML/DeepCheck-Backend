@@ -32,14 +32,26 @@ $(document).ready(function() {
     if ( !standalone && safari ) {
       //browser
       $('.navigation-header').addClass('ios-nav');
+      $('.main-container').addClass('ios-nav');
     } else if ( standalone && !safari ) {
       //standalone
       $('.navigator-header').addClass('ios-nav');
+      $('.main-container').addClass('ios-nav');
     } else if ( !standalone && !safari ) {
       //uiwebview
       $('.navigation-header').addClass('ios-nav');
+      $('.main-container').addClass('ios-nav');
     };
   } else {
     //not iOS
   };
+})
+
+$(document).ready(function() {
+  $('.ion-ios-arrow-back').click(function(e) {
+    window.history.back();
+    console.log("back");
+    e.preventDefault();
+    return false;
+  })
 })

@@ -1,9 +1,9 @@
 .profile {
   margin: 0px 15px 0px 15px;
-  padding-top: 30px;
+  padding-top: 10px;
 
   .header {
-    margin-top: 15px;
+    margin-top: 45px;
     text-align: center;
     position: relative;
 
@@ -17,15 +17,19 @@
     .info {
       display: inline-block;
       font-size: 14px;
-      top: 40px;
+      top: -15px;
       margin: 10px 10px 10px 10px;
+      margin-left: 30px;
       position: relative;
+      text-align: left;
 
       ul {
         list-style-type: none;
         margin-bottom: 25px;
-        padding-left: 10px;
-        position: fixed;
+        //padding-left: 10px;
+
+        text-align: left;
+        padding-left: 0;
 
         li {
           margin-top: 10px;
