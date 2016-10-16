@@ -1,0 +1,158 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photos {
+  padding-top: 46px;
+  
+  .photo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .face-grid {
+    display: block;
+    position: absolute;
+    border: 2px solid;
+    border-color: #00aaff;
+  }
+
+  .face-grid-date {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #00aaff;
+    text-align: center;
+    margin: 0px auto;
+    width: 48px;
+    height: 16px;
+  }
+
+  .face-select {
+    display: none;
+    position: absolute;
+    border: 2px solid;
+    border-color: #afafaf;
+    width: 48px;
+    height: 48px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .attendance {
+    padding: 10px 0 10px 0;
+    margin: 0 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: bold;
+
+    .attendance-label {
+      margin-right: 10px;
+      margin-bottom: 5px;
+
+      h3 {
+        padding-left: 5px;
+        margin: 0px auto;
+
+        a {
+          float: right;
+          margin-top: 7px;
+        }
+      }
+    }
+
+    .tags {
+      .tag {
+        position: relative;
+        margin-left: 5px;
+        margin-right: 15px;
+
+        width: 50px;
+        display: inline-block;
+
+        a.tag-cancel {
+          margin-top: 5px;
+          font-size: 18px;
+          opacity: 0.8;
+
+          position: absolute;
+          margin-top: -3px;
+          margin-left: 3px;
+
+        }
+      }
+    }
+  }
+
+  .content {
+    padding: 20px 5px;
+    background-color: #fafafa;
+
+    p {
+      margin: 0 10px;
+    }
+  }
+}
+
+.col-sm-2 {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+
+.background-comment {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.comments {
+  margin: 20px 15px;
+  margin-bottom: 75px;
+
+  p {
+    position: relative;
+    margin-bottom: 3px !important;
+  }
+
+  small {
+    color: gray;
+    font-size: 70% !important;
+  }
+
+  .ionicons {
+    position: absolute;
+    top: -7px;
+    font-size: 24px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+}
+
+.group {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+
+
+  .btn {
+    height: 32px;
+    position: relative;
+    bottom: 1px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .form-control {
+    display: inline;
+    width: 80%;
+  }
+}

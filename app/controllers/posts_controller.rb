@@ -2,20 +2,20 @@ class PostsController < ApplicationController
   before_filter :logged_in?
 	
 	def index
-		@course = Course.find(params[:course_id])
+		@course = current_user.courses.find(params[:course_id])
 		posts = @course.posts
 		render :json => {posts: posts}
   end
 
   def show
-    @course = Course.find(params[:course_id])
-    @course_name = @course.name
+    @course = current_user.courses.find(params[:course_id])
     @post = @course.posts.find(params[:id])
+    @post_title = @post.created_at.strftime("%m월 %d일")
     render :layout => true
   end	
 
   def create
-    @course = Course.find(params[:course_id])
+    @course = current_user.courses.find(params[:course_id])
 		post = @course.posts.create(post_params)
 		photo = post.photos.create(photo_params)
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:course_id)
+		params.require(:post).permit(:course_id, :content)
 	end
 
 	def course_params

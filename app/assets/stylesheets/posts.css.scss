@@ -1,0 +1,152 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.no-post {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 60px;
+
+  .no-photo {
+    border: 1px solid #000;
+    margin: 5px 0px 10px 0px;
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    background-color: #eee;
+
+    p {
+      margin-top: 64px;
+      font-size: 64px;
+    }
+  }
+
+  .alert {
+    padding: 7px !important;
+  }
+}
+
+.modal {
+  .modal-header {
+    height: 50px;
+
+    .modal-title {
+      float: left;
+    }
+    .close {
+      font-size: 36px;
+      margin-top: -5px !important;
+    }
+    .btn {
+      float: right;
+      margin-right: 10px;
+    }
+    #submit {
+      display: none;
+      height: 30px;
+      padding: 5px 10px 5px 10px !important;
+      margin-top: -3px;
+    }
+  }
+  
+  .form-group {
+    input[type="file"] {
+      border: 0 !important;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+
+    .ionicons {
+      position: relative;
+      font-size: 24px;
+      top: 3px;
+      margin-right: 3px;
+    }
+  }
+
+  #attachment-thumbnail {
+    display: none;
+    width: 100%;
+    margin-bottom: 10px;
+    height: auto;
+  }
+
+  .modal-body {
+    padding-bottom: 0px;
+  }
+}
+
+.posts {
+  padding-top: 46px;
+
+  .post {
+    .show-image {
+      width: 100%;
+      padding-top: 0px;
+      padding-bottom: 0px;
+
+      .time-right {
+        text-align: right;
+        margin: 0px 15px 0px 15px;
+        padding: 5px 3px 5px 0px;
+        font-weight: bold;
+        font-size: 13px;
+
+        i {
+          float: left;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    .panel-body {
+      padding: 0px !important;
+
+      .ionicons {
+        margin-top: -3px !important;
+        font-size: 24px;
+      }
+    }
+
+    .photo-info {
+      padding: 5px 10px 5px 10px;
+      background-color: #f6f6f6;
+      font-weight: 200;
+
+      .attendance-info {
+        display: inline-block;
+      }
+
+      .comment-info {
+        display: inline-block;
+        float: right;
+      }
+
+      .ionicons {
+        position: relative;
+        font-size: 18px;
+        top: 2px;
+        margin: 0px 5px 0px 5px;
+      }
+
+      p {
+        display: inline-block;
+        margin: 0px 0px 0px 0px;
+      }
+    }
+
+    .content {
+      margin: 10px 15px 20px 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;  
+    }
+  }
+}
+
+a#btn-new-post {
+  position: fixed;
+  bottom: 0;
+  border-radius: 0;
+  border: 0px;
+}

@@ -2,7 +2,13 @@ class CoursesController < ApplicationController
   before_filter :logged_in?
 
   def show
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
+    @tagged = Array.new()
+    @course.posts.each do |post|
+      if current_user.tagged?(post)
+        @tagged << post.id
+      end
+    end
     render :layout => true
   end
 
@@ -16,6 +22,8 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    @course.manager_id = current_user.id
+    @course.users << current_user
 
     if @course.save
       redirect_to course_path(@course)
@@ -32,7 +40,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    @courses = current_user.courses
   end
 
   def preview

@@ -1,0 +1,35 @@
+<div class="navigation-header" align="center">
+  <h3><%= @course.name %></h3>
+  <div class="menu menu-left">
+    <%= link_to '', course_path(@course.id), class: "ionicons ion-ios-arrow-left" %>
+  </div>
+</div>
+
+<div class="details">
+  <dl class="dl-horizontal">
+    <dt>강의 이름</dt>
+    <dd><%= @course.name %></dd>
+
+    <dt>강의 개설자</dt>
+    <dd><%= User.find(@course.manager_id).name %></dd>
+    
+    <dt>강의 시작일</dt>
+    <dd><%= @course.created_at.strftime("%Y년 %m월 %d일") %></dd>
+
+    <dt>참가자</dt>
+    <dd class="students">
+      <% @course.users.each do |user| %>
+        <div class="student">
+          <%= link_to user_path(user), class: "student-link" do%>
+          <div class="img-circle">
+          <!-- user.profile_img -->
+          </div>
+          <div class="text-center">
+            <%= user.name %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </dd>
+  </dl>
+</div>

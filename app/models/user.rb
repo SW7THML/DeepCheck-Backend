@@ -20,11 +20,30 @@ class User < ApplicationRecord
     if user = self.where(:provider => provider, :uid => uid).first
       user
     else
-      user = User.new(:provider => "facebook", :uid => uid)
-      user.email = "#{uid}@facebook.com"
-      #user.password = Digest::MD5.hexdigest(uid)
-      user.save
-      user
+      User.create do |user|
+        user.provider = "facebook"
+        user.uid = uid
+        user.email = "#{uid}@facebook.com"
+        user.name = name
+      end
     end
+  end
+
+  def enrolled?(course)
+    course.users.exists?(self.id)
+  end
+
+  def tagged?(photo)
+    TaggedUser
+      .where(:photo_id => photo.id)
+      .where(:user_id => self.id).any?
+  end
+
+  def manager?(course)
+    course.manager_id == self.id
+  end
+
+  def attendence?(photo)
+    photo.users.where(:id => self.id).any?
   end
 end

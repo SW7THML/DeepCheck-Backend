@@ -55,11 +55,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'cloudinary'
 
-gem 'bitly'
-# gem 'devise'
-gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '>= 1.0.0.rc'
-gem 'annotate'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+gem 'bitly'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'annotate'
 gem 'httparty'

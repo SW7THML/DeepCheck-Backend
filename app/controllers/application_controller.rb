@@ -8,4 +8,6 @@ class ApplicationController < ActionController::Base
   def logged_in?
     redirect_to login_path(:redirect_url => request.url) unless session[:user_id]
   end
+
+  helper_method :current_user
 end

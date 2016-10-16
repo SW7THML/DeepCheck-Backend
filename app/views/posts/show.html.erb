@@ -1,24 +1,63 @@
 <div class="navigation-header" align="center">
-  <div id="left-menu">
-    <%= link_to '', course_path(@course), class: "btn-left btn-primary glyphicon glyphicon-triangle-left" %>
+  <div class="menu menu-left">
+    <%= link_to '', course_path(@course), class: "ionicons ion-ios-arrow-left" %>
   </div>
-  <h3><%= @course_name %></h3>
+  <h3><%= @post_title %></h3>
 </div>
 
 <div class="photos">
-  <% @post.photos.each do | photo | %>
-    <img class="photo" src="<%= photo.attachment %>" />
-    <div class="face-grid" data-photo-id="<%= photo.id %>"></div>
+  <% @post.photos.each do |photo| %>
+    <%= image_tag photo.attachment.url, class: 'photo' %>
+
+    <% photo.tagged_users.each do |user| %>
+      <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.user_id %>" data-x="<%= user.x %>" data-y="<%= user.y %>"></div>
+    <% end %>
+
+    <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
 
     <div class="attendance">
-      <label class="col-sm-2 control-label">Attendance</label>
       <div class="tags">
-        <% photo.tagged_users.each do | user | %>
-          <div class="tag">
-            <%= user %>
+        <% photo.users.each do |user| %>
+          <div class="tag" data-user-id="<%= @current_user.id %>">
+            <span>
+            <%= user.name %>
+            <% if @current_user == user or @current_user.manager?(@course) %>
+              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
+                <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
+              </a>
+            <% end %>
+            </span>
           </div>
         <% end %>
       </div>
+      <div class="clear"></div>
     </div>
   <% end %>
+
+  <div class="content">
+    <%= simple_format(@post.content) %>
+  </div>
+
+  <div class="comments">
+    <% @post.comments.each do |comment| %>
+      <p>
+        <strong><%= comment.user.name %></strong>
+        <span><%= comment.content %></span>
+        <small class="time"><%= time_ago_in_words(comment.created_at) %></small>
+
+        <% if current_user.id == comment.user_id %>
+          <%= link_to ' ', [comment.post.course, comment.post, comment], class: "ionicons ion-ios-close-empty", method: :delete, data: { confirm: '댓글을 삭제하시겠습니까?'} %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="background-comment">
+  <div class="group">
+    <%= form_for([@course, @post, @post.comments.build]) do |f| %>
+      <%= f.text_field :content, class: "form-control", placeholder: 'Content' %>
+      <%= f.submit '등록', class: "btn btn-primary btn-bottom"%>
+    <% end %>
+  </div>
+
 </div>

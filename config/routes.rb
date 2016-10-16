@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-  # devise_for :admins
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "courses#index"
 
 	resources :courses, only: [:new, :create, :show, :index, :edit, :update] do
     get 'preview' => "courses#preview", :on => :member
     get 'join' => "courses#join", :on => :member
     resources :posts, :only => [:index, :show, :create] do
-      resources :photos, :only => [:index, :show, :create, :update]
+      resources :photos, :comments, :only => [:index, :show, :create, :update, :destroy]
     end
 
     member do
@@ -20,8 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
-	resources :users
-	resources :comments
+  resources :detail, only: [:show]
+
+  resources :users
 
   namespace :api, module: nil do
     resources :courses, only: [:show]

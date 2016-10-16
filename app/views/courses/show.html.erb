@@ -1,55 +1,82 @@
 <div class="navigation-header" align="center">
-  <div id="left-menu">
-    <%= link_to '', courses_path, class: "btn-left btn-primary glyphicon glyphicon-triangle-left" %>
+  <div class="navigation-content">
+    <div class="menu menu-left">
+      <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-left" %>
+    </div>
+    <% if @course.manager_id == current_user.id %>
+      <div class="menu menu-right">
+        <a class="ionicons ion-ios-compose-outline" id="new-post" data-id="<%= @course.id %>">
+        </a>
+      </div>
+    <% end %>
+    <h3>
+      <%= link_to @course.name, detail_path(@course), class: "course_name" %>
+    </h3>
   </div>
-  <h3><%= @course.name %></h3>
 </div>
 
 <% if @course.posts.blank? %>
-  <div class="no-image">
-    <%= image_tag("no-photo.png", :class => "show-non") %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error: </span>
-          사진을 추가해 주세요!
+  <div class="no-post">
+    <div class="no-photo" data-id="<%= @course.id %>">
+      <p class="ionicons ion-ios-camera-outline"></p>
+      <div class="text-center">
+        여기를 눌러 첫번째 출석 사진을 올려보세요!
+      </div>
     </div>
-
-    <p>
-      <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
-    </p>
   </div>
 
 <% else %>
-  <% @course.posts.latest.each do |post| %>
-    <p>
-    <% post.photos.each do | photo | %>
-      <div class="">
-        <div class="show-image panel-body">
-          <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-            <img class="photo show-image" src="<%= photo.attachment %>">
-          </a>
-          <div class = "time-right panel-footer">
-            <%= post.created_at.strftime("%Y-%m-%d [%H:%m]") %>
+  <div class="posts">
+    <% @course.posts.latest.each do |post| %>
+      <div class="post" id="post-<%= post.id %>">
+        <% post.photos.each do |photo| %>
+          <div class="post-photo" id="photo-<%= photo.id %>">
+            <div class="show-image panel-body">
+              <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
+                <img class="photo show-image" src="<%= photo.attachment %>">
+              </a>
+
+              <div class="time-right taggednot">
+                <% if @current_user.tagged?(photo)%>
+                  <i class="ionicons ion-ios-checkmark-empty" aria-hidden="true"></i>
+                <% else %>
+                  <i class="ionicons ion-ios-close-empty" aria-hidden="true"></i>
+                <% end %>
+                <%= post.created_at.strftime("%Y년 %m월 %d일") %>
+              </div>
+            </div>
           </div>
+        <% end %>
+
+        <div class="photo-info">
+          <div class="attendance-info">
+            <p class="ionicons ion-ios-at-outline"></p>
+            <p class="attend">
+              <% attendance = post.attendance %>
+              <% if attendance.count > 0 %>
+                <%= attendance.first.name %>
+                <% if attendance.count > 1%>
+                  외 <%= attendance.count - 1 %>명
+                <% end %>
+              <% else %>
+                아무도 출석하지 않았습니다.
+              <% end %>
+            </p>
+          </div>
+          <div class="comment-info">
+            <p class="comment">
+              <%= post.comments.count %>
+            </p>
+            <p class="ionicons ion-ios-chatbubble-outline"></p>
+          </div>
+        </div>
+
+        <div class="content">
+          <%= post.content %>
         </div>
       </div>
     <% end %>
-    </p>
-  <% end %>
-
+  </div>
 <% end %>
 
-<br>
-<br>
-<br>
-
-<div>
-  <%= render "modal" %>
-    <a class="btn btn-primary btn-block btn-lg" id="btn-new-post" data-id="<%= @course.id %>">새로운 출석</a>
-</div>
-
-<div class="menu new-post">
-</div>
+<%= render "modal" %>

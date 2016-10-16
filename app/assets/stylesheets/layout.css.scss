@@ -1,0 +1,153 @@
+.clear {
+  clear: both;
+}
+
+#flash-message  {
+	position: fixed;
+	top: 40px;
+  width: 100%;
+	z-index: 999;
+
+  .alert {
+    margin: 20px;
+  }
+}
+
+.navigation-header {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 8px;
+  padding-top: 10px;
+  border-bottom: 1px solid #428bca;
+  background-color: rgba(66,139,225, 0.9);
+  color: #fff;
+
+  h3 {
+    display: inline;
+    font-size: 25px;
+    font-weight: 300;
+  }
+
+  a{
+    color: #fff;
+    text-decoration: none !important;
+  }
+
+  .background {
+    display: block;
+    width: 100%;
+    background-color: rgba(255,255,255, 0.8);
+  }
+
+  .menu {
+    position: absolute;
+    top: 7px;
+
+    a {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 0.5;
+      color: #fff;
+      border-color: #ffffff;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .search {
+      left: 8px;
+      float: left;
+      position: relative;
+
+      .search-input {
+        display: none;
+        margin-left: 14px;
+        top: -6px;
+
+        #search-input {
+          width: 225px;
+        }
+      }
+    }
+
+    .ionicons {
+      margin-top: 2px;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .ion-ios-arrow-left {
+      margin-top: 3px;
+    }
+
+    .ion-ios-compose-outline {
+      margin-right: 5px;
+    }
+
+    .fa-search {
+      margin-top: 0px;
+    }
+
+    .fa-plus {
+      margin-top: 10px;
+    }
+  }
+
+  .menu-right {
+    right: 6px;
+
+    a {
+      float: right;
+      padding-left: 5px;
+      padding-right: 3px;
+      margin-right: 5px;
+    }
+  }
+
+  .menu-left {
+    left: 6px;
+
+    a {
+      padding-left: 2px;
+      padding-right: 5px;
+      margin-left: 7px;
+    }
+  }
+  
+  .btn-left {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      padding-left: 7px !important;
+      padding-right: 9px !important;
+      margin-bottom: 0;
+      white-space: nowrap;
+      vertical-align: middle;
+      background-image: none;
+      border: 1px solid transparent;
+  }
+}
+
+.btn {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  padding-left: 9px !important;
+  padding-right: 7px !important;
+}
+
+input {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-bottom: 1px solid #eee !important;
+}
+
+.btn-bottom {
+  border-bottom: 0px solid transparent !important;
+}
+
+.link {
+  color: #000000;
+  a {
+    text-decoration: none !important;
+  }
+}

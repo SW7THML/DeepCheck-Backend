@@ -1,0 +1,44 @@
+.details {
+  margin: 0px 15px 0px 15px;
+  padding-top: 47px;
+
+  dl {
+    font-size: 14px;
+
+    dt {
+      margin-top: 10px;
+    }
+    dd {
+      margin-left: 15px;
+    }
+
+    .students {
+      margin: 15px auto;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      float: center;
+      text-align: center;
+
+      .student {
+        display: inline-block;
+        margin: 10px 6px 10px 6px;
+        width: 80px;
+        height: 100px;
+
+        .student-link {
+          text-decoration: none;
+        }
+
+        .img-circle {
+          width: 80px;
+          height: 80px;
+          background-color: #eee;
+        }
+
+        .text-center {
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

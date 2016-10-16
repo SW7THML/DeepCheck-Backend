@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003120430) do
+ActiveRecord::Schema.define(version: 20161009035655) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20161003120430) do
   create_table "tagged_users", force: :cascade do |t|
     t.integer  "photo_id"
     t.integer  "user_id"
-    t.integer  "x"
-    t.integer  "y"
+    t.float    "x"
+    t.float    "y"
     t.integer  "width"
     t.integer  "height"
     t.datetime "created_at", null: false
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20161003120430) do
     t.datetime "updated_at",              null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
