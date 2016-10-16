@@ -5,7 +5,6 @@ function preloadFunc(grid_size) {
     .css('width', grid_size)
     .css('height', grid_size);
 
-  var offsetY = 47;
   var scaleX = parseFloat($('.photo-attachment').css('width')) * 0.01;
   var scaleY = parseFloat($('.photo-attachment').css('height')) * 0.01;
 
@@ -18,12 +17,12 @@ function preloadFunc(grid_size) {
       .css('width', grid_width * scaleX)
       .css('height', grid_height * scaleY)
       .css('left', $(g).data('x') * scaleX)
-      .css('top', $(g).data('y') * scaleY + offsetY);
+      .css('top', $(g).data('y') * scaleY);
 
     $('#' + grids[i].getAttribute('id') + '-date')
       .css('width', grid_width * scaleX)
       .css('left', $(g).data('x') * scaleX)
-      .css('top', $(g).data('y') * scaleY + grid_size + offsetY);
+      .css('top', $(g).data('y') * scaleY + grid_size);
   }
 }
 
@@ -39,8 +38,10 @@ function tagdelete(pid, uid) {
 }
 
 function photoLoaded() {
+  var photo = $('.photo-attachment');
   var offsetSize = 0.125;
-  var grid_size = parseInt($('.photo-attachment').css('width')) * offsetSize;
+  var grid_size = parseInt(photo.css('width')) * offsetSize;
+
   var offsetY = -grid_size / 2;
   var offsetX = -grid_size / 2;
 
@@ -56,6 +57,7 @@ function photoLoaded() {
 
   $('.photo-attachment').on("click", function(e) {
     var pos = $(this).offset();
+
     var width = parseFloat($(this).css('width'));
     var height = parseFloat($(this).css('height'));
     var x = (e.pageX - pos.left + offsetX) / width * 100;
@@ -67,7 +69,7 @@ function photoLoaded() {
     $('.face-select')
       .css('display', "block")
       .css('left', x * width * 0.01)
-      .css('top', y * height * 0.01 + 47);
+      .css('top', y * height * 0.01);
 
     $.ajax({ 
       type: 'PATCH',
