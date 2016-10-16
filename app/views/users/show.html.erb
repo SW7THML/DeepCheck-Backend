@@ -46,11 +46,10 @@
     <% @user.courses.each do |course| %>
       <div class="photo">
         <%= link_to course_path(course), class: "course-link" do %>
-          <div class="img-circle">
-            <% if url = course.attachment_url %>
-              <%= image_tag url, :class => "img-circle img-responsive", :style => "display: block;" %>
-            <% end %>
-          </div>
+          
+        <%= image_tag("course_icons/#{course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
+          
+
           <div class="text-center">
             <%= course.name %>
           </div>
