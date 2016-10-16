@@ -1,5 +1,5 @@
 .profile {
-  margin: 0px 15px 0px 15px;
+  margin: 20px 15px 0px 15px;
   padding-top: 10px;
 
   .header {
@@ -58,7 +58,8 @@
 
   .photo-list {
     clear: both;
-    margin-top: 25px;
+    margin-top: 20px;
+    margin-bottom: 25px;
     text-align: center;
 
     .text-left {
@@ -79,7 +80,6 @@
       .img-circle {
         width: 80px;
         height: 80px;
-        background-color: #eee;
       }
 
       .text-center {    
