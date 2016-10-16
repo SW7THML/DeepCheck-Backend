@@ -4,6 +4,5 @@ class IosLinkController < ApplicationController
   end
 
   def name
-
   end
 end

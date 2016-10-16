@@ -39,7 +39,8 @@ function tagdelete(pid, uid) {
 }
 
 function photoLoaded() {
-  var grid_size = parseInt($('.photo').css('width')) / 8.0;
+  var offsetSize = 0.125;
+  var grid_size = parseInt($('.photo').css('width')) * offsetSize;
   var offsetY = -grid_size / 2;
   var offsetX = -grid_size / 2;
 
@@ -66,13 +67,13 @@ function photoLoaded() {
     $('.face-select')
       .css('display', "block")
       .css('left', x * width * 0.01)
-      .css('top', y * height * 0.01);
+      .css('top', y * height * 0.01 + 47);
 
     $.ajax({ 
       type: 'PATCH',
       url: window.location.href + '/photos/' + pid,
       dataType: 'text',
-      data: { x: x, y: y, uid : uid },
+      data: { x: x, y: y, width: grid_size / width * 100, height: grid_size / height * 100, uid : uid },
       success: function(result) {
         location.reload();
       }

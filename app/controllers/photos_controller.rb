@@ -31,6 +31,8 @@ class PhotosController < ApplicationController
         .where(:photo_id => params[:id])[0]
       tu.x = params[:x]
       tu.y = params[:y]
+      tu.width = params[:width]
+      tu.height = params[:height]
       tu.save
       render :json => {result: 'Create new Tag'}
     else
