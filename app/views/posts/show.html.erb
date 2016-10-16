@@ -7,6 +7,7 @@
 
 <div class="photos">
   <% @post.photos.each do |photo| %>
+
     <div class="photo">
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
       <% photo.tagged_users.each do |tag| %>
@@ -15,25 +16,23 @@
       <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
     </div>
 
-    <div class="attendance">
-      <div class="tags">
-        <% photo.users.each do |user| %>
-          <div class="tag" data-user-id="<%= @current_user.id %>">
-            <span>
-              <div class="name">
-                <%= user.name %>
-              </div>
-            <% if @current_user == user or @current_user.manager?(@course) %>
-              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>" class="tag-delete">
-                <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
-              </a>
-            <% end %>
-            </span>
-          </div>
+    <div class="tags">
+      <% photo.users.each do |user| %>
+        <span class="tag-name" data-user-id="<%= @current_user.id %>" data-photo-id="<%= photo.id %>">
+          <%= user.name %>
+        </span>
+
+        <span class="tag-cancel">
+        <% if @current_user == user or @current_user.manager?(@course) %>
+
+          <a data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>">
+          <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
+          </a>
         <% end %>
-      </div>
-      <div class="clear"></div>
+        </span>
+      <% end %>
     </div>
+
   <% end %>
 
   <div class="content">
@@ -61,5 +60,4 @@
       <%= f.submit '등록', class: "btn btn-primary btn-bottom"%>
     <% end %>
   </div>
-
 </div>

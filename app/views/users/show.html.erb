@@ -12,6 +12,9 @@
         <%= image_tag f.attachment_url, :class => "img-circle img-responsive" %>
       <% end %>
     </div>
+
+    <% if current_user == @user %>
+    
     <div class="info">
       <ul class="dl-horizontal">
         <li>
@@ -27,18 +30,37 @@
           </div>
         </li>
       </ul>
-
-      <% if current_user == @user %>
         <!--
         <button type="button" id="profile-edit" class="btn btn-default btn-xs">프로필 편집</button>
         -->
-        <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
+      <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
           <i class="ionicons ion-log-out"></i>
           <span>  로그아웃</span>
         </button>
-      <% end %>
     </div>
+  
+    <% else %>
+
+    <div class="info not-user">
+      <ul class="dl-horizontal">
+        <li>
+          <strong>참여중인 강의</strong>
+          <div class="text-right">
+            <%= @user.courses.count %>
+          </div>
+        </li>
+        <li>
+          <strong>진행중인 강의</strong>
+          <div class="text-right">
+            <%= @user.courses.count %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <% end %>
   </div>
+
   <div class="photo-list">
     <div class="text-left">
       <h4>참여중인 강의</h4>
@@ -48,7 +70,6 @@
         <%= link_to course_path(course), class: "course-link" do %>
           
         <%= image_tag("course_icons/#{course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
-          
 
           <div class="text-center">
             <%= course.name %>
@@ -63,11 +84,19 @@
     </div>
     <% @user.faces.each do |face| %>
       <div class="photo">
-        <%= link_to face_path(face), class: "ionicons ion-close-round delete-photo", method: 'delete', data: {confirm: '출석체크에 사용되는 프로필 사진을 삭제합니다.'} do %>
+        <% if current_user == @user %>
+          <div class = "delete-photo">
+            <%= link_to face_path(face), class: "ionicons ion-close-round", method: 'delete', data: {confirm: '출석체크에 사용되는 프로필 사진을 삭제합니다.'} do %>
+            <% end %>
+          </div>
+          <div class="img-circle">
+            <%= image_tag face.attachment_url, :class => "img-circle img-responsive", :style => "position:relative; top: -20px;" %>
+          </div>
+        <% else %>
+          <div class="img-circle">
+            <%= image_tag face.attachment_url, :class => "img-circle img-responsive" %>
+          </div>
         <% end %>
-        <div class="img-circle">
-          <%= image_tag face.attachment_url, :class => "img-circle img-responsive", :style => "display: inline; position:relative; top: -20px;" %>
-        </div>
       </div>
     <% end %>
   </div>

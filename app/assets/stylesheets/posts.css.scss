@@ -46,39 +46,47 @@
     }
   }
 
+  .modal-submit {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .input-contents {
+    .form-control {
+      border-color: #eee !important;
+      border-radius: 0px !important;
+      -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0) !important;
+    }
+  }
+
     .input-date {
-      margin-bottom: 15px;
-      padding: 0 !important;
-      text-align: center;
-
-      .form-control {
-        border: 1px solid #eee;
+      .btn {
         border-radius: 0px;
-        -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0);
-        box-shadow: 0 !important;
-        width: 23%;
-        height: 27px !important;
-        margin-right: 5px !important;
+        padding: 4px 10px 4px 10px !important;
       }
 
-      span {
-        padding: 2px 0px 0px 0px !important;
-        margin: 0px 0px 0px 0px !important;
+      .date-button {
+        text-align: center;
+        width: 100% !important;
+        padding-left: 5px;
       }
 
-      option {
-        padding-right: 0px !important;
+      .btn-default {
+        border-color: #eee;
       }
 
-      select {
-        padding-left: 0px !important;
-        margin-left: 0px !important;
-        width: 60px !important;
-        text-align-last:center !important
+      .btn-danger {
+        background-color: #FF5E4F !important;
+        border-color: #FF5E4F !important;
       }
 
-      .date_month {
-text-align-last:center;      }
+      .dropdown-menu {
+        min-width: 90px;
+
+        a {
+          text-align: center;
+        }
+      }
     }
 
     .attachment-input {
@@ -160,10 +168,6 @@ text-align-last:center;      }
     }
   }
 
-  #submit {
-    margin-bottom: 10px;
-  }
-
   #attachment-thumbnail {
     display: none;
     width: 100%;
@@ -177,7 +181,7 @@ text-align-last:center;      }
 }
 
 .posts {
-  padding-top: 33px;
+  padding-top: 32px;
 
   .post {
     .show-image {

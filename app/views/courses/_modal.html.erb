@@ -11,18 +11,101 @@
 				</div>
 				
 				<div class="modal-body">
-					<img id="attachment-thumbnail" src="">
-		      	<h4 class="ionicons ion-ios-calendar-outline"> 날짜</h4>
-            
-            <div class="input-date">
-              <p>
-                <span class="form-control btn btn-default"> <%= select_year(Date.today)%>  <span class="caret"></span> </span> 년
-                <span class="form-control btn btn-default"> <%= select_month(Date.today)%><span class="caret"></span> </span> 월
-                <span class="form-control btn btn-default"> <%= select_day(Date.today)%> <span class="caret"></span></span> 일
-              </p>
+          <div class="input-date">
+            <img id="attachment-thumbnail">
+		        <h4 class="ionicons ion-ios-calendar-outline"> 날짜</h4>
+
+          <div class="date-button">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"><%= Date.today.year %>년
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a> 2010년 </a></li>
+                <li><a> 2011년 </a></li>
+                <li><a> 2012년 </a></li>
+                <li><a> 2013년 </a></li>
+                <li><a> 2014년 </a></li>
+                <li><a> 2015년 </a></li>
+                <li><a> 2016년 </a></li>
+                <li><a> 2017년 </a></li>
+                <li><a> 2018년 </a></li>
+                <li><a> 2019년 </a></li>
+              </ul>
             </div>
 
-					<div class="form-group">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"><%= Date.today.month %>월
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a> 1월 </a></li>
+                <li><a> 2월 </a></li>
+                <li><a> 3월 </a></li>
+                <li><a> 4월 </a></li>
+                <li><a> 5월 </a></li>
+                <li><a> 6월 </a></li>
+                <li><a> 7월 </a></li>
+                <li><a> 8월 </a></li>
+                <li><a> 9월 </a></li>
+                <li><a> 10월 </a></li>
+                <li><a> 11월 </a></li>
+                <li><a> 12월 </a></li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-default"><%= Date.today.day %>일
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                </button>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a> 1일 </a></li>
+                <li><a> 2일 </a></li>
+                <li><a> 3일 </a></li>
+                <li><a> 4일 </a></li>
+                <li><a> 5일 </a></li>
+                <li><a> 6일 </a></li>
+                <li><a> 7일 </a></li>
+                <li><a> 8일 </a></li>
+                <li><a> 9일 </a></li>
+                <li><a> 10일 </a></li>
+                <li><a> 11일 </a></li>
+                <li><a> 12일 </a></li>
+                <li><a> 13일 </a></li>
+                <li><a> 14일 </a></li>
+                <li><a> 15일 </a></li>
+                <li><a> 16일 </a></li>
+                <li><a> 17일 </a></li>
+                <li><a> 18일 </a></li>
+                <li><a> 19일 </a></li>
+                <li><a> 20일 </a></li>
+                <li><a> 21일 </a></li>
+                <li><a> 22일 </a></li>
+                <li><a> 23일 </a></li>
+                <li><a> 24일 </a></li>
+                <li><a> 25일 </a></li>
+                <li><a> 26일 </a></li>
+                <li><a> 27일 </a></li>
+                <li><a> 28일 </a></li>
+                <li><a> 29일 </a></li>
+                <li><a> 30일 </a></li>
+                <li><a> 31일 </a></li>
+              </ul>
+            </div>            
+          </div>
+
+          </div>
+
+					<div class="input-image">
 						<h4 class="ionicons ion-ios-camera-outline"> 사진</h4>
 						<div class="attachment-input">
 						  <input class="attachment-label" value="사진 선택" disabled="disabled" >
@@ -31,13 +114,16 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<h4 class="ionicons ion-ios-paper-outline"> 내용</h4>
-						<%= f.text_area :content, class: "form-control" %>
-					</div>
-					<%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled" %>
-				</div>
-			</div>
+          <div class="input-contents">
+            <h4 class="ionicons ion-ios-paper-outline"> 내용</h4>
+              <%= f.text_area :content, class: "form-control" %>
+          </div>
+
+          <div class="modal-submit">
+            <%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled" %>
+          </div>
+        </div>
+      </div>
 		</div>
 	</div>
 <% end %>
