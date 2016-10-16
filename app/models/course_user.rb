@@ -18,6 +18,7 @@ class CourseUser < ApplicationRecord
   has_many :course_faces
 
   after_create :create_person
+  after_create :create_faces
 
   def create_person
     return unless self.uid.blank?
@@ -36,7 +37,7 @@ class CourseUser < ApplicationRecord
   def create_faces
     self.user.faces.each do |f|
       unless cf = self.course_faces.where(:face_id => f.id).first
-        f.add_face(self) 
+        f.add_face(self.id) 
       end
     end
   end

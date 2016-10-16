@@ -50,6 +50,14 @@ class Course < ApplicationRecord
     pg.train(self.gid) unless self.gid.blank?
   end
 
+  def status
+    pg = MSCognitive::PersonGroup.new
+    unless self.gid.blank?
+      res = pg.status(self.gid)
+      return JSON.parse(res.body)
+    end
+  end
+
   def create_person_group
     return unless self.gid.blank?
 
