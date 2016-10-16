@@ -43,7 +43,7 @@
     <div class="text-left">
       <h4>참여중인 강의</h4>
     </div>
-    <% @user.courses.each do |course| %>
+    <% (@user.courses & current_user.courses).each do |course| %>
       <div class="photo">
         <%= link_to course_path(course), class: "course-link" do %>
           

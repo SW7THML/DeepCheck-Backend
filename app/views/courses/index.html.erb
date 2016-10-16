@@ -8,13 +8,6 @@
   </div>
 </div>
 
-<% if flash[:notice] %>
-  <div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> <%= flash[:notice] %>
-  </div>
-<% end %>
-
 <div class="course-list">
   <% @courses.each_with_index do |course, index| %>
     <div class="col-md-4 course-div link">

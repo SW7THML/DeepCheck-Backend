@@ -25,7 +25,7 @@
   </div>
 
   <div class="participant-list">
-    <% @course.users.each do |user| %>
+    <% ((@course.users).to_a * 100).each do |user| %>
       <div class="participant">
         <%= link_to user_path(user), class: "participant-link" do%>
           <div class="img-circle">

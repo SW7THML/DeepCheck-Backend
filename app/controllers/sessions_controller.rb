@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     session[:token] = token
 
-    flash[:notice] = "logged in!"
+    flash[:notice] = "로그인되었습니다."
     url = env["omniauth.params"]["redirect_url"]
     url = "/" if url.nil? || url.empty?
 
