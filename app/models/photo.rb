@@ -19,9 +19,19 @@ class Photo < ApplicationRecord
   has_many :tagged_users
   has_many :users, :through => :tagged_users
 
-	after_create :get_size
+	after_create :process
+  #after_create :get_size
+	#after_create :detect
+	#after_create :identify
+
+  def process
+    RecognitionJob.set(wait: 1.second).perform_later({
+      photo_id: self.id,
+    })
+  end
 
 	def get_size
+    puts self.attachment_url
 		fid = self.attachment_url.split("/").last.split(".png").first
 		data = Cloudinary::Api.resource(fid)
 		# {"public_id"=>"hnv4srbwkmckpggdpqtk", "format"=>"png", "version"=>1476592758, "resource_type"=>"image", "type"=>"upload", "created_at"=>"2016-10-16T04:39:18Z", "bytes"=>434002, "width"=>599, "height"=>599, "url"=>"http://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "secure_url"=>"https://res.cloudinary.com/hklr581g0/image/upload/v1476592758/hnv4srbwkmckpggdpqtk.png", "next_cursor"=>"b3b67847afa863593e234006fd47ba30", "derived"=>[]}
