@@ -8,28 +8,33 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<p class="ionicons ion-ios-close-empty"></p>
 					</button>
-					<%= f.submit "등록", :class => "btn btn-primary btn-bottom", :id => "submit" %>
 				</div>
 				
 				<div class="modal-body">
 					<img id="attachment-thumbnail" src="">
 				  <div class="form-group">
 						<p class="ionicons ion-ios-calendar-outline"></p>
-		      	<%= f.label :created_at %>
+		      	<h4>날짜</h4>
 						<%= f.date_select :created_at, class: "form-control" %>
 					</div>
 
 					<div class="form-group">
 						<p class="ionicons ion-ios-camera-outline"></p>
-						<%= f.label :attachment %>
-						<%= f.file_field :attachment, class: "form-control"  %>
+						<h4>사진</h4>
+						<div class="attachment-input">
+						  <input class="attachment-label" value="사진 선택" disabled="disabled" >
+						  <label for="post_attachment">업로드</label>
+							<%= f.file_field :attachment, class: "form-control"  %> 
+						</div>
 					</div>
 
 					<div class="form-group">
 						<p class="ionicons ion-ios-paper-outline"></p>
-						<%= f.label :content %>
+						<h4>내용</h4>
 						<%= f.text_area :content, class: "form-control" %>
 					</div>
+					
+					<%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled" %>
 				</div>
 			</div>
 		</div>

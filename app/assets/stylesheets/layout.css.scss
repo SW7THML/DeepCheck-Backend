@@ -84,6 +84,10 @@
       margin-right: 5px;
     }
 
+    .ion-ios-information-outline {
+      margin-top: 3px;
+    }
+
     .fa-search {
       margin-top: 0px;
     }
@@ -124,6 +128,33 @@
       vertical-align: middle;
       background-image: none;
       border: 1px solid transparent;
+  }
+}
+
+.pop {
+  position: relative;
+  z-index: 1;
+
+  .pop-right-bottom {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .pop-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #f02a2a;
+    text-align: center;
+  }
+
+  p {
+    font-size: 26px;
+    color: #eee;
+    margin-top: 11px;
+    text-decoration: none;
+    text-decoration-color: #fff;
   }
 }
 

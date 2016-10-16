@@ -19,15 +19,24 @@ $(document).ready(function() {
     show_modal();
   });
 
-  $('#post_attachment').on('change', function(event) {
+  $('input:file').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      document.getElementById("attachment-thumbnail").src = file.target.result;
-      document.getElementById("attachment-thumbnail").style.display="inline-block";
-      document.getElementById("submit").style.display="inline-block";
+    var file_name = window.FileReader ? image.name : $(this).val().val().split('/').pop().split('\\').pop();
+
+    $(this).siblings('.attachment-label').val(file_name);
+    if (typeof(image) == "undefined") {
+      document.getElementById("attachment-thumbnail").src = "";
+      document.getElementById("attachment-thumbnail").style.display="none";
+      document.getElementById("submit").setAttribute('disabled', 'disabled');
+    } else {
+      var reader = new FileReader();
+      reader.onload = function(file) {
+        document.getElementById("attachment-thumbnail").src = file.target.result;
+        document.getElementById("attachment-thumbnail").style.display="inline-block";
+        document.getElementById("submit").removeAttribute('disabled');
+      };
+      reader.readAsDataURL(image);
     }
-    reader.readAsDataURL(image);
   });
 });
