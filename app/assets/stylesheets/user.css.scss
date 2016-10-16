@@ -46,14 +46,16 @@
     } 
   }
 
-  .courses {
+  .photo-list {
+    clear: both;
     margin-top: 25px;
+    text-align: center;
 
     .text-left {
       border-bottom: 1px solid #eee;
     }
 
-    .course {
+    .photo {
       display: inline-block;
       margin: 10px 6px 10px 6px;
       width: 80px;
