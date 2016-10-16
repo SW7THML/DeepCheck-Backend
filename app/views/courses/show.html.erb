@@ -5,13 +5,20 @@
     </div>
     <% if @course.manager_id == current_user.id %>
       <div class="menu menu-right">
-        <a class="ionicons ion-ios-compose-outline" id="new-post" data-id="<%= @course.id %>">
-        </a>
+        <%= link_to '', detail_path(@course), class: "ionicons ion-ios-information-outline" %>
       </div>
     <% end %>
     <h3>
-      <%= link_to @course.name, detail_path(@course), class: "course_name" %>
+      <%= @course.name %>
     </h3>
+
+  </div>
+</div>
+
+<div class="pop">
+  <div class="pop-right-bottom pop-circle">
+    <p class="ionicons ion-edit" id="new-post" data-id="<%= @course.id %>">
+    </p>
   </div>
 </div>
 

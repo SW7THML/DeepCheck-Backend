@@ -127,6 +127,32 @@
   }
 }
 
+.pop {
+  position: relative;
+
+  .pop-right-bottom {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .pop-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #f02a2a;
+    text-align: center;
+  }
+
+  p {
+    font-size: 26px;
+    color: #eee;
+    margin-top: 11px;
+    text-decoration: none;
+    text-decoration-color: #fff;
+  }
+}
+
 .btn {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
