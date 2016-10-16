@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root "courses#index"
 
 	resources :courses, only: [:new, :create, :show, :index, :edit, :update] do
+    get 'preview' => "courses#preview", :on => :member
+    get 'join' => "courses#join", :on => :member
     resources :posts, :only => [:index, :show, :create] do
       resources :photos, :only => [:index, :show, :create, :update]
     end
@@ -29,4 +31,6 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  put '/face/v1.0/persongroups/tester' => 'welcome#test'
 end

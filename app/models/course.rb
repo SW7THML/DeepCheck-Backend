@@ -14,16 +14,15 @@ class Course < ApplicationRecord
     super(options)
   end
   
-  private
-    def generate_short_link
-      host_name = Rails.configuration.host_name
-      link = ios_link_course_url(self, host: host_name)
+  def generate_short_link
+    host_name = Rails.configuration.host_name
+    link = ios_link_course_url(self, host: host_name)
 
-      bitly = Bitly.new("deepcheck", "R_c1be89e5bafc4f868570f3fd1d4089e2")
+    bitly = Bitly.new("deepcheck", "R_c1be89e5bafc4f868570f3fd1d4089e2")
 
-      shorten = bitly.shorten(link)
+    shorten = bitly.shorten(link)
 
-      self.short_link = shorten.short_url
-      self.save
-    end
+    self.short_link = shorten.short_url
+    self.save
+  end
 end

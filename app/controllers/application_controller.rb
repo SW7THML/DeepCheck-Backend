@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    redirect_to :login unless session[:user_id]
+    redirect_to login_path(:redirect_url => request.url) unless session[:user_id]
   end
 end

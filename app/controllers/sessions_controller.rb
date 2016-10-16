@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
     @user = User.find_for_facebook_oauth(env["omniauth.auth"])
     session[:user_id] = @user.id
     flash[:notice] = "logged in!"
-    redirect_to '/'
+    url = env["omniauth.params"]["redirect_url"]
+    url = "/" if url.nil? || url.empty?
+    redirect_to url
   end 
 
   def destroy
