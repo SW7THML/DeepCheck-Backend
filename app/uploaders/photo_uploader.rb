@@ -6,6 +6,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   process :convert => 'png'
+  process resize_to_fit: [1920, 1080]
 
   after :store, :callback_method
   def callback_method file
