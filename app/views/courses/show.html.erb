@@ -12,12 +12,14 @@
   </div>
 </div>
 
-<div class="pop">
-  <div class="pop-right-bottom pop-circle">
-    <p class="ionicons ion-edit" id="new-post" data-id="<%= @course.id %>">
-    </p>
+<% if current_user.id == @course.manager_id %>
+  <div class="pop">
+    <div class="pop-right-bottom pop-circle">
+      <p class="ionicons ion-edit" id="new-post" data-id="<%= @course.id %>">
+      </p>
+    </div>
   </div>
-</div>
+<% end %>
 
 <% if @course.posts.blank? %>
 

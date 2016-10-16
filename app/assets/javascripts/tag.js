@@ -1,19 +1,21 @@
-$(function(){
-    $('.attendance .tag').on("mouseenter", function(){
-      var user_id = $(this).data("user-id");
-      var grid_id = '#grid-' + user_id;
-      
-      $(grid_id)
-        .removeClass('tag-leaved')
-        .addClass('tag-selected');
-    });
+$(document).ready(function() {
+  $('.attendance .tag').on("mouseenter", function(){
+    var user_id = $(this).data("user-id");
+    var grid_id = '#grid-' + user_id;
+    
+    $(grid_id)
+      .removeClass('tag-leaved')
+      .addClass('tag-selected');
 
-    $('.attendance .tag').on("mouseleave", function(){
-      var user_id = $(this).data("user-id");
-      var grid_id = '#grid-' + user_id;
+    console.log($(grid_id));
+  });
 
-      $(grid_id)
-        .removeClass('tag-selected')
-        .addClass('tag-leaved');
-    });
+  $('.attendance .tag').on("mouseleave", function(){
+    var user_id = $(this).data("user-id");
+    var grid_id = '#grid-' + user_id;
+
+    $(grid_id)
+      .removeClass('tag-selected')
+      .addClass('tag-leaved');
+  });
 });

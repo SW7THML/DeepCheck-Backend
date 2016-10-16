@@ -9,8 +9,8 @@
   <% @post.photos.each do |photo| %>
     <div class="photo">
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
-      <% photo.tagged_users.each do |user| %>
-        <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= user.id %>" data-x="<%= user.x %>" data-y="<%= user.y %>" width="<%= user.width %>" height="<%= user.height %>"></div>
+      <% photo.tagged_users.each do |tag| %>
+        <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= tag.user_id %>" data-tag-id="<%= tag.id %>" data-x="<%= tag.x %>" data-y="<%= tag.y %>" width="<%= tag.width %>" height="<%= tag.height %>"></div>
       <% end %>
       <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
     </div>
@@ -24,7 +24,7 @@
                 <%= user.name %>
               </div>
             <% if @current_user == user or @current_user.manager?(@course) %>
-              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>"class="tag-delete">
+              <a class="tag-cancel" data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>" class="tag-delete">
                 <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
               </a>
             <% end %>

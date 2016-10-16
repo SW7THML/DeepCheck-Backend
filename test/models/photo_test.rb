@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  attachment :string
+#  width      :integer          default(0)
+#  height     :integer          default(0)
 #
 
 require 'test_helper'
