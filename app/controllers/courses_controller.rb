@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
   def preview
     @course = Course.find(params[:id])
     if current_user && CourseUser.where(:course_id => @course.id, :user_id => current_user.id).first
-      redirect_to @course
+      redirect_to course_path(@course)
     end
   end
 
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
       cu.save
     end
 
-    redirect_to root_path
+    #redirect_to root_path
   end
 
   def destroy

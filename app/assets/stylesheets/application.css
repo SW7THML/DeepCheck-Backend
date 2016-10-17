@@ -14,6 +14,15 @@
  *= require_self
  */
 
+@font-face	{
+	font-family: 'SpoqaHanSans-Regular';
+	font-style: normal;
+	font-weight: 400;
+	src: url(SpoqaHanSans-Regular.eot);
+}
+
+body { font-family:'SpoqaHanSans-Regular' !important; }
+
 .btn-facebook:hover {
   color: #fff !important;
   background-color: #2d4373 !important;

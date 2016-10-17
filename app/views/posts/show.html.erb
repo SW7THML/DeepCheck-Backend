@@ -10,10 +10,8 @@
     <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
     </div>
-    <div class="attendance">
-      <div class="tags">
-      </div>
-      <div class="clear"></div>
+
+    <div class="tags">
     </div>
   <% end %>
 
@@ -42,5 +40,4 @@
       <%= f.submit '등록', class: "btn btn-primary btn-bottom"%>
     <% end %>
   </div>
-
 </div>

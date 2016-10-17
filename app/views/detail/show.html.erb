@@ -21,11 +21,11 @@
       <dd><%= @course.short_link %></dd>
     </dl>
 
-    <%= image_tag("course_icons/#{@course.icon_id}.png", :class => "img-circle index-img ") %>
+    <%= image_tag("course_icons/#{@course.icon_id}.png", :class => "img-circle index-img preview-icon") %>
   </div>
 
   <div class="participant-list">
-    <% ((@course.users).to_a * 100).each do |user| %>
+    <% @course.users.each do |user| %>
       <div class="participant">
         <%= link_to user_path(user), class: "participant-link" do%>
           <div class="img-circle">

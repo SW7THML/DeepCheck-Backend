@@ -1,38 +1,28 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .no-post {
   width: 100%;
   margin: 0 0 0 0;
   text-align: center;
   padding: 41px 0px 0px 0px;
-
   .no-photo {
     margin: 0px 0px 60px 0px;
     width: 100%;
     position: absolute;
     top: 20%;
-
     .ion-ios-camera {
       font-size: 140px;
-
       p {
-      margin-top: 64px;
-      font-size: 64px;
+        margin-top: 64px;
+        font-size: 64px;
       }
     }
   }
-
   .alert {
     padding: 7px !important;
   }
 }
-
 .modal {
   .modal-header {
     height: 50px;
-
     .modal-title {
       float: left;
     }
@@ -45,205 +35,185 @@
       margin-right: 10px;
     }
   }
-
-    .input-date {
-      margin-bottom: 15px;
-      padding: 0 !important;
+  .modal-submit {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .input-contents {
+    .form-control {
+      border-color: #eee !important;
+      border-radius: 0px !important;
+      -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0) !important;
+    }
+  }
+  .input-date {
+    .btn {
+      border-radius: 0px;
+      padding: 4px 10px 4px 10px !important;
+    }
+    .date-button {
       text-align: center;
-
-      .form-control {
-        border: 1px solid #eee;
-        border-radius: 0px;
-        -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0);
-        box-shadow: 0 !important;
-        width: 23%;
-        height: 27px !important;
-        margin-right: 5px !important;
-      }
-
-      span {
-        padding: 2px 0px 0px 0px !important;
-        margin: 0px 0px 0px 0px !important;
-      }
-
-      option {
-        padding-right: 0px !important;
-      }
-
-      select {
-        padding-left: 0px !important;
-        margin-left: 0px !important;
-        width: 60px !important;
-        text-align-last: center !important
-      }
-
-      .date_month {
-        text-align-last: center;
+      width: 100% !important;
+      padding-left: 5px;
+    }
+    .btn-default {
+      border-color: #eee;
+    }
+    select {
+      padding-left: 0px !important;
+      margin-left: 0px !important;
+      width: 60px !important;
+      text-align-last: center !important
+    }
+    .date_month {
+      text-align-last: center;
+    }
+    .btn-danger {
+      background-color: #FF5E4F !important;
+      border-color: #FF5E4F !important;
+    }
+    .dropdown-menu {
+      min-width: 90px;
+      a {
+        text-align: center;
       }
     }
-
-    .attachment-input {
-      text-align: center;
-      overflow: auto;
-
-      input[type="file"] {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip:rect(0,0,0,0);
-        border: 0;
+  }
+  .attachment-input {
+    text-align: center;
+    overflow: auto;
+    input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    label {
+      float: right;
+      display: inline-block;
+      padding: .5em .75em;
+      color: #999;
+      font-size: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid #ebebeb;
+      border-bottom-color: #e2e2e2;
+      color: #000;
+      font-weight: 200;
+      margin-bottom: 0px !important;
+    }
+    .attachment-label {
+      float: left;
+      display: inline-block;
+      padding: .5em .75em;
+      font-size: inherit;
+      font-family: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      border: 1px solid #eee !important;
+      border-bottom-color: #e2e2e2;
+      border-radius: .25em;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 75%;
+    }
+  }
+  .input-group {
+    .input-group-btn {
+      .btn-info {
+        height: 34px;
+        padding: 1px 10px 1px 10px !important;
       }
-
-      label {
-        float: right;
-        display: inline-block;
-        padding: .5em .75em;
-        color: #999;
-        font-size: inherit;
-        line-height: normal;
-        vertical-align: middle;
-        cursor: pointer;
-        border: 1px solid #ebebeb;
-        border-bottom-color: #e2e2e2;
-        color: #000;
-        font-weight: 200;
-        margin-bottom: 0px !important;
-      }
-
-      .attachment-label {
-        float: left;
-        display: inline-block;
-        padding: .5em .75em;
-        font-size: inherit;
-        font-family: inherit;
-        line-height: normal;
-        vertical-align: middle;
-        border: 1px solid #eee !important;
-        border-bottom-color: #e2e2e2;
-        border-radius: .25em;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 75%;
+      .ionicons {
+        top: 3px;
       }
     }
-
-    .input-group {
-      .input-group-btn {
-        .btn-info {    
-          height: 34px;
-          padding: 1px 10px 1px 10px !important;
-        }
-
-        .ionicons {
-          top: 3px;
-        }
-      }
-
     select {
       margin: 0 auto;
     }
-
     .ionicons {
       position: relative;
       font-size: 24px;
       top: 1px;
       margin-right: 3px;
     }
-
     h4 {
       display: inline-block;
       margin-top: 0;
       margin-right: 20px;
     }
   }
-
-  #submit {
-    margin-bottom: 10px;
-  }
-
   #attachment-thumbnail {
     display: none;
     width: 100%;
     margin-bottom: 10px;
     height: auto;
   }
-
   .modal-body {
     padding-bottom: 0px;
   }
 }
-
 .posts {
-  padding-top: 33px;
-
+  padding-top: 32px;
   .post {
     .show-image {
       width: 100%;
       padding-top: 0px;
       padding-bottom: 0px;
-
       .time-right {
         text-align: right;
         margin: 0px 15px 0px 15px;
         padding: 5px 3px 5px 0px;
         font-weight: bold;
         font-size: 13px;
-
         i {
           float: left;
           margin-top: 3px;
         }
       }
     }
-
     .panel-body {
       padding: 0px !important;
-
       .ionicons {
         margin-top: -3px !important;
         font-size: 24px;
       }
     }
-
     .photo-info {
       padding: 5px 10px 5px 10px;
       background-color: #f6f6f6;
       font-weight: 200;
-
       .attendance-info {
         display: inline-block;
       }
-
       .comment-info {
         display: inline-block;
         float: right;
       }
-
       .ionicons {
         position: relative;
         font-size: 18px;
         top: 2px;
         margin: 0px px 0px 5px;
       }
-
       p {
         display: inline-block;
         margin: 0px 0px 0px 0px;
       }
     }
-
     .content {
       margin: 10px 15px 20px 15px;
       padding-bottom: 15px;
-      border-bottom: 1px solid #eee;  
+      border-bottom: 1px solid #eee;
     }
   }
 }
-
 a#btn-new-post {
   position: fixed;
   bottom: 0;
@@ -252,19 +222,16 @@ a#btn-new-post {
   height: 50px;
   line-height: 30px;
 }
-
 .course-shortlink {
   text-align: center;
   background-color: #eee;
   width: 100%;
   margin: 40px 0px 10px 0px;
   position: absolute;
-
   padding-top: 7px;
   padding-bottom: 7px;
-
   p {
     margin-bottom: 2px;
     text-style: bold;
-  }  
+  }
 }

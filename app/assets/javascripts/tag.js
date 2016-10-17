@@ -8,7 +8,6 @@ TagRequest.prototype.serverRequest = function(type, url, data, success) {
     data: data,
     dataType: 'json',
     success: function(response) {
-      console.log(response);
       if (response.status == "success") {
         success(response.data);
       }
@@ -103,16 +102,33 @@ function renderTags(tags) {
     $('.photo img').after($face);
 
     if(tag.user) {
+      var $tag = $('<div class="tag" />');
+      $tag.attr("data-user-id", tag.user_id);
+
+      var $tagName = $('<span class="tag-name">' + tag.user.name + '</span>');
+
+      $tag.append($tagName);
+
       if (tag.delete)
       {
-        aElement = '<a class="tag-cancel" data-photo-id="' + tag.photo_id + '" data-user-id="' + tag.user_id + '" class="tag-delete"><span class="ionicons ion-ios-close-outline" aria-hidden="true"></span></a>'
+        var $tagCancel = $('<span class="tag-cancel" />');
+
+        var $tagDelete = $('<a class="tag-delete" />');
+
+        var $tagIcon = $('<span class="ionicons ion-ios-close-outline" aria-hidden="true" />');
+
+        $tagCancel.attr({
+          "data-photo-id": tag.photo_id,
+          "data-user-id": tag.user_id
+        });
+
+        $tagCancel.append($tagDelete);
+        $tagCancel.append($tagIcon);
+
+        $tag.append($tagCancel);
       }
 
-      nameElement = '<div class="name">' + tag.user.name +'</div>';
-      spanElement = '<span>' + nameElement + aElement +'</span>';
-      tagElement = '<div class="tag" data-user-id="' + tag.user_id + '">' + spanElement + '</div>';
-
-      $('.tags').append(tagElement);
+      $('.tags').append($tag);
     }
   });
 }
@@ -131,8 +147,7 @@ $(document).on('turbolinks:load', function() {
     tagRequest.getTags(photo_id);
 
     $('.tags').on("click", '.tag-cancel', function(e) {
-      var $this = $(this);
-      var user_id = $this.data('user-id');
+      var user_id = $(this).data('user-id');
 
       tagRequest.removeTag(photo_id, user_id);
     });
@@ -162,6 +177,6 @@ $(document).on('turbolinks:load', function() {
 
   var grid = new Grid();
 
-  $('.attendance').on("mouseenter", ".tag", grid.activeGrid);
-  $('.attendance').on("mouseleave", ".tag", grid.deactiveGrid);
+  $('.tags').on("mouseenter", ".tag", grid.activeGrid);
+  $('.tags').on("mouseleave", ".tag", grid.deactiveGrid);
 });
