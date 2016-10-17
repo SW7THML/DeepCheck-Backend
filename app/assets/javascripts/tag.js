@@ -56,26 +56,20 @@ TagRequest.prototype.removeTag = function(photo_id, tag_id) {
   });
 };
 
-var Grid = function(){
-};
+// var Grid = function(){
+// };
 
-Grid.prototype.activeGrid = function(){
-  var user_id = $(this).data("user-id");
-  var grid_id = '#grid-' + user_id;
-  $(grid_id)
+activeGrid = function(tag_id){
+  $('#grid-' + tag_id)
     .removeClass('tag-leaved')
     .addClass('tag-selected');
 };
 
-Grid.prototype.deactiveGrid = function(){
-  var user_id = $(this).data("user-id");
-  var grid_id = '#grid-' + user_id;
-
-  $(grid_id)
+deactiveGrid = function(tag_id){
+  $('#grid-' + tag_id)
     .removeClass('tag-selected')
     .addClass('tag-leaved');
 };
-
 
 function renderTags(tags) {
   $('.face-grid').remove();
@@ -91,7 +85,7 @@ function renderTags(tags) {
     var spanElement = null;
     var tagElement = null;
 
-    $face = $('<div class="face-grid" data-photo-id="' + tag.photo_id + '" id="grid-' + tag.user_id + '" data-tag-id="' + tag.id + '" />');
+    $face = $('<div class="face-grid" id="grid-' + tag.id +'" />');
     $face.css({
       left: tag.x * scaleX,
       top: tag.y * scaleY,
@@ -103,7 +97,7 @@ function renderTags(tags) {
 
     if(tag.user) {
       var $tag = $('<div class="tag" />');
-      $tag.attr("data-user-id", tag.user_id);
+      $tag.attr("data-tag-id", tag.id);
 
       var $tagName = $('<span class="tag-name">' + tag.user.name + '</span>');
 
@@ -112,15 +106,8 @@ function renderTags(tags) {
       if (tag.delete)
       {
         var $tagCancel = $('<span class="tag-cancel" />');
-
         var $tagDelete = $('<a class="tag-delete" />');
-
         var $tagIcon = $('<span class="ionicons ion-ios-close-outline" aria-hidden="true" />');
-
-        $tagCancel.attr({
-          "data-photo-id": tag.photo_id,
-          "data-user-id": tag.user_id
-        });
 
         $tagCancel.append($tagDelete);
         $tagCancel.append($tagIcon);
@@ -137,7 +124,7 @@ $(document).on('turbolinks:load', function() {
   $('.photo-attachment').load(function() {
     var tagRequest = new TagRequest();
 
-    var photo_id = $(".photo").data('photo-id');
+    var photo_id = $(this).parent().data('photo-id');
 
     var offsetSize = 0.125;
     var grid_size = parseInt($(this).css('width')) * offsetSize;
@@ -147,14 +134,12 @@ $(document).on('turbolinks:load', function() {
     tagRequest.getTags(photo_id);
 
     $('.tags').on("click", '.tag-cancel', function(e) {
-      var user_id = $(this).data('user-id');
-
-      tagRequest.removeTag(photo_id, user_id);
+      var tag_id = $(this).parent().data('tag-id');
+      tagRequest.removeTag(photo_id, tag_id);
     });
 
     $('.photo').on("click", '.face-grid', function(e) {
       var tag_id = $(this).data('tag-id');
-
       tagRequest.updateTag(photo_id, tag_id);
     });
 
@@ -175,8 +160,11 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  var grid = new Grid();
+  $('.tags').on("mouseenter", ".tag", function (e) {
+    activeGrid($(this).data("tag-id"));
+  });
 
-  $('.tags').on("mouseenter", ".tag", grid.activeGrid);
-  $('.tags').on("mouseleave", ".tag", grid.deactiveGrid);
+  $('.tags').on("mouseleave", ".tag", function (e) {
+    deactiveGrid($(this).data("tag-id"));
+  });
 });

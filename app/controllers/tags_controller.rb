@@ -75,10 +75,10 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    tagged_user = @photo.tagged_users.find_by_user_id(params[:id])
+    tag = @photo.tagged_users.find(params[:id])
     course = @photo.post.course
 
-    if not current_user.manager?(course) and tagged_user.user_id != current_user.id
+    if not current_user.manager?(course) and tag.user_id != current_user.id
       render :json => {
         status: "failure",
         message: "삭제 권한이 없습니다.",
@@ -87,7 +87,7 @@ class TagsController < ApplicationController
       return
     end
 
-    tagged_user.destroy
+    tag.destroy
 
     tagged_users = TaggedUser.where(:photo_id => params[:photo_id])
     render :json => {
