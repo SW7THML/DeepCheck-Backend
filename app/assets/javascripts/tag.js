@@ -139,7 +139,7 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('.photo').on("click", '.face-grid', function(e) {
-      var tag_id = $(this).data('tag-id');
+      var tag_id = $(this).attr('id').slice(5);
       tagRequest.updateTag(photo_id, tag_id);
     });
 
