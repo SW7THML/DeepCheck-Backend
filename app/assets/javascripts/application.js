@@ -33,14 +33,20 @@ $(document).on('turbolinks:load', function() {
       //browser
       $('.navigation-header').addClass('ios-nav');
       $('.main-container').addClass('ios-nav');
+      $('.posts').addClass('ios-body');
+      $('.photos').addClass('ios-body');
     } else if ( standalone && !safari ) {
       //standalone
       $('.navigator-header').addClass('ios-nav');
       $('.main-container').addClass('ios-nav');
+      $('.posts').addClass('ios-body');
+      $('.photos').addClass('ios-body');
     } else if ( !standalone && !safari ) {
       //uiwebview
       $('.navigation-header').addClass('ios-nav');
       $('.main-container').addClass('ios-nav');
+      $('.posts').addClass('ios-body');
+      $('.photos').addClass('ios-body');
     };
   } else {
     //not iOS
