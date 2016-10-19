@@ -161,10 +161,16 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('.tags').on("mouseenter", ".tag", function (e) {
+    $(this).find('.tag-name')
+      .addClass('tag-selected')
+      .removeClass('tag-removed');
     activeGrid($(this).data("tag-id"));
   });
 
   $('.tags').on("mouseleave", ".tag", function (e) {
+    $(this).find('.tag-name')
+      .removeClass('tag-selected')
+      .addClass('tag-removed');
     deactiveGrid($(this).data("tag-id"));
   });
 });
