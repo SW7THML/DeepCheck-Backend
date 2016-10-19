@@ -59,16 +59,24 @@ TagRequest.prototype.removeTag = function(photo_id, tag_id) {
 // var Grid = function(){
 // };
 
-activeGrid = function(tag_id){
-  $('#grid-' + tag_id)
+activeTag = function(tag_id){
+  $(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name')
     .removeClass('tag-leaved')
     .addClass('tag-selected');
+
+  $('#grid-' + tag_id)
+    .removeClass('grid-leaved')
+    .addClass('grid-selected');
 };
 
-deactiveGrid = function(tag_id){
-  $('#grid-' + tag_id)
+deactiveTag = function(tag_id){
+  $(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name')
     .removeClass('tag-selected')
     .addClass('tag-leaved');
+
+  $('#grid-' + tag_id)
+    .removeClass('grid-selected')
+    .addClass('grid-leaved');
 };
 
 function renderTags(tags) {
@@ -161,16 +169,10 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('.tags').on("mouseenter", ".tag", function (e) {
-    $(this).find('.tag-name')
-      .addClass('tag-selected')
-      .removeClass('tag-removed');
-    activeGrid($(this).data("tag-id"));
+    activeTag($(this).data("tag-id"));
   });
 
   $('.tags').on("mouseleave", ".tag", function (e) {
-    $(this).find('.tag-name')
-      .removeClass('tag-selected')
-      .addClass('tag-removed');
-    deactiveGrid($(this).data("tag-id"));
+    deactiveTag($(this).data("tag-id"));
   });
 });

@@ -12,6 +12,14 @@
       height: auto;
     }
 
+    .grid-selected {
+      border-color: #ffffff !important;
+    }
+    
+    .grid-leaved {
+      border-color: #00aaff !important;
+    }
+
     .face-grid {
       display: block;
       position: absolute;
@@ -46,18 +54,33 @@
   }
 
   .tags {
-    padding: 10px 10px 10px 10px;
-    margin: 0px 10px 0px 10px;
-    width: 80px;
+    padding: 10px 0px 10px 0px;
+    margin-right: 20px;
+    text-align: center;
 
-    .tag-name {
-      padding-right: 3px;
-      width: 50px;
-      font-weight: 600;
+    .tag {
+      display: inline-block;
+      margin-left: 12px;
+      margin-right: 12px;
+
+
+      .tag-name {
+        padding-right: 3px;
+        width: 50px;
+        font-weight: 600;
+      }
+
+      .tag-cancel {
+        font-size: 14px !important; 
+      }
     }
 
-    .tag-cancel {
-      font-size: 14px !important; 
+    .tag-selected {
+      color: #999 !important;
+    }
+
+    .tag-leaved {
+      color: #000 !important;
     }
   }
 

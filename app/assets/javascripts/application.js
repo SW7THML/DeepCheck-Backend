@@ -50,7 +50,6 @@ $(document).on('turbolinks:load', function() {
 $(document).on('turbolinks:load', function() {
   $('.ion-ios-arrow-back').click(function(e) {
     window.history.back();
-    console.log("back");
     e.preventDefault();
     return false;
   })
