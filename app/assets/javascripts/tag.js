@@ -138,6 +138,14 @@ function renderTags(tags) {
 
 $(document).on('turbolinks:load', function() {
   $('.photo-attachment').load(function() {
+    if ($(this).data('loaded') == undefined)
+    {
+      $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
+      $(this).data('loaded', 'true'); 
+    } else {
+      return;
+    }
+
     var tagRequest = new TagRequest();
 
     var photo_id = $(this).parent().data('photo-id');
@@ -146,13 +154,6 @@ $(document).on('turbolinks:load', function() {
     var grid_size = parseInt($(this).css('width')) * offsetSize;
     var offsetY = -grid_size / 2;
     var offsetX = -grid_size / 2;
-
-
-    if ($(this).data('loaded') == undefined)
-    {
-      $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
-      $(this).data('loaded', 'true'); 
-    }
 
     tagRequest.getTags(photo_id);
 
