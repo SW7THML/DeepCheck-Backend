@@ -76,6 +76,14 @@ class TagsController < ApplicationController
 
   def destroy
     tag = @photo.tagged_users.find(params[:id])
+    
+    if tag.blank?
+      render :json => {
+        status: "failure",
+        message: "이미 삭제된 태그입니다.",
+      }
+    end
+
     course = @photo.post.course
 
     if not current_user.manager?(course) and tag.user_id != current_user.id

@@ -23,7 +23,7 @@
 
 <% if @course.posts.blank? %>
   <div class="no-post">
-    <% if not current_user.manager?(@course) %>
+    <% if current_user.manager?(@course) %>
       <div class="no-photo" data-id="<%= @course.id %>">
         <p class="ionicons ion-ios-camera"></p>
         <div class="text-center">
