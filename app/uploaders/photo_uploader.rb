@@ -12,6 +12,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def callback_method file
     puts self.version_name
     self.model.process
+    self.model.update(:status => 1)
   end
 
   # Choose what kind of storage to use for this uploader:
