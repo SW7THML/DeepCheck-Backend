@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require sweetalert.min
 //= require_self
 //= require_tree .
 
@@ -52,3 +53,37 @@ $(document).on('turbolinks:load', function() {
     //not iOS
   };
 })
+
+$.rails.allowAction = function(link){
+	if (link.data("confirm") == undefined){
+		return true;
+	}
+	$.rails.showConfirmationDialog(link);
+	return false;
+}
+//User click confirm button
+$.rails.confirmed = function(link){
+	link.data("confirm", null);
+	link.trigger("click.rails");
+}
+//Display the confirmation dialog
+$.rails.showConfirmationDialog = function(link){
+	var message = link.data("confirm");
+
+	swal({
+		title: "",
+		text: message,
+		showCancelButton: true,
+		closeOnConfirm: false,
+		showLoaderOnConfirm: true,
+		cancelButtonText: "취소",
+		confirmButtonText: "삭제",
+		confirmButtonColor: "#FF5E4F",
+		animation: false,
+	}, function() {
+		$.rails.confirmed(link);  
+		setTimeout(function(){
+			swal("Ajax request finished!");   
+		}, 2000);
+	});
+}
