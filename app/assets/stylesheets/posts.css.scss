@@ -179,11 +179,15 @@
 
 .posts {
   padding-top: 42px;
+
   .post {
     .show-image {
       width: 100%;
+      height: 50% !important;
+
       padding-top: 0px;
       padding-bottom: 0px;
+
       .time-right {
         text-align: right;
         margin: 0px 15px 0px 15px;
@@ -195,7 +199,9 @@
           margin-top: 3px;
         }
       }
+
     }
+
     .panel-body {
       padding: 0px !important;
       .ionicons {

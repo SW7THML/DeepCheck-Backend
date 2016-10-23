@@ -45,7 +45,7 @@
           <div class="post-photo" id="photo-<%= photo.id %>">
             <div class="show-image panel-body">
               <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-                <img class="photo show-image" src="<%= photo.attachment %>">
+                <img class="photo" src="<%= photo.attachment.thumbnail.url %>">
               </a>
 
               <div class="time-right taggednot">
@@ -92,3 +92,10 @@
 <% end %>
 
 <%= render "modal" %>
+
+
+<script>
+  $(function(){
+    fit_photo_width();
+  });
+</script>
