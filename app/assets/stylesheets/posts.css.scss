@@ -51,7 +51,7 @@
   .input-date {
     .btn {
       border-radius: 0px;
-      padding: 4px 10px 4px 10px !important;
+      padding: 8px 10px 8px 10px !important;
     }
     .date-button {
       text-align: center;
@@ -59,6 +59,8 @@
       padding-left: 0;
       .form-control {
         border: 1px solid #eee !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
       }
     }
     .btn-default {
