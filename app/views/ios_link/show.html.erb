@@ -48,21 +48,30 @@
   #course img {
     width: 180px;
   }
-  #course p {
-    font-size: 20px;
-  }
-  .course-name {
+
+  .course-title {
     text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .course-name {
+    font-size: 17px;
   }
 </style>
 
 <div id="info">
   <div id="course" class="course-div">
     <%= image_tag("course_icons/#{@course.icon_id}.png", :class => "img-circle index-img img-thumbnail") %>
-    <p class="course-name link"><strong><%= @course.name %></strong></p>
+    <div class="course course-title link">
+      <strong>
+        강의명
+        <p class="course-name"><%= @course.name %></p>
+      </strong>
+    </div>
   </div>
 </div>
 
 <div>
-  <a id="btn-new-post" class="btn btn-primary btn-block btn-lg" onclick="join()" data-disable-with="잠시만 기다려주세요.">조인하기</a>
+  <a id="btn-new-post" class="btn btn-primary btn-block btn-lg" onclick="join()" data-disable-with="잠시만 기다려주세요.">Deepcheck 앱으로 이동</a>
 </div>
