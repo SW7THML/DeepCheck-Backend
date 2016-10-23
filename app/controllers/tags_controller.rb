@@ -75,7 +75,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    tag = @photo.tagged_users.find(params[:id])
+    tag = TaggedUser.where(:id => params[:id]).first
     
     if tag.blank?
       render :json => {
