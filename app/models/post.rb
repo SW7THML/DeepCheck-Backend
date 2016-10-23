@@ -7,7 +7,7 @@
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  taken_at   :datetime
+#  taken_at   :date             default(NULL)
 #
 
 class Post < ApplicationRecord
@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   after_initialize :set_taken_at
 
   def set_taken_at
-    self.taken_at = Time.now
+    self.taken_at ||= Time.now
   end
 
   def self.latest
