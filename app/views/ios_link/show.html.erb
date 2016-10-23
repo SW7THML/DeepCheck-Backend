@@ -3,20 +3,27 @@
 	ios = /iphone|ipod|ipad/.test( userAgent );
 
   function join() {
-    var url = "deepcheck://join?course_id=<%= @course.id %>";
-    window.location = url;
-
 		var appstore_url = "http://naver.com";
-		setTimeout(function() {
-			if(ios) {
-				window.location = appstore_url;
-			}
-		}, 25);
+		var play_url = "http://naver.com";
+
+		if(ios) {
+			window.location = appstore_url;
+		} else {
+			var url = "deepcheck://join?course_id=<%= @course.id %>";
+			window.location = url;
+
+			setTimeout(function() {
+				if(ios) {
+					window.location = play_url;
+				}
+			}, 25);
+		}
   }
 
 	setTimeout(function() {
 		if(ios) {
-			join();
+			var url = "deepcheck://join?course_id=<%= @course.id %>";
+			window.location = url;
 		}
 	}, 25);
 </script>
