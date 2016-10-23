@@ -9,7 +9,7 @@
   <% @post.photos.each do |photo| %>
 
     <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
-      <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
+      <%= image_tag photo.attachment.url, class: 'photo-attachment', data: {width: photo.width, height: photo.height} %>
     </div>
 
     <div class="tags">
@@ -42,3 +42,9 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(function(){
+    fit_photo_height();
+  });
+</script>
