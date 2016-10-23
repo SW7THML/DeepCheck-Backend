@@ -82,6 +82,7 @@ class TagsController < ApplicationController
         status: "failure",
         message: "이미 삭제된 태그입니다.",
       }
+      return
     end
 
     course = @photo.post.course
@@ -91,7 +92,6 @@ class TagsController < ApplicationController
         status: "failure",
         message: "삭제 권한이 없습니다.",
       }
-
       return
     end
 
