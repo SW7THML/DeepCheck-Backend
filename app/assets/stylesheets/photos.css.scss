@@ -74,6 +74,14 @@
 
       .tag-cancel {
         font-size: 14px !important; 
+        position: relative;
+
+        i.ionicons {
+          position: relative;
+          top: 2px;
+          font-size: 18px;
+          margin-left: 2px;
+        }
       }
     }
 
@@ -84,13 +92,6 @@
     .tag-leaved {
       color: #000 !important;
     }
-  }
-
-  .ionicons {
-    position: absolute;
-    font-size: 18px;
-    margin-top: 0px;
-    margin-left: 2px;
   }
 
   .content {

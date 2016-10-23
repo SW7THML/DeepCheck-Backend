@@ -122,12 +122,9 @@ function renderTags(tags) {
       if (tag.delete)
       {
         var $tagCancel = $('<span class="tag-cancel" />');
-        var $tagDelete = $('<a class="tag-delete" />');
-        var $tagIcon = $('<span class="ionicons ion-ios-close-outline" aria-hidden="true" />');
+        var $tagIcon = $('<i class="ionicons ion-ios-close-outline" aria-hidden="true" />');
 
-        $tagCancel.append($tagDelete);
         $tagCancel.append($tagIcon);
-
         $tag.append($tagCancel);
       }
 
