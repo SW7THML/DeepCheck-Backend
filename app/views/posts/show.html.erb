@@ -9,7 +9,7 @@
   <% @post.photos.each do |photo| %>
 
     <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
-      <%= image_tag photo.attachment.url.gsub('upload', 'upload/w_' + '400'), class: 'photo-attachment', data: {width: photo.width, height: photo.height} %>
+      <%= image_tag photo.attachment.url.gsub('upload', 'upload/w_128'), class: 'photo-attachment', data: {width: photo.width, height: photo.height} %>
     </div>
 
     <div class="tags">

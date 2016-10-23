@@ -147,6 +147,13 @@ $(document).on('turbolinks:load', function() {
     var offsetY = -grid_size / 2;
     var offsetX = -grid_size / 2;
 
+
+    if ($(this).data('loaded') == undefined)
+    {
+      $(this).attr('src', $(this).attr('src').replace('/w_128', '/w_' + parseInt($('html').css('width'))));
+      $(this).data('loaded', 'true'); 
+    }
+
     tagRequest.getTags(photo_id);
 
     $('.tags').on("click", '.tag-cancel', function(e) {
