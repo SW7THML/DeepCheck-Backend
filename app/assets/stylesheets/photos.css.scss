@@ -56,7 +56,8 @@
 
   .tags {
     padding: 10px 0px 10px 0px;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 
     .tag {
       display: inline-block;
@@ -87,7 +88,7 @@
   .ionicons {
     position: absolute;
     font-size: 18px;
-    margin-top: -1px;
+    margin-top: 0px;
     margin-left: 2px;
   }
 
@@ -119,7 +120,7 @@
 
 .comments {
   margin: 20px 15px;
-  margin-bottom: 55px;
+  margin-bottom: 100px;
 
   p {
     position: relative;

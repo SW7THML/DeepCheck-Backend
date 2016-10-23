@@ -45,7 +45,7 @@
           <div class="post-photo" id="photo-<%= photo.id %>">
             <div class="show-image panel-body">
               <a class="photo-detail-link" href="/courses/<%= @course.id %>/posts/<%= post.id %>" data-course-id="<%= @course.id %>"  data-post-id="<%= post.id %>" data-photo-id="<%= photo.id %>">
-                <img class="photo" src="<%= photo.attachment.thumbnail.url.gsub('/upload/', '/upload/w_128/') %>">
+                <img class="photo" src="<%= photo.attachment.thumbnail.url.gsub('/upload/', '/upload/w_64/') %>">
               </a>
 
               <div class="time-right taggednot">

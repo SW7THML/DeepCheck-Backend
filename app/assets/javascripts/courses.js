@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
   $('img.photo').load(function(e) {
     if ($(this).data('loaded') == undefined)
     {
-      $(this).attr('src', $(this).attr('src').replace('/w_128', '/w_' + parseInt($('html').css('width'))));
+      $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
       $(this).data('loaded', 'true'); 
     }
   });
