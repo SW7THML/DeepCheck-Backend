@@ -91,7 +91,7 @@ class User < ApplicationRecord
     })
   end
 
-  def manager
+  def manage_course
     self.courses.where(:manager_id => self.id)
   end
 

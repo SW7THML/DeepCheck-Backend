@@ -10,6 +10,14 @@ TagRequest.prototype.serverRequest = function(type, url, data, success) {
     success: function(response) {
       if (response.status == "success") {
         success(response.data);
+      } else {
+        swal({
+          title: "",
+          text: response.message,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#FF5E4F",
+          animation: false,
+        })
       }
     }
   });
@@ -138,6 +146,13 @@ $(document).on('turbolinks:load', function() {
     var grid_size = parseInt($(this).css('width')) * offsetSize;
     var offsetY = -grid_size / 2;
     var offsetX = -grid_size / 2;
+
+
+    if ($(this).data('loaded') == undefined)
+    {
+      $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
+      $(this).data('loaded', 'true'); 
+    }
 
     tagRequest.getTags(photo_id);
 

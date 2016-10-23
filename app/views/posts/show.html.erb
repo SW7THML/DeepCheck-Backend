@@ -1,6 +1,6 @@
 <div class="navigation-header" align="center">
   <div class="menu menu-left">
-    <%= link_to '', courses_path, class: "ionicons ion-ios-arrow-back" %>
+    <%= link_to '', course_path(@post.course), class: "ionicons ion-ios-arrow-back" %>
   </div>
   <h1><%= @post_title %></h1>
 </div>
@@ -9,7 +9,7 @@
   <% @post.photos.each do |photo| %>
 
     <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
-      <%= image_tag photo.attachment.url, class: 'photo-attachment', data: {width: photo.width, height: photo.height} %>
+      <%= image_tag photo.attachment.url.gsub('upload', 'upload/w_64'), class: 'photo-attachment', data: {width: photo.width, height: photo.height} %>
     </div>
 
     <div class="tags">

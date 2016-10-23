@@ -11,6 +11,14 @@ $(document).on('turbolinks:load', function() {
       $('.search-input').css('display', 'inline-block');
   });
 
+  $('img.photo').load(function(e) {
+    if ($(this).data('loaded') == undefined)
+    {
+      $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
+      $(this).data('loaded', 'true'); 
+    }
+  });
+
   $('#new-post').on("click", function(e) {
     show_modal();
   });

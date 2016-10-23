@@ -13,7 +13,6 @@
       <% end %>
     </div>
 
-    <% if current_user == @user %>
     
     <div class="info">
       <ul class="dl-horizontal">
@@ -26,39 +25,20 @@
         <li>
           <strong>진행중인 강의</strong>
           <div class="text-right">
-            <%= @user.courses.count %>
+            <%= @user.manage_course.count %>
           </div>
         </li>
       </ul>
-        <!--
-        <button type="button" id="profile-edit" class="btn btn-default btn-xs">프로필 편집</button>
-        -->
-      <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
+
+      <% if current_user == @user %>
+        <button type="button" id="logout" onclick="location.href='/signout'" class="btn btn-danger btn-xs">
           <i class="ionicons ion-power"></i>
           <span>로그아웃</span>
         </button>
+      <% end %>
     </div>
   
     <% else %>
-
-    <div class="info not-user">
-      <ul class="dl-horizontal">
-        <li>
-          <strong>참여중인 강의</strong>
-          <div class="text-right">
-            <%= @user.courses.count %>
-          </div>
-        </li>
-        <li>
-          <strong>진행중인 강의</strong>
-          <div class="text-right">
-            <%= @user.manager.count %>
-          </div>
-        </li>
-      </ul>
-    </div>
-    
-    <% end %>
   </div>
 
   <div class="photo-list">
