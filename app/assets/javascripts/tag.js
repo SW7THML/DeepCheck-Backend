@@ -67,6 +67,14 @@ TagRequest.prototype.removeTag = function(photo_id, tag_id) {
 // var Grid = function(){
 // };
 
+toggleTag = function(tag_id) {
+  if($(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name').hasClass('tag-selected')) {
+    deactiveTag(tag_id);
+  } else {
+    activeTag(tag_id);
+  }
+}
+
 activeTag = function(tag_id){
   $(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name')
     .removeClass('tag-leaved')
@@ -135,7 +143,8 @@ function renderTags(tags) {
 
 $(document).on('turbolinks:load', function() {
   $('.photo-attachment').load(function() {
-    if ($(this).data('loaded') == undefined)
+
+    if ($(this).data('loaded') != 'true')
     {
       $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
       $(this).data('loaded', 'true'); 
@@ -181,11 +190,13 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $('.tags').on("mouseenter", ".tag", function (e) {
-    activeTag($(this).data("tag-id"));
-  });
-
-  $('.tags').on("mouseleave", ".tag", function (e) {
-    deactiveTag($(this).data("tag-id"));
+  $('.tags').on("click", ".tag", function (e) {
+    toggleTag($(this).data("tag-id"));
   });
 });
+
+
+document.addEventListener("turbolinks:before-cache", function() {
+  $('.face-grid').remove();
+  $('.tag').remove();
+})
