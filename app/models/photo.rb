@@ -104,9 +104,9 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.detect(img_url)
     faces = JSON.parse(res.body)
-		if json["error"].nil?
+		if faces["error"].nil?
 			logger.info faces
-			self.update(:status => 2, :msg => json["error"]["message"])
+			self.update(:status => 2, :msg => faces["error"]["message"])
 		else
 			faces.each do |face|
 				fid = face["faceId"]
