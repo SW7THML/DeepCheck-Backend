@@ -91,6 +91,10 @@ class User < ApplicationRecord
     })
   end
 
+  def manager
+    self.courses.where(:manager_id => self.id)
+  end
+
   def enrolled?(course)
     course.users.exists?(self.id)
   end

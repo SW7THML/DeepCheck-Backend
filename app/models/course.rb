@@ -32,7 +32,7 @@ class Course < ApplicationRecord
     options[:only] ||= [:name]
     super(options)
   end
-  
+
   def generate_short_link
     host_name = Rails.configuration.host_name
     link = ios_link_course_url(self, host: host_name)
