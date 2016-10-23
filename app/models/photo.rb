@@ -57,7 +57,8 @@ class Photo < ApplicationRecord
 
   def identify
     # need to train
-    self.post.course.train
+    trained = self.post.course.train
+		return if trained == false
 
     face_ids = self.tagged_users.map {|tu| tu.fid}
     face_ids = face_ids.compact.reject(&:blank?)
