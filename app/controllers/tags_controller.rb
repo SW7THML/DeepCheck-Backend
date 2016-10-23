@@ -76,7 +76,7 @@ class TagsController < ApplicationController
 
   def destroy
     tag = @photo.tagged_users.find(params[:id])
-    
+
     if tag.blank?
       render :json => {
         status: "failure",

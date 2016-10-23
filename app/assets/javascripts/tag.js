@@ -135,7 +135,8 @@ function renderTags(tags) {
 
 $(document).on('turbolinks:load', function() {
   $('.photo-attachment').load(function() {
-    if ($(this).data('loaded') == undefined)
+
+    if ($(this).data('loaded') != 'true')
     {
       $(this).attr('src', $(this).attr('src').replace('/w_64', '/w_' + parseInt($('html').css('width'))));
       $(this).data('loaded', 'true'); 
@@ -189,3 +190,9 @@ $(document).on('turbolinks:load', function() {
     deactiveTag($(this).data("tag-id"));
   });
 });
+
+
+document.addEventListener("turbolinks:before-cache", function() {
+  $('.face-grid').remove();
+  $('.tag').remove();
+})
