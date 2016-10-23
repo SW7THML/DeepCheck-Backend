@@ -7,6 +7,7 @@
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  taken_at   :datetime
 #
 
 class Post < ApplicationRecord
