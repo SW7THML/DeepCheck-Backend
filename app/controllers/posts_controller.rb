@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:course_id, :content)
+		params.require(:post).permit(:course_id, :content, :taken_at)
 	end
 
 	def course_params
