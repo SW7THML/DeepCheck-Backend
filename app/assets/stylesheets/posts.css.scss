@@ -3,21 +3,43 @@
   margin: 0 0 0 0;
   text-align: center;
   padding: 41px 0px 0px 0px;
+  
   .no-photo {
     margin: 0px 0px 60px 0px;
     width: 100%;
     position: absolute;
     top: 20%;
-    .ion-ios-camera {
-      font-size: 140px;
-      p {
-        margin-top: 64px;
-        font-size: 64px;
-      }
+  }
+
+  .ion-ios-camera {
+    font-size: 140px;
+
+    p {
+      margin-top: 64px;
+      font-size: 64px;
+    }
+  }
+  .course-shortlink {
+    text-align: center;
+    background-color: #eee;
+    width: 100%;
+    margin: 40px 0px 10px 0px;
+    position: absolute;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    p {
+      margin-bottom: 2px;
+      text-style: bold;
     }
   }
   .alert {
     padding: 7px !important;
+  }
+  .no-photo-center {
+    margin-top: 30px;
+    background-color: #eee;
+    width: 100%;
+    padding: 15px 0px 15px 0px;
   }
 }
 
@@ -250,17 +272,4 @@ a#btn-new-post {
   border: 0px;
   height: 50px;
   line-height: 30px;
-}
-.course-shortlink {
-  text-align: center;
-  background-color: #eee;
-  width: 100%;
-  margin: 40px 0px 10px 0px;
-  position: absolute;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  p {
-    margin-bottom: 2px;
-    text-style: bold;
-  }
 }
