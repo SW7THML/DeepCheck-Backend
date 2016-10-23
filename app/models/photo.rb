@@ -79,6 +79,7 @@ class Photo < ApplicationRecord
 
 		logger.info "ended"
 		logger.info faces
+		return if !faces.is_a?(Array) && !faces["error"].nil?
 		faces.each do |face|
 			fid = face["faceId"]
 			people = face["candidates"]
