@@ -110,6 +110,7 @@ class Photo < ApplicationRecord
 			logger.info faces
 			self.update(:status => 2, :msg => faces["error"]["message"])
 		else
+      self.update(:status => 1)
 			faces.each do |face|
 				fid = face["faceId"]
 				pos = face["faceRectangle"]

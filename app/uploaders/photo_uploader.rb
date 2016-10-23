@@ -13,9 +13,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def callback_method file
     puts self.version_name
     self.model.process
-    if self.model.status != 2 # TODO 2: error 1: success, 0: processing
-      self.model.update(:status => 1)
-    end
   end
 
   version :thumbnail do
