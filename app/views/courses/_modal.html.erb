@@ -17,8 +17,8 @@
 
           <div class="date-button">
             <div class="btn-group">
-              <button type="button" class="btn btn-default"><%= Date.today.year %>년
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= Date.today.year %>년
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
               </button>
@@ -38,8 +38,8 @@
             </div>
 
             <div class="btn-group">
-              <button type="button" class="btn btn-default"><%= Date.today.month %>월
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown""><%= Date.today.month %>월
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
               </button>
@@ -61,8 +61,8 @@
             </div>
 
             <div class="btn-group">
-              <button type="button" class="btn btn-default"><%= Date.today.day %>일
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= Date.today.day %>일
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
               </button>
@@ -122,6 +122,8 @@
           <div class="modal-submit">
             <%= f.submit "등록", :class => "btn btn-primary btn-bottom btn-block", :id => "submit", :disabled => "disabled", data: { disable_with: "잠시만 기다려주세요." } %>
           </div>
+
+          
         </div>
       </div>
 		</div>

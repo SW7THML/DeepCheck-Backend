@@ -8,6 +8,8 @@
 <div class="photos">
   <% @post.photos.each do |photo| %>
 
+    <%= raise @post.inspect %>
+
     <div class="photo">
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
       <% photo.tagged_users.each do |tag| %>
@@ -32,7 +34,6 @@
         </span>
       <% end %>
     </div>
-
   <% end %>
 
   <div class="content">

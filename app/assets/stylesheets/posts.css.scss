@@ -118,6 +118,8 @@
         color: #000;
         font-weight: 200;
         margin-bottom: 0px !important;
+        background-color: #eee;
+        width: 25%;
       }
 
       .attachment-label {
@@ -134,7 +136,7 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        width: 75%;
+        width: 70%;
       }
     }
 
@@ -230,8 +232,8 @@
         position: relative;
         font-size: 18px;
         top: 2px;
-        margin: 0px px 0px 5px;
-      }
+        margin: 0px 0px 0px 5px;
+     }
 
       p {
         display: inline-block;
