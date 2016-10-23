@@ -2,10 +2,23 @@
   function join() {
     var url = "deepcheck://join?course_id=<%= @course.id %>";
     window.location = url;
+
+		var userAgent = window.navigator.userAgent.toLowerCase(),
+		ios = /iphone|ipod|ipad/.test( userAgent );
+
+		var appstore_url = "http://naver.com";
+		setTimeout(function() {
+			if(ios) {
+				window.location = appstore_url;
+			}
+		}, 25);
   }
-  setTimeout(function() {
-      join();
-  }, 1000);
+
+	setTimeout(function() {
+		if(ios) {
+			join();
+		}
+	}, 25);
 </script>
 
 <style type="text/css">

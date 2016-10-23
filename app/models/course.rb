@@ -47,7 +47,11 @@ class Course < ApplicationRecord
 
   def train
     pg = MSCognitive::PersonGroup.new
-    pg.train(self.gid) unless self.gid.blank?
+    unless self.gid.blank?
+      res = pg.train(self.gid) 
+      return true if res.kind_of? Net::HTTPSuccess
+    end
+    return false
   end
 
   def status

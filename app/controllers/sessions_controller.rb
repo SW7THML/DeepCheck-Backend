@@ -10,13 +10,16 @@ class SessionsController < ApplicationController
     url = env["omniauth.params"]["redirect_url"]
     url = "/" if url.nil? || url.empty?
 
-    User.download(session[:user_id], session[:token])
+    if @user.faces.count == 0
+      User.download(session[:user_id], session[:token])
+    end
 
     redirect_to url
   end 
 
   def destroy
     session[:user_id] = nil
+    session[:token] = nil
     redirect_to '/'
   end
 

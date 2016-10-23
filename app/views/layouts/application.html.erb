@@ -27,7 +27,9 @@
     <div id="flash-message">
       <% flash.each do |message_type, message| %>
         <div class="alert <%= bootstrap_class_for(message_type) %> alert-dismissible" role="alert">
-          <button type="button" class="ionicons ion-ios-close-empty" data-dismiss="alert" aria-label="Close"></button>
+          <button type="button" data-dismiss="alert">
+            <i class="ionicons ion-ios-close-empty"></i>
+          </button>
           <span><%= message %></span>
         </div>
       <% end %>
