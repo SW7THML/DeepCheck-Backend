@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   def index
     render :json => {
       status: "success",
-      data: serialize_tag_users(@photo.tagged_users)
+      data: serialize_tag_users(@photo.tagged_users) * 10
     }.to_json
   end
 
