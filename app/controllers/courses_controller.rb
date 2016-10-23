@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
       cu.save
     end
 
-    #redirect_to root_path
+    redirect_to course_path(course)
   end
 
   def destroy
