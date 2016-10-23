@@ -19,6 +19,7 @@
       top: -50px !important        
     }
     
+
     .info {
       display: inline-block;
       font-size: 14px;
@@ -27,6 +28,10 @@
       position: relative;
       text-align: left;
       top: -28px;
+
+      .ion-power {
+        margin-right: 5px;
+      }
 
       ul {
         list-style-type: none;
@@ -48,10 +53,11 @@
 
       button {
         height: 30px;
-        padding: 5px 10px 5px 10px !important;
+        padding: 5px 10px 3px 10px !important;
         width: 100% !important;
         background-color: #FF5E4F !important;
         border: #FF5E4F;
+        font-size: 13px;
 
         p {
           font-size: 17px;
@@ -102,7 +108,7 @@
 
       .delete-photo {
         position: relative;
-        font-size: 15px;
+        font-size: 13px;
         left: 38px;
         top: -4px;
         padding-top: 4px;
