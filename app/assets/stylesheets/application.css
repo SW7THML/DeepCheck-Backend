@@ -31,6 +31,7 @@ body { font-family:'SpoqaHanSans-Regular' !important; }
 
 .ios-nav {
   padding-top: 30px;
+  height: 62px;
 }
 
 .ios-body {

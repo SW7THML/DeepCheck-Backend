@@ -20,6 +20,7 @@
     padding: 7px !important;
   }
 }
+
 .modal {
   .modal-header {
     height: 50px;
@@ -46,6 +47,7 @@
       -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0) !important;
     }
   }
+
   .input-date {
     .btn {
       border-radius: 0px;
@@ -72,26 +74,12 @@
       background-color: #FF5E4F !important;
       border-color: #FF5E4F !important;
     }
+
     .dropdown-menu {
       min-width: 90px;
       a {
         text-align: center;
       }
-    }
-  }
-  .attachment-input {
-    text-align: center;
-    overflow: auto;
-    input[type="file"] {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
     label {
       float: right;
       display: inline-block;
@@ -106,22 +94,54 @@
       color: #000;
       font-weight: 200;
       margin-bottom: 0px !important;
+      background-color: #eee;
+      width: 25%;
+      }
     }
-    .attachment-label {
-      float: left;
-      display: inline-block;
-      padding: .5em .75em;
-      font-size: inherit;
-      font-family: inherit;
-      line-height: normal;
-      vertical-align: middle;
-      border: 1px solid #eee !important;
-      border-bottom-color: #e2e2e2;
-      border-radius: .25em;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 75%;
+  }
+  .attachment-input {
+  text-align: center;
+  overflow: auto;
+  input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  label {
+    float: right;
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    color: #000;
+    font-weight: 200;
+    margin-bottom: 0px !important;
+  }
+  .attachment-label {
+    float: left;
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    border: 1px solid #eee !important;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 75%;
     }
   }
   .input-group {
@@ -130,9 +150,6 @@
         height: 34px;
         padding: 1px 10px 1px 10px !important;
       }
-      .ionicons {
-        top: 3px;
-      }
     }
     select {
       margin: 0 auto;
@@ -140,7 +157,7 @@
     .ionicons {
       position: relative;
       font-size: 24px;
-      top: 1px;
+      top: 3px;
       margin-right: 3px;
     }
     h4 {
@@ -159,6 +176,7 @@
     padding-bottom: 0px;
   }
 }
+
 .posts {
   padding-top: 42px;
   .post {
@@ -200,8 +218,8 @@
         position: relative;
         font-size: 18px;
         top: 2px;
-        margin: 0px px 0px 5px;
-      }
+        margin: 0px 0px 0px 5px;
+      }  
       p {
         display: inline-block;
         margin: 0px 0px 0px 0px;

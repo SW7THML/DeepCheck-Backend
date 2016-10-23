@@ -7,6 +7,7 @@
 
 <div class="photos" data-user-id="<%= current_user.id %>">
   <% @post.photos.each do |photo| %>
+
     <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
     </div>
