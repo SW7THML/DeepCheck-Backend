@@ -16,6 +16,12 @@ class Post < ApplicationRecord
   has_many :photos
   has_many :comments
 
+  after_initialize :set_taken_at
+
+  def set_taken_at
+    self.taken_at = Time.now
+  end
+
   def self.latest
     self.order(:created_at => :desc)
   end
