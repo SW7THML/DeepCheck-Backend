@@ -67,6 +67,14 @@ TagRequest.prototype.removeTag = function(photo_id, tag_id) {
 // var Grid = function(){
 // };
 
+toggleTag = function(tag_id) {
+  if($(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name').hasClass('tag-selected')) {
+    deactiveTag(tag_id);
+  } else {
+    activeTag(tag_id);
+  }
+}
+
 activeTag = function(tag_id){
   $(".tags").find("[data-tag-id='" + tag_id + "']").find('.tag-name')
     .removeClass('tag-leaved')
@@ -182,12 +190,8 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $('.tags').on("mouseenter", ".tag", function (e) {
-    activeTag($(this).data("tag-id"));
-  });
-
-  $('.tags').on("mouseleave", ".tag", function (e) {
-    deactiveTag($(this).data("tag-id"));
+  $('.tags').on("click", ".tag", function (e) {
+    toggleTag($(this).data("tag-id"));
   });
 });
 
