@@ -4,18 +4,15 @@
       float: left;
     }
 
-    img {
-      float: right;
-      margin: 15px 20px 0 0;
+    .preview-icon {
+      width: 128px !important;
+      height: 128px;
+      background-color: #eee;
+      margin-top: 30px !important;
+      float:right;
     }
   }
 
-  .preview-icon {
-    width: 128px !important;
-    height: 128px;
-    background-color: #eee;
-    margin-top: 30px !important;
-  }
 
   margin: 0px 15px 0px 15px;
   padding-top: 40px;
