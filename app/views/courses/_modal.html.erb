@@ -1,5 +1,5 @@
 <!-- Modal -->
-<%= form_for([@course, @course.posts.build], html: {id: "post-form"}) do |f| %>
+<%= form_for([@course, @course.posts.build(taken_at: Date.today)], html: {id: "post-form"}) do |f| %>
 	<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" aria-labelledby="new-post-label">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
