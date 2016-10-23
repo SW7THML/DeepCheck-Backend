@@ -9,6 +9,8 @@
 #  attachment :string
 #  width      :integer          default(0)
 #  height     :integer          default(0)
+#  status     :integer          default(0)
+#  msg        :string           default("")
 #
 
 class Photo < ApplicationRecord
