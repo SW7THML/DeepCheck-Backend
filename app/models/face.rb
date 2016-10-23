@@ -42,7 +42,7 @@ class Face < ApplicationRecord
     p = MSCognitive::Person.new
     res = p.add_face(gid, uid, img_url)
     json = JSON.parse(res.body)
-    if json["error"].nil?
+    if !json["error"].nil?
       fid = json["persistedFaceId"]
       CourseFace.create(
         :course_user_id => course_user.id,

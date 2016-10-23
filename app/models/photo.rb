@@ -101,10 +101,12 @@ class Photo < ApplicationRecord
 
     img_url = self.url
 
+		logger.info img_url
     f = MSCognitive::Face.new
     res = f.detect(img_url)
     faces = JSON.parse(res.body)
-		if faces["error"].nil?
+
+		if !faces.is_a?(Array) && !faces["error"].nil?
 			logger.info faces
 			self.update(:status => 2, :msg => faces["error"]["message"])
 		else
