@@ -63,36 +63,37 @@ class Photo < ApplicationRecord
     face_ids = face_ids.compact.reject(&:blank?)
     face_ids = face_ids.uniq
 
-		return face_ids.count == 0
+		logger.info face_ids
+		return if face_ids.count == 0
 
     course = self.post.course
 
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
+		logger.info res
+		logger.info res.body
     faces = JSON.parse(res.body)
 
-    begin
-      logger.info faces
-      faces.each do |face|
-        fid = face["faceId"]
-        people = face["candidates"]
+		logger.info "ended"
+		logger.info faces
+		faces.each do |face|
+			fid = face["faceId"]
+			people = face["candidates"]
 
-        if t = TaggedUser.where(:fid => fid).first
-          people.each do |p|
-            uid = p["personId"]
-            prob = p["confidence"]
+			if t = TaggedUser.where(:fid => fid).first
+				people.each do |p|
+					uid = p["personId"]
+					prob = p["confidence"]
 
-            puts "#{(prob * 100).to_i}% - #{uid}"
+					puts "#{(prob * 100).to_i}% - #{uid}"
 
-            if prob > 0.5
-              cu = CourseUser.where(:uid => uid).first
-              t.update(:user_id => cu.user_id) unless cu.nil?
-            end
-          end
-        end
-      end
-    rescue
-    end
+					if prob > 0.5
+						cu = CourseUser.where(:uid => uid).first
+						t.update(:user_id => cu.user_id) unless cu.nil?
+					end
+				end
+			end
+		end
   end
 
   def detect
