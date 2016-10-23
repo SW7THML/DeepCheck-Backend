@@ -63,11 +63,14 @@ class Photo < ApplicationRecord
     face_ids = face_ids.compact.reject(&:blank?)
     face_ids = face_ids.uniq
 
+		return face_ids.count == 0
+
     course = self.post.course
 
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
     faces = JSON.parse(res.body)
+
     begin
       logger.info faces
       faces.each do |face|
@@ -101,27 +104,31 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.detect(img_url)
     faces = JSON.parse(res.body)
-    logger.info faces
-    faces.each do |face|
-      fid = face["faceId"]
-      pos = face["faceRectangle"]
-      top = (pos["top"] / pheight) * 100
-      left = (pos["left"] / pwidth) * 100
-      width = (pos["width"] / pwidth) * 100
-      height = (pos["height"] / pheight) * 100
+		if faces["error"].nil?
+			logger.info faces
+			self.update(:status => 2, :msg => faces["error"]["message"])
+		else
+			faces.each do |face|
+				fid = face["faceId"]
+				pos = face["faceRectangle"]
+				top = (pos["top"] / pheight) * 100
+				left = (pos["left"] / pwidth) * 100
+				width = (pos["width"] / pwidth) * 100
+				height = (pos["height"] / pheight) * 100
 
-      #puts "#{post} #{top}, #{left}, #{width}, #{height}"
+				#puts "#{post} #{top}, #{left}, #{width}, #{height}"
 
-      unless t = self.tagged_users.where(:x => left, :y => top, :width => width, :height => height).first
-        t = self.tagged_users.new(
-          :x => left,
-          :y => top,
-          :width => width,
-          :height => height,
-          :fid => fid
-        )
-        t.save
-      end
-    end
-  end
+				unless t = self.tagged_users.where(:x => left, :y => top, :width => width, :height => height).first
+					t = self.tagged_users.new(
+						:x => left,
+						:y => top,
+						:width => width,
+						:height => height,
+						:fid => fid
+					)
+					t.save
+				end
+			end
+		end
+	end
 end

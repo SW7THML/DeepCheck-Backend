@@ -8,12 +8,35 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
   process resize_to_fit: [1920, 1080]
 
+  # for Photo model
   after :store, :callback_method
   def callback_method file
     puts self.version_name
     self.model.process
-    self.model.update(:status => 1)
+    if self.model.status != 2 # TODO 2: error 1: success, 0: processing
+      self.model.update(:status => 1)
+    end
   end
+
+  version :thumbnail do
+    process :resize_to_fill => [600, 600]
+    # process :resize_and_crop => 300
+  end
+
+  def resize_and_crop(size)  
+    manipulate! do |image|                 
+      if image[:width] < image[:height]
+        remove = ((image[:height] - image[:width])/2).round 
+        image.shave("0x#{remove}") 
+      elsif image[:width] > image[:height] 
+        remove = ((image[:width] - image[:height])/2).round
+        image.shave("#{remove}x0")
+      end
+      image.resize("#{size}x#{size}")
+      image
+    end
+  end
+
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
