@@ -32,5 +32,5 @@
 </div>
 
 <div>
-  <%= link_to "조인하기", join_course_path(@course), :class => "btn btn-primary btn-block btn-lg", :id => "btn-new-post" %>
+  <%= link_to "조인하기", join_course_path(@course), :class => "btn btn-primary btn-block btn-lg", :id => "btn-new-post", data: { disable_with: "잠시만 기다려주세요." } %>
 </div>
