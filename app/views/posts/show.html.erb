@@ -5,34 +5,20 @@
   <h1><%= @post_title %></h1>
 </div>
 
-<div class="photos">
+<div class="photos" data-user-id="<%= current_user.id %>">
   <% @post.photos.each do |photo| %>
+<<<<<<< HEAD
 
     <%= raise @post.inspect %>
 
     <div class="photo">
+=======
+    <div class="photo" id="photo-<%= photo.id %>" data-photo-id="<%= photo.id %>">
+>>>>>>> 6b2ed2800d156bf3c74bca37dc3ece4921269ad6
       <%= image_tag photo.attachment.url, class: 'photo-attachment' %>
-      <% photo.tagged_users.each do |tag| %>
-        <div class="face-grid" data-photo-id="<%= photo.id %>" id="grid-<%= tag.user_id %>" data-tag-id="<%= tag.id %>" data-x="<%= tag.x %>" data-y="<%= tag.y %>" width="<%= tag.width %>" height="<%= tag.height %>"></div>
-      <% end %>
-      <div class="face-select" data-photo-id="<%= photo.id %>" data-user-id="<%= @current_user.id %>"></div>
     </div>
 
     <div class="tags">
-      <% photo.users.each do |user| %>
-        <span class="tag-name" data-user-id="<%= @current_user.id %>" data-photo-id="<%= photo.id %>">
-          <%= user.name %>
-        </span>
-
-        <span class="tag-cancel">
-        <% if @current_user == user or @current_user.manager?(@course) %>
-
-          <a data-photo-id="<%= photo.id %>" data-user-id="<%= user.id %>">
-          <span class="ionicons ion-ios-close-outline" aria-hidden="true"></span>
-          </a>
-        <% end %>
-        </span>
-      <% end %>
     </div>
   <% end %>
 

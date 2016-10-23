@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :photos, only: [] do
+    resources :tags, only: [:index, :create, :update, :destroy]
+  end
+
   resources :detail, only: [:show]
   resources :faces, only: [:destroy]
 
