@@ -23,7 +23,7 @@
 
 <% if @course.posts.blank? %>
   <div class="no-post">
-    <% if current_user.manager?(@course) %>
+    <% if not current_user.manager?(@course) %>
       <div class="no-photo" data-id="<%= @course.id %>">
         <p class="ionicons ion-ios-camera"></p>
         <div class="text-center">
@@ -36,10 +36,12 @@
         </div>
       </div>
     <% else %>
-      <p class="ionicons ion-ios-camera"></p>
-      <div class="no-photo-center">
-        <h4>아직 출석사진이 올라오지 않았어요.</h4>
-        <small>관리자가 출석 사진을 올릴 수 있습니다.</small>
+      <div class="no-post-perm">
+        <p class="ionicons ion-ios-camera"></p>
+        <div class="no-photo-center">
+          <h4>아직 출석사진이 올라오지 않았어요.</h4>
+          <small>관리자가 출석 사진을 올릴 수 있습니다.</small>
+        </div>
       </div>
     <% end %>
   </div>
