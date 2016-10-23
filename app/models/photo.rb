@@ -70,6 +70,7 @@ class Photo < ApplicationRecord
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
     faces = JSON.parse(res.body)
+
     begin
       logger.info faces
       faces.each do |face|

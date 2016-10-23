@@ -28,4 +28,8 @@ class Post < ApplicationRecord
     end
     return attendance_list
   end
+
+  def limit(img, width, height)
+    img.resize "#{width}x#{height}>"
+  end
 end
