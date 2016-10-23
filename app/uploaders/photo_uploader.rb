@@ -8,11 +8,14 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
   process resize_to_fit: [1920, 1080]
 
+  # for Photo model
   after :store, :callback_method
   def callback_method file
     puts self.version_name
     self.model.process
-    self.model.update(:status => 1)
+    if self.model.status != 2 # TODO 2: error 1: success, 0: processing
+      self.model.update(:status => 1)
+    end
   end
 
   # Choose what kind of storage to use for this uploader:
