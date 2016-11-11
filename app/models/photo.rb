@@ -33,9 +33,12 @@ class Photo < ApplicationRecord
     #RecognitionJob.set(wait: 1.second).perform_later({
     #  photo_id: self.id,
     #})
-    #self.get_size
-    #self.detect
-    #self.identify
+    begin
+      self.get_size
+      self.detect
+      self.identify
+    rescue
+    end
     logger.info "process end"
   end
 
@@ -60,44 +63,44 @@ class Photo < ApplicationRecord
   def identify
     # need to train
     trained = self.post.course.train
-		return if trained == false
+    return if trained == false
 
     face_ids = self.tagged_users.map {|tu| tu.fid}
     face_ids = face_ids.compact.reject(&:blank?)
     face_ids = face_ids.uniq
 
-		logger.info face_ids
-		return if face_ids.count == 0
+    logger.info face_ids
+    return if face_ids.count == 0
 
     course = self.post.course
 
     f = MSCognitive::Face.new
     res = f.identify(course.gid, face_ids)
-		logger.info res
-		logger.info res.body
+    logger.info res
+    logger.info res.body
     faces = JSON.parse(res.body)
 
-		logger.info "ended"
-		logger.info faces
-		return if !faces.is_a?(Array) && !faces["error"].nil?
-		faces.each do |face|
-			fid = face["faceId"]
-			people = face["candidates"]
+    logger.info "ended"
+    logger.info faces
+    return if !faces.is_a?(Array) && !faces["error"].nil?
+    faces.each do |face|
+      fid = face["faceId"]
+      people = face["candidates"]
 
-			if t = TaggedUser.where(:fid => fid).first
-				people.each do |p|
-					uid = p["personId"]
-					prob = p["confidence"]
+      if t = TaggedUser.where(:fid => fid).first
+        people.each do |p|
+          uid = p["personId"]
+          prob = p["confidence"]
 
-					puts "#{(prob * 100).to_i}% - #{uid}"
+          puts "#{(prob * 100).to_i}% - #{uid}"
 
-					if prob > 0.5
-						cu = CourseUser.where(:uid => uid).first
-						t.update(:user_id => cu.user_id) unless cu.nil?
-					end
-				end
-			end
-		end
+          if prob > 0.5
+            cu = CourseUser.where(:uid => uid).first
+            t.update(:user_id => cu.user_id) unless cu.nil?
+          end
+        end
+      end
+    end
   end
 
   def detect
@@ -106,37 +109,41 @@ class Photo < ApplicationRecord
 
     img_url = self.url
 
-		logger.info img_url
+    logger.info img_url
     f = MSCognitive::Face.new
     res = f.detect(img_url)
     faces = JSON.parse(res.body)
 
-		if !faces.is_a?(Array) && !faces["error"].nil?
-			logger.info faces
-			self.update(:status => 2, :msg => faces["error"]["message"])
-		else
+    logger.info faces
+
+    if !faces.is_a?(Array) && !faces["error"].nil?
+      logger.info faces
+      self.update(:status => 2, :msg => faces["error"]["message"])
+    else
       self.update(:status => 1)
-			faces.each do |face|
-				fid = face["faceId"]
-				pos = face["faceRectangle"]
-				top = (pos["top"] / pheight) * 100
-				left = (pos["left"] / pwidth) * 100
-				width = (pos["width"] / pwidth) * 100
-				height = (pos["height"] / pheight) * 100
+      faces.each do |face|
+        fid = face["faceId"]
+        pos = face["faceRectangle"]
+        top = (pos["top"] / pheight) * 100
+        left = (pos["left"] / pwidth) * 100
+        width = (pos["width"] / pwidth) * 100
+        height = (pos["height"] / pheight) * 100
 
-				#puts "#{post} #{top}, #{left}, #{width}, #{height}"
+        #puts "#{post} #{top}, #{left}, #{width}, #{height}"
 
-				unless t = self.tagged_users.where(:x => left, :y => top, :width => width, :height => height).first
-					t = self.tagged_users.new(
-						:x => left,
-						:y => top,
-						:width => width,
-						:height => height,
-						:fid => fid
-					)
-					t.save
-				end
-			end
-		end
-	end
+        if t = self.tagged_users.where(:x => left, :y => top, :width => width, :height => height).first
+          t.fid = fid
+        else
+          t = self.tagged_users.new(
+            :x => left,
+            :y => top,
+            :width => width,
+            :height => height,
+            :fid => fid
+          )
+        end
+        t.save
+      end
+    end
+  end
 end
