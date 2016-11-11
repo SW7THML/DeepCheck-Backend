@@ -33,9 +33,9 @@ class Photo < ApplicationRecord
     #RecognitionJob.set(wait: 1.second).perform_later({
     #  photo_id: self.id,
     #})
-    self.get_size
-    self.detect
-    self.identify
+    #self.get_size
+    #self.detect
+    #self.identify
     logger.info "process end"
   end
 

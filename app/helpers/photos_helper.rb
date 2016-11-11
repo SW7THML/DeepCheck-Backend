@@ -7,17 +7,22 @@ KEY = keys["oxford_api_key"]
 
 module PhotosHelper
 	class HttpClient
-		def initialize(api_key)
+		def initialize(api_key, ms = false)
 			#uris = URI.parse("http://localhost:3000")
-			uris = URI.parse("https://api.projectoxford.ai")
-			@http = Net::HTTP.new(uris.host, uris.port)
-			@http.use_ssl = true
-			@http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            if ms
+                uris = URI.parse("https://api.projectoxford.ai")
+                @http = Net::HTTP.new(uris.host, uris.port)
+                @http.use_ssl = true
+                @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            else
+                uris = URI.parse("http://one.room:4000")
+                @http = Net::HTTP.new(uris.host, uris.port)
+            end
 			@api_key = api_key
 		end
 
 		def get(path, params = {})
-			request = Net::HTTP::Get.new("/face/v1.0/#{path}")
+			request = Net::HTTP::Get.new("/face/v1.0#{path}")
 			#request['Content-Type'] = "application/json"
 			request.content_type = "application/json"
 			#request['Connection'] = "Keep-Alive"
@@ -33,7 +38,7 @@ module PhotosHelper
 		end
 
 		def post(path, params = {})
-			request = Net::HTTP::Post.new("/face/v1.0/#{path}")
+			request = Net::HTTP::Post.new("/face/v1.0#{path}")
 			#request['Content-Type'] = "application/json"
 			request.content_type = "application/json"
 			#request['Connection'] = "Keep-Alive"
@@ -50,7 +55,7 @@ module PhotosHelper
 		end
 
 		def put(path, params = {})
-			request = Net::HTTP::Put.new("/face/v1.0/#{path}")
+			request = Net::HTTP::Put.new("/face/v1.0#{path}")
 			#request['Content-Type'] = "application/json"
 			request.content_type = "application/json"
 			#request['Connection'] = "Keep-Alive"
@@ -67,7 +72,7 @@ module PhotosHelper
 		end
 
 		def patch(path, params = {})
-			request = Net::HTTP::Patch.new("/face/v1.0/#{path}")
+			request = Net::HTTP::Patch.new("/face/v1.0#{path}")
 			#request['Content-Type'] = "application/json"
 			request.content_type = "application/json"
 			#request['Connection'] = "Keep-Alive"
@@ -84,7 +89,7 @@ module PhotosHelper
 		end
 
 		def delete(path, params = {})
-			request = Net::HTTP::Delete.new("/face/v1.0/#{path}")
+			request = Net::HTTP::Delete.new("/face/v1.0#{path}")
 			#request['Content-Type'] = "application/json"
 			request.content_type = "application/json"
 			#request['Connection'] = "Keep-Alive"
@@ -114,6 +119,7 @@ module PhotosHelper
 			def initialize
 				raise if MSCognitive.API_KEY.blank?
 				@client = HttpClient.new(MSCognitive.API_KEY)
+				@msclient = HttpClient.new(MSCognitive.API_KEY, true)
 			end
 
 			# Detect
@@ -122,7 +128,7 @@ module PhotosHelper
 				params = {
 					url: url
 				}
-				@client.post("/detect?returnFaceId=#{return_face_id}&returnFaceLandmarks=#{return_face_landmarks}&returnFaceAttributes=#{return_face_attributes}", params)
+				@msclient.post("/detect?returnFaceId=#{return_face_id}&returnFaceLandmarks=#{return_face_landmarks}&returnFaceAttributes=#{return_face_attributes}", params)
 			end
 
 			# TODO

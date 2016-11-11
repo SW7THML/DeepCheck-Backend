@@ -36,7 +36,7 @@ class CourseUser < ApplicationRecord
 
   def create_faces
     self.user.faces.each do |f|
-			logger.info "add_face #{f.id}"
+        logger.info "add_face #{f.id}"
       unless cf = self.course_faces.where(:face_id => f.id).first
         f.add_face(self.id) 
       end

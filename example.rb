@@ -26,6 +26,7 @@ person_user_data = "developer"
 # add face to person
 person_id = "3a9a24c9-9ece-4e6b-b511-84a19131496b"
 img_url = "http://photo.tantara.me/photos/1/814684725262998.jpg"
+img_url = "https://dl.dropbox.com/s/24n033ijd16p8u1/10171853_814684725262998_3929584347521148745_n.jpg"
 #res = p.add_face(group_id, person_id, img_url)
 #puts res.body # {"persistedFaceId":"e98c6f3f-b772-4836-8f73-6661ab32fbe2"} # 56e8afa6-7880-4ed9-9caf-772df773a845
 
@@ -36,11 +37,12 @@ img_url = "http://photo.tantara.me/photos/1/814684725262998.jpg"
 
 # detect face
 img_url = "http://photo.tantara.me/photos/1/814684725262998.jpg"
+img_url = "https://dl.dropbox.com/s/8xmys57ncm4l2vo/slack_for_ios_upload.jpg"
 return_face_id = true # default: true
-return_face_landmarks = true # default: false
-return_face_attributes = "age,gender" # default: ""
-#res = f.detect(img_url, return_face_id, return_face_landmarks, return_face_attributes)
-#puts res.body # https://gist.github.com/tantara/932202b63c5d2008af1b138d73383931
+return_face_landmarks = false # default: false
+return_face_attributes = ""#age,gender" # default: ""
+res = f.detect(img_url, return_face_id, return_face_landmarks, return_face_attributes)
+puts res.body # https://gist.github.com/tantara/932202b63c5d2008af1b138d73383931
 
 face_id = "8ffe65f0-e174-4d57-a6ff-c3570221306c" # face_id from https://gist.github.com/tantara/932202b63c5d2008af1b138d73383931
 face_ids = [
