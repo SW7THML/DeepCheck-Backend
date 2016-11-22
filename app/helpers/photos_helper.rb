@@ -15,7 +15,8 @@ module PhotosHelper
         @http.use_ssl = true
         @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       else
-        uris = URI.parse("http://127.0.0.1:4000")
+        #uris = URI.parse("http://127.0.0.1:4000")
+        uris = URI.parse("http://61.43.139.17:4000")
         @http = Net::HTTP.new(uris.host, uris.port)
       end
       @api_key = api_key
