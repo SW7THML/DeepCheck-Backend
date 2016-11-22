@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023111914) do
+ActiveRecord::Schema.define(version: 20161122114301) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -65,10 +65,11 @@ ActiveRecord::Schema.define(version: 20161023111914) do
     t.string   "name"
     t.string   "short_link"
     t.integer  "manager_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "gid",        default: ""
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "gid",                 default: ""
     t.string   "attachment"
+    t.integer  "training_user_count", default: 0
     t.index ["gid"], name: "index_courses_on_gid"
     t.index ["manager_id"], name: "index_courses_on_manager_id"
   end

@@ -2,14 +2,15 @@
 #
 # Table name: courses
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  short_link :string
-#  manager_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  gid        :string           default("")
-#  attachment :string
+#  id                  :integer          not null, primary key
+#  name                :string
+#  short_link          :string
+#  manager_id          :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  gid                 :string           default("")
+#  attachment          :string
+#  training_user_count :integer          default(0)
 #
 
 class Course < ApplicationRecord
@@ -48,8 +49,12 @@ class Course < ApplicationRecord
   def train
     pg = MSCognitive::PersonGroup.new
     unless self.gid.blank?
+      return true if self.training_user_count == self.users.count
       res = pg.train(self.gid) 
-      return true if res.kind_of? Net::HTTPSuccess
+      if res.kind_of? Net::HTTPSuccess
+        self.update(:training_user_count => self.users.count)
+        return true 
+      end
     end
     return false
   end
